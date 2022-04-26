@@ -41,7 +41,6 @@ shdwBox.addEventListener('click', () => {
 /* Adaptive Menu */
 
 /* Pop Up */
-const popClosers = document.querySelectorAll('[data-type]');
 const petWrapper = document.querySelector('.popup-wrapper');
 let petInfo = document.querySelector('.popup-block');
 const popCloseBtn = document.querySelector('.popup-button');
@@ -78,23 +77,11 @@ function createPop(obj) {
   });
 }
 
-popClosers.forEach(closer => {
-  closer.addEventListener('click', () => {
-    petWrapper.classList.remove('active');
-    page.classList.remove('lock');
-    /* обертка наведение + закрытие */
-  })
+popCloseBtn.addEventListener('click', () => {
+  petWrapper.classList.remove('active');
+  page.classList.remove('lock');
 });
 /* Pop Up */
-
-//check
-const cards = document.querySelectorAll('.pet-card');
-cards.forEach(card => card.addEventListener('click', (event) => {
-  createPop(event.target);
-  console.log(event.target.dataset.name);
-  petWrapper.classList.add('active');
-  page.classList.add('lock');
-}));
 
 /* Pagination */
 const slider = document.querySelector('.pets-block__slider');

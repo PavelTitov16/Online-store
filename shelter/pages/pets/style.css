@@ -512,7 +512,7 @@ body {
     border: 2px solid var(--primary-hover);
 }*/
 
-.popup-button.hover {
+.popup-button:hover {
     background: var(--primary-hover);
     border: 2px solid var(--primary-hover);
 }
@@ -525,6 +525,7 @@ body {
     text-align: center;
     font-size: 23px;
     display: flex;
+    overflow-y: auto;
 }
 
 .popup-wrapper.active {
