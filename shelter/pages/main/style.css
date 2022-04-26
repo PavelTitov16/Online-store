@@ -649,7 +649,7 @@ body {
     border: 2px solid var(--primary-hover);
 }*/
 
-.popup-button.hover {
+.popup-button:hover {
     background: var(--primary-hover);
     border: 2px solid var(--primary-hover);
 }
@@ -662,6 +662,7 @@ body {
     text-align: center;
     font-size: 23px;
     display: flex;
+    overflow-y: auto;
 }
 
 .popup-wrapper.active {
@@ -671,7 +672,6 @@ body {
 .popup-block__item{
     width: 500px;
     height: 500px;
-    overflow: auto;
 }
 
 .popup-block__item img {
@@ -682,7 +682,6 @@ body {
 .popup-content {
     margin: 50px 20px 88px 30px;
     text-align: left;
-    overflow-y: auto;
 }
 
 .popup-content__title {
@@ -728,13 +727,6 @@ body {
     margin-top: 10px;
 }
 
-.popup-list__item::before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    display: block;
-    color: var(--primary-normal);
-}
 /* Pop-Up */
 
 /* Help*/

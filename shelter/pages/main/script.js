@@ -42,59 +42,43 @@ shdwBox.addEventListener('click', () => {
 
 /* Pop Up */
 
-const popClosers =  document.querySelectorAll('[data-type]');
-const petWrapper = document.querySelector('.popup-wrapper');
+const petWrapper = document.getElementById('pop-wrapper');
 let petInfo = document.querySelector('.popup-block');
 const popCloseBtn = document.querySelector('.popup-button');
 
-function createPop(obj) {
-  pets.forEach(pet => {
-    if (pet.name === obj.dataset.name) {
-      petInfo.innerHTML =
-        `<div class="popup-block__item inactive">
-                <img src="${pet.img}" alt="${pet.name}">
+function createPop(pet) {
+  petInfo.innerHTML =
+    `<div class="popup-block__item inactive">
+            <img src="${pet.img}" alt="${pet.name}">
+        </div>
+        <div class="popup-block__item">
+            <div class="popup-content">
+                <h3 class="popup-content__title">${pet.name}</h3>
+                <h4>${pet.type} - ${pet.breed}</h4>
+                <h5 class="popup-content__subtitle">${pet.description}</h5>
+                <ul class="popup-list">
+                    <li class="popup-list__item">
+                        <div><b>Age: </b>${pet.age}</div>
+                    </li>
+                    <li class="popup-list__item">
+                        <div><b>Inoculations: </b>${pet.inoculations}</div>
+                    </li>
+                    <li class="popup-list__item">
+                        <div><b>Diseases: </b>${pet.diseases}</div>
+                    </li>
+                    <li class="popup-list__item">
+                        <div><b>Parasites: </b>${pet.parasites}</div>
+                    </li>
+                </ul>
             </div>
-            <div class="popup-block__item">
-                <div class="popup-content">
-                    <h3 class="popup-content__title">${pet.name}</h3>
-                    <h4>${pet.type} - ${pet.breed}</h4>
-                    <h5 class="popup-content__subtitle">${pet.description}</h5>
-                    <ul class="popup-list">
-                        <li class="popup-list__item">
-                            <div><b>Age: </b>${pet.age}</div>
-                        </li>
-                        <li class="popup-list__item">
-                            <div><b>Inoculations: </b>${pet.inoculations}</div>
-                        </li>
-                        <li class="popup-list__item">
-                            <div><b>Diseases: </b>${pet.diseases}</div>
-                        </li>
-                        <li class="popup-list__item">
-                            <div><b>Parasites: </b>${pet.parasites}</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>`;
-    }
-  });
+        </div>`;
 }
-  
-popClosers.forEach(closer => {
-  closer.addEventListener('click', () => {
+
+popCloseBtn.addEventListener('click', () => {
   petWrapper.classList.remove('active');
   page.classList.remove('lock');
-  /* обертка наведение + закрытие */
-})});
+});
 
-document.addEventListener('mouseover', event => {
-
-  if (popClosers) {
-      popCloseBtn.classList.add('hover');
-  }
-  else if (!popClosers && petInfo) {
-      popCloseBtn.classList.remove('hover');
-  }
-})
 /* Pop Up */
 
 /* Slider */
@@ -174,8 +158,6 @@ function createCard() {
     console.log(event.target.dataset.name);
     petWrapper.classList.add('active');
     page.classList.add('lock');
-
-    return currentSlider;
   }));
 }
 
@@ -195,3 +177,10 @@ petsContainer.addEventListener("animationend", () => {
   petsContainer.classList.remove("left");
   petsContainer.classList.remove("right");
 });
+
+slider.addEventListener('click', (e) => {
+  let cardName = e.target.dataset.name;
+  pets.forEach(pet => {
+  if (cardName === pet.name) {
+    createPop(pet);
+  }})});

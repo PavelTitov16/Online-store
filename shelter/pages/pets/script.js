@@ -121,9 +121,8 @@ loadScreen();
 
 window.addEventListener('resize', () => {
   loadScreen();
+  createPage();
 });
-
-
 
 let currentPage; /*= localStorage.getItem('currentPage') ? JSON.parse(localStorage.getItem('currentPage')) : [];
 pagination = localStorage.getItem('currentPage') ? JSON.parse(localStorage.getItem('currentPage')) : createPage();*/
@@ -164,8 +163,6 @@ cards.forEach(card => card.addEventListener('click', (event) => {
   console.log(event.target.dataset.name);
   petWrapper.classList.add('active');
   page.classList.add('lock');
-
-  return currentSlider;
 }));
 
 }
@@ -176,7 +173,7 @@ swipeL.addEventListener('click', () => {
   if (pageCount > 1) {
   pageCount = 1;
   pageNum.textContent = pageCount;
-  createPage();
+  setTimeout(createPage, 320);
   slider.classList.add("left");
   }
 });
@@ -186,7 +183,7 @@ buttonLeft.addEventListener('click', () => {
   pageCount--;
   pageNum.textContent = pageCount;
   slider.classList.add("left");
-  createPage();
+  setTimeout(createPage, 320);
   }
 });
 
@@ -195,9 +192,8 @@ buttonRight.addEventListener('click', () => {
   pageCount++;
   pageNum.textContent = pageCount;
   slider.classList.add("right");
-  createPage();
+  setTimeout(createPage, 320);
 }});
-
 
 swipeR.addEventListener('click', () => {
   console.log(pageCount);
@@ -205,34 +201,35 @@ swipeR.addEventListener('click', () => {
   pageCount = (48 / cardsAmount);
   pageNum.textContent = pageCount;
   slider.classList.add("right");
-  createPage();
+  setTimeout(createPage, 320);
   }
 });
 
 slider.addEventListener("animationend", () => {
   slider.classList.remove("left");
   slider.classList.remove("right");
+  checkValidity();
 });
 
-
-/* Pagination */
 function checkValidity() {
   if (pageCount === (48 / cardsAmount) ) {
     buttonRight.classList.add('inactive');
     swipeR.classList.add('inactive');
+    buttonLeft.classList.remove('inactive');
+    swipeL.classList.remove('inactive');
   } else if (pageCount === 1) { 
     buttonLeft.classList.add('inactive');
     swipeL.classList.add('inactive');
+    buttonRight.classList.remove('inactive');
+    swipeR.classList.remove('inactive');
   } else {
     buttonLeft.classList.remove('inactive');
     swipeL.classList.remove('inactive');
     buttonRight.classList.remove('inactive');
     swipeR.classList.remove('inactive');
-  }
+  } 
 }
 
 checkValidity();
   
-    
-   
-
+/* Pagination */

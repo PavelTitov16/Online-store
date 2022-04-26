@@ -21,7 +21,7 @@ const pets = [
     "diseases": ["none"],
     "parasites": ["none"]
   },
-  /*{
+  {
     "name": "Oliver",
     "img": "../../assets/images/pets-oliver.png",
     "type": "Dog",
@@ -31,7 +31,7 @@ const pets = [
     "inoculations": ["complex", "rabies"],
     "diseases": ["none"],
     "parasites": ["none"]
-  },*/
+  },
   {
     "name": "Woody",
     "img": "../../assets/images/pets-woody.png",
@@ -131,7 +131,7 @@ const pets = [
     "inoculations": ["rabies"],
     "diseases": ["none"],
     "parasites": ["none"]
-  },
+  }/*,
   {
     "name": "Charly",
     "img": "../../assets/images/pets-charly.png",
@@ -142,6 +142,6 @@ const pets = [
     "inoculations": ["bordetella bronchiseptica", "leptospirosis"],
     "diseases": ["deafness", "blindness"],
     "parasites": ["lice", "fleas"]
-  }
+  }*/
 ]
 export default pets;
