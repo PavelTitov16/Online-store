@@ -428,6 +428,7 @@ body {
 }
 
 .pets-block__button {
+    background: transparent;
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
@@ -473,7 +474,7 @@ body {
 
 /* Pop-Up */
 .popup-wrapper {
-    position: absolute;
+    position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
@@ -489,9 +490,9 @@ body {
     width: 952px;
     height: 552px;
     margin: 0 auto;
-    margin-top: 140px;
     background: transparent;
     display: flex;
+    align-self: center;
     flex-direction: column;
 }
 
@@ -507,11 +508,6 @@ body {
     transition: 0.3s;
     align-self: flex-end;
 }
-
-/*.popup:hover .popup-button {
-    background: var(--primary-hover);
-    border: 2px solid var(--primary-hover);
-}*/
 
 .popup-button:hover {
     background: var(--primary-hover);
@@ -530,7 +526,9 @@ body {
 }
 
 .popup-wrapper.active {
-    display: block;
+    display: flex;
+    align-self: start;
+    
 }
 
 .popup-block__item{
@@ -591,13 +589,6 @@ body {
     margin-top: 10px;
 }
 
-.popup-list__item::before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    display: block;
-    color: var(--primary-normal);
-}
 /* Pop-Up */
 
 /* Footer */

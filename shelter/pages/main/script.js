@@ -41,7 +41,8 @@ shdwBox.addEventListener('click', () => {
 /* Adaptive Menu */
 
 /* Pop Up */
-
+let body = document.body;
+const closeContent = document.querySelector('[data-close]');
 const petWrapper = document.getElementById('pop-wrapper');
 let petInfo = document.querySelector('.popup-block');
 const popCloseBtn = document.querySelector('.popup-button');
@@ -74,10 +75,22 @@ function createPop(pet) {
         </div>`;
 }
 
-popCloseBtn.addEventListener('click', () => {
-  petWrapper.classList.remove('active');
+function closeModalContent() {
   page.classList.remove('lock');
+  petWrapper.classList.remove('active');
+  body.classList.remove('active');
+}
+
+popCloseBtn.addEventListener('click', () => {
+  closeModalContent();
 });
+
+closeContent.addEventListener('click', (e) => {
+  const tar = e.target;
+  if(tar.classList.contains('popup-wrapper') || tar.classList.contains('popup-button') ) {
+   closeModalContent();
+   console.log(closeModalContent() );
+  }}); 
 
 /* Pop Up */
 
