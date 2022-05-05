@@ -1,0 +1,226 @@
+:root {
+    --keyboard-bg: linear-gradient(99.87deg, #D0D4D7 10.62%, #AEB1B4 37.07%, #D1D5DA 89.12%, #FFFFFF 100%);
+    --button-bg: linear-gradient(135deg, #D9DCE2 0%, #FDFDFE 100%);
+    /*--primary-normal: #F1CDB3;
+    --primary-hover: #FDDCC4;
+    --secondary-normal: #fff;
+    --secondary-hover: #FDDCC4;
+    --color-base: #fff;
+    --color-section: #F6F6F6;
+    --color-text: #000;
+    --color-content: #292929;
+    --button-normal: #fff;
+    --button-hover: #FDDCC4;
+    --button-inactive: rgba(205, 205, 205, 1);
+    --button-active: #F1CDB3;
+    --color-border: #F1CDB3;
+    --background: #5C5C5C;
+    --header-bg: linear-gradient(100deg, #504034, #473931, #3e322e, #312a29, #272424);
+    --start-bg: linear-gradient(100deg, #504034, #463831, #3b302d, #2f2928, #232222);
+    --footer-bg: linear-gradient(111deg, #3e3027, #3e2f2e, #3a2f33, #343035, #313133);
+    --link-color: #CDCDCD;
+    --link-hover: #FAFAFA;
+    --title-color: #545454;
+    --text-dark: #4C4C4C;
+    --text-light: #B2B2B2;
+    --card-bg: #FAFAFA;
+    --modal-bg: rgba(41, 41, 41, 0.6);*/
+}
+
+/* Обнуление */
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+/* Обнуление */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.keyboard {
+    margin: 0 auto;
+    width: 1100px;
+    height: 420px;
+    background: var(--keyboard-bg);
+    border-radius: 22px;
+    padding: 60px 30px 30px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:7px;
+}
+
+.button {
+    width: 60px;
+    height: 60px;
+    background: var(--button-bg);
+    border-radius: 12px 12px 14px 14px;
+    box-shadow: inset 0px -3px 5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden-key {
+    display: none;
+}
+
+.Backquote {
+    width: 75px;
+}
+
+.Backspace {
+    width: 150px;
+}
+
+.Tab {
+    width: 90px;
+}
+
+.Backslash{
+    width: 50px;
+}
+
+.Delete {
+    width: 80px;
+}
+
+.CapsLock {
+    width: 140px;
+}
+
+.Enter {
+    width: 150px;
+}
+
+.ShiftLeft {
+    width: 100px;
+}
+
+.ShiftRight {
+    width: 195px;
+}
+
+.Space {
+    width: 410px;
+}
+
+.ControlLeft {
+    width: 85px;
+}
+
+.textboard {
+    margin: 0 auto;
+    width: 900px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    margin: 0 auto;
+    border: 2px solid var(--color-hover);
+    border-radius: 0px;
+    background: var(--button-active);
+    height: 150px;
+    width: 900px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 40px;
+    transition: 0.5s;
+    margin-bottom: 10px;
+    color: var(--color-hover);
+    resize: none
+ }
+
