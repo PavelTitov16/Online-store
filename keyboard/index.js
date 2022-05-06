@@ -485,12 +485,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function createKeybord(link) {
         const container = document.createElement('div');
-        container.className = 'container';
+        container.className = 'textboard';
         const containerTextarea = document.createElement('textarea');
-        containerTextarea.className = 'textboard';
         const containerKeyboard = document.createElement('div');
         containerKeyboard.className = 'keyboard';
-
+        container.append(containerTextarea);
         container.append(containerKeyboard);
 
         keyBtns.forEach((e) => {
