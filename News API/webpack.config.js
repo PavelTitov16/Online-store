@@ -25,8 +25,12 @@ const config = {
             template: './src/index.html',
         }),
         new EslingPlugin({ 
-            extensions: 'ts' 
-        }),
+            extensions: [`js`, `ts`],
+            exclude: [
+                `/node_modules/`,
+                `/bower_components/`
+            ]
+        })
 
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
