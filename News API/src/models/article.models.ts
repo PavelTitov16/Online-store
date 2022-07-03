@@ -9,3 +9,9 @@ export interface IArticle {
     urlToImage: string; 
     publishedAt: string; 
 }
+
+export interface IResponseArticles {
+    status: string,
+    totalResults: number,
+    articles: IArticle[]
+}
