@@ -1,9 +1,11 @@
+import { Callback } from "./callback.models";
+
 export interface ILoader {
     baseLink: string;
     options: string;
 
-    getResp({ endpoint: string, options = {} }, callback = (): void): void;
-    errorHandler(res: any): any | error;
-    makeUrl(options: any, endpoint: any): any;
-    load(method: any, endpoint: string, callback = (): void, options = {}): void;
+    getResp({ endpoint: string, options: IResponseSources }, callback: (data: <T>) => void): void;
+    errorHandler(res: Response): Response | Error;
+    makeUrl(options: any, endpoint: string): string;
+    load(method: string, endpoint: string, callback: (data: <T>) => void, options: IResponseArticles): void;
 }
