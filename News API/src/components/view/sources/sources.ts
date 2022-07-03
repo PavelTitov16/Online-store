@@ -4,19 +4,19 @@ import { DrawModel } from '../../../models/draw.model';
 
 class Sources implements DrawModel<ISourceData> {
     draw(data: ISourceData[] | []): void {
-        const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
         data.forEach((item: ISourceData) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+            const sourceClone: HTMLElement = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            (sourceClone.querySelector('.source__item-name') as HTMLSpanElement).textContent = item.name;
+            (sourceClone.querySelector('.source__item') as HTMLDivElement).setAttribute('data-source-id', item.id);
 
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        (document.querySelector('.sources') as HTMLDivElement).append(fragment);
     }
 }
 
