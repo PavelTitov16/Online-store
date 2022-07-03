@@ -1,11 +1,13 @@
+import { IResponseArticles } from "./article.models";
 import { Callback } from "./callback.models";
+import { IResponseSources } from "./source.models";
 
 export interface ILoader {
     baseLink: string;
-    options: string;
+    options: {[key: string]: string};
 
-    getResp({ endpoint: string, options: IResponseSources }, callback: (data: <T>) => void): void;
+    getResp({ endpoint, options = {} }: { endpoint: string; options?: { [key: string]: string } }, callback: Callback<IResponseArticles>): void;
     errorHandler(res: Response): Response | Error;
     makeUrl(options: any, endpoint: string): string;
-    load(method: string, endpoint: string, callback: (data: <T>) => void, options: IResponseArticles): void;
+    load(method: string, endpoint: string, callback: Callback<IResponseSources>, options: { [key: string]: string }): void;
 }

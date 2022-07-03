@@ -1,6 +1,8 @@
+import { IResponseArticles } from "./article.models";
 import { Callback } from "./callback.models";
+import { IResponseSources } from "./source.models";
 
 export interface IAppController {
-    getSources(callback: (data: <T>) => void): void; 
-    getNews(event: Event, callback: (data: <T>) => void): EventTarget;
+    getSources(callback: Callback<IResponseArticles>): void; 
+    getNews(event: Event, callback: Callback<IResponseSources>): void;
 }
