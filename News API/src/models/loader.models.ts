@@ -4,7 +4,7 @@ import { IResponseSources } from "./source.models";
 
 export interface ILoader {
     baseLink: string;
-    options: {[key: string]: string};
+    options: { [key: string]: string};
 
     getResp({ endpoint, options = {} }: { endpoint: string; options?: { [key: string]: string } }, callback: Callback<IResponseArticles>): void;
     errorHandler(res: Response): Response | Error;

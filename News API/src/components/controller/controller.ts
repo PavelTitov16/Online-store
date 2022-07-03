@@ -10,7 +10,7 @@ class AppController extends AppLoader implements IAppController {
             {
                 endpoint: 'sources',
             },
-            callback: () => void;
+            callback;
         );
     }
 
