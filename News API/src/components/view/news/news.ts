@@ -5,16 +5,16 @@ import { DrawModel } from '../../../models/draw.model';
 class News implements DrawModel<IArticle> {
     draw(data: IArticle[] | []): void {
         
-        const news: IArticle[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const news: IArticle[] = data.length >= 10 ? data.filter((_item: IArticle, idx: number) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+        const newsItemTemp: HTMLTemplateElement = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
-        news.forEach((item, idx) => {
-            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
+        news.forEach((item: IArticle, idx: number) => {
+            const newsClone: HTMLElement = newsItemTemp.content.cloneNode(true) as HTMLElement;
            
             if (idx % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
-
+            
             (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
