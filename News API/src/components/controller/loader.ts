@@ -1,6 +1,7 @@
 import { ILoader } from '../../models/loader.models';
 import { Callback} from '../../models/callback.models';
 import { Options } from '../../models/loader.models';
+import { ResponseStatuses } from '../../models/loader.models';
 
 class Loader implements ILoader  {
     private baseLink: string;
@@ -20,7 +21,7 @@ class Loader implements ILoader  {
 
     errorHandler(res: Response): Response {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === ResponseStatuses.BadRequest || res.status === ResponseStatuses.NotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }

@@ -7,6 +7,15 @@ export type Options = {
     readonly sources?: string;
 }
 
+export const enum ResponseStatuses {
+    Ok = 200,
+    BadRequest = 400,
+    Unauthorized,
+    PaymentRequired,
+    Forbidden,
+    NotFound = 404
+}
+
 export interface ILoader {
     getResp({ endpoint, options}: { endpoint: string; options?: { [apiKey: string]: string} }, callback: Callback<IResponseArticles>): void;
     errorHandler(res: Response): Response;
