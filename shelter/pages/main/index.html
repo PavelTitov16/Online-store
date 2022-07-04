@@ -10,7 +10,7 @@
     <title>Shelter</title>
 </head>
 
-<body>
+<body class="shelter-page">
     <header class="header-wrapper">
         <div class="header-container">
             <div class="header-logo">
@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <ul class="header-nav__list">
-                    <li class="header-nav__item"><a class="header-nav__link active" href="#summary">
+                    <li class="header-nav__item"><a class="header-nav__link active" href="#">
                             About the shelter</a></li>
                     <li class="header-nav__item"><a class="header-nav__link" href="../pets/index.html">Our pets</a></li>
                     <li class="header-nav__item"><a class="header-nav__link" href="#help">Help the shelter</a></li>
@@ -103,37 +103,19 @@
                         Our friends who are&nbsp;looking for a&nbsp;house
                     </h3>
                     <div class="pets-block__slider">
-                        <button class="sub-button">
-                            <img src="../../assets/icons/arrow-left.svg" alt="arrow left">
-                        </button>
-                        <div class="pets-card">
-                            <img src="../../assets/images/pets-katrine.png" alt="cat">
-                            <p class="pets-card__name">
-                                Katrine
-                            </p>
-                            <button class="button secondary-btn">Learn more</button>
-                        </div>
-                        <div class="pets-card disabled">
-                            <img src="../../assets/images/pets-jennifer.png" alt="dog">
-                            <p class="pets-card__name">
-                                Jennifer
-                            </p>
-                            <button class="button secondary-btn">Learn more</button>
-                        </div>
-                        <div class="pets-card inactive">
-                            <img src="../../assets/images/pets-woody.png" alt="dog">
-                            <p class="pets-card__name">
-                                Woody
-                            </p>
-                            <button class="button secondary-btn">Learn more</button>
-                        </div>
-                        <button class="sub-button">
-                            <img src="../../assets/icons/arrow-right.svg" alt="arrow right">
-                        </button>
+                        
                     </div>
                     <a class="button pets-block__button" href="../pets/index.html">
                         Get to know the rest
                     </a>
+                </div>
+                <div class="popup-wrapper" id="pop-wrapper" data-close>
+                    <div class="popup" data-close>
+                        <button class="popup-button" data-close>
+                            <img src="../../assets/icons/icon-close.svg" alt="close cross">
+                        </button>
+                        <div class="popup-block"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -277,7 +259,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
