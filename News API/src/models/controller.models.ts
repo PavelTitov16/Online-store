@@ -3,6 +3,6 @@ import { Callback } from "./callback.models";
 import { IResponseSources } from "./source.models";
 
 export interface IAppController {
-    getSources(callback: Callback<IResponseArticles>): void; 
-    getNews(event: Event, callback: Callback<IResponseSources>): void;
+    getSources(callback: Callback<IResponseSources>): void; 
+    getNews(event: Event, callback: Callback<IResponseArticles>): void;
 }

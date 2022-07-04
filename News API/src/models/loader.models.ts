@@ -6,8 +6,8 @@ export interface ILoader {
     baseLink: string;
     options: { [key: string]: string};
 
-    getResp({ endpoint, options = {} }: { endpoint: string; options?: { [key: string]: string } }, callback: Callback<IResponseArticles>): void;
-    errorHandler(res: Response): Response | Error;
+    getResp({ endpoint, options}: { endpoint: string; options?: { [key: string]: string } }, callback: Callback<IResponseArticles>): void;
+    errorHandler(res: Response): Response;
     makeUrl(options: any, endpoint: string): string;
     load(method: string, endpoint: string, callback: Callback<IResponseSources>, options: { [key: string]: string }): void;
 }

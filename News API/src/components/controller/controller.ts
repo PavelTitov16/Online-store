@@ -5,16 +5,16 @@ import { IResponseArticles } from '../../models/article.models';
 import { IResponseSources } from '../../models/source.models';
 
 class AppController extends AppLoader implements IAppController {
-    getSources( callback: Callback<IResponseArticles>): void {
+    getSources( callback: Callback<IResponseSources>): void {
         super.getResp(
             {
                 endpoint: 'sources',
             },
-            callback;
+            callback
         );
     }
 
-    getNews(event: Event, callback: Callback<IResponseSources>): void {
+    getNews(event: Event, callback: Callback<IResponseArticles>): void {
         let target: HTMLElement = event.target as HTMLElement;
         const newsContainer: HTMLElement = event.currentTarget as HTMLElement;
 
@@ -30,7 +30,7 @@ class AppController extends AppLoader implements IAppController {
                                 sources: sourceId,
                             },
                         },
-                        callback;
+                        callback
                     );
                 }
                 return;
