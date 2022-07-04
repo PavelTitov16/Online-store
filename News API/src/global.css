@@ -109,7 +109,6 @@ footer {
 .footer-git{
     display: flex;
     align-items: center;
-    width: 182px;
     color: #30c5ff;
     padding-left: 20px;
 }
@@ -153,21 +152,26 @@ footer {
     transform: translateY(-0.3em);
 }
 
-
-
-
 /* Footer */
-/*
-@media (max-width: 1024px) {
-    .sources {
-        row-gap: 30px;
-        column-gap: 38px;
+
+@media (max-width: 640px) {
+    .main-container {
+        display: block;
+    }
+
+    .footer-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 30px;
+    }
+
+    .rss {
+        margin-right: 0;
+    }
+    .footer-text {
+        margin-right: 0;
+    }
+    .footer-git{
+        padding-left: 0;
     }
 }
-
-@media (max-width: 768px) {
-    .sources {
-        row-gap: 30px;
-        column-gap: 16px;
-    }
-}*/

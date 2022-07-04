@@ -37,7 +37,6 @@
 
 .source__item-name {
     font-weight: 400;
-    white-space: nowrap;
 }
 
 .sources::-webkit-scrollbar {
@@ -54,4 +53,24 @@
     border: 6px solid transparent;
     background-clip: content-box;
     background-color: #30c5ff;
+}
+
+@media (max-width: 1320px) {
+    .sources {
+        flex: 25%;
+}
+}
+
+@media (max-width: 640px) {
+    .sources {
+        position: static;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        overflow:auto;
+    }
+    
+    .source__item-name {
+        white-space: nowrap;
+    }
 }
