@@ -10,15 +10,10 @@
         <header>
             <h1>News Portal</h1>
         </header>
-        <main>
+        <main class="main-container">
             <div class="sources buttons"></div>
             <div class="news"></div>
         </main>
-        <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
-        </footer>
 
         <template id="sourceItemTemp">
             <div class="source__item">
@@ -51,8 +46,11 @@
                 <div class="footer-git">
                     <p class="footer-text">©</p>
                     <p class="footer-text">2022</p>
-                    <p class="footer-text"><a class="link" href="https://github.com/PavelTitov16">github</a></p>
+                    <a href="https://github.com/PavelTitov16" class="footer-link git-link">GitHub</a>
                 </div>
+                <p class="footer-text copyright">
+                    Copyright <a href="https://newsapi.org" class="footer-link">NewsAPI</a>
+                </p>
                 <a href="https://rs.school/js/" class="rss"></a>
             </div>
         </footer>

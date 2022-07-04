@@ -1,3 +1,11 @@
+.news {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 82%;
+    width: 100%;
+    justify-content: space-around;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
@@ -6,7 +14,7 @@
     background: #fff;
     color: #333;
     line-height: 1.4;
-    font-family: Arial, sans-serif;
+    font-family: "Arial", sans-serif;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -119,6 +127,13 @@
 
 .news__item:hover .news__meta-details {
     left: 0%;
+}
+
+@media (min-width: 1200px) {
+    .news__item {
+        flex-direction: row;
+        width: 45%;
+    }
 }
 
 @media (min-width: 640px) {
