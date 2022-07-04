@@ -33,3 +33,56 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+
+/* Footer */
+.footer-wrapper {
+    height: 50px;
+    width: 100%;
+}
+.footer-container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+.footer-git{
+    display: flex;
+    align-items: center;
+    width: 182px;
+    color: #30c5ff;
+    padding-left: 20px;
+}
+.footer-text {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 40px;
+    color: #30c5ff;
+    margin-right: 20px;
+}
+.rss {
+    width: 100px;
+    height: 40px;
+    background-image: url("../src/img/rs_school_js.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(73%) sepia(39%) saturate(4290%) hue-rotate(166deg) brightness(101%) contrast(102%);
+    transition: 0.5s;
+    margin-right: 20px;
+}
+.rss:hover {
+    filter: invert(67%) sepia(11%) saturate(2576%) hue-rotate(79deg) brightness(97%) contrast(90%);
+}
+.link {
+    color: #30c5ff;
+    transition: 0.5s;
+}
+.link:hover {
+    filter: invert(18%) sepia(96%) saturate(359%) hue-rotate(79deg) brightness(97%) contrast(83%);
+}
+/* Footer */
