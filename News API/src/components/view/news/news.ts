@@ -16,7 +16,7 @@ class News implements DrawModel<IArticle> {
             if (idx % 2) (newsClone.querySelector('.news__item') as HTMLDivElement).classList.add('alt');
             
             (newsClone.querySelector('.news__meta-photo') as HTMLDivElement).style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
+                item.urlToImage || '../img/news_placeholder.jpg'
             })`;
             (newsClone.querySelector('.news__meta-author') as HTMLUListElement).textContent = item.author || item.source.name;
             (newsClone.querySelector('.news__meta-date') as HTMLUListElement).textContent = item.publishedAt

@@ -1,16 +1,17 @@
 import { ILoader } from '../../models/loader.models';
-import { Callback} from '../../models/callback.models'
+import { Callback} from '../../models/callback.models';
+import { Options } from '../../models/loader.models';
 
 class Loader implements ILoader  {
-    public baseLink: string;
-    public options: { [key: string]: string};
+    private baseLink: string;
+    private options: Options;
 
-    constructor(baseLink: string, options: { [key: string]: string}) {
+    constructor(baseLink: string, options: { [apiKey: string]: string}) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp<T>({ endpoint, options}: { endpoint: string; options?: { [key: string]: string } }, 
+    getResp<T>({ endpoint, options}: { endpoint: string; options?: { [apiKey: string]: string} }, 
         callback: Callback<T> = () => {
             console.error('No callback for GET response');
         }): void {
@@ -27,9 +28,9 @@ class Loader implements ILoader  {
         return res;
     }
 
-    makeUrl(options: any, endpoint: string): string {
+    makeUrl(options: Partial<Options>, endpoint: string): string {
         const urlOptions: { [key: string]: string } = { ...this.options, ...options };
-        let url: string = `${this.baseLink}${endpoint}?`;
+        let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
@@ -38,7 +39,7 @@ class Loader implements ILoader  {
         return url.slice(0, -1);
     }
 
-    load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
+    load<T>(method: string, endpoint: string, callback: (data: T) => void, options:Partial<Options> = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
