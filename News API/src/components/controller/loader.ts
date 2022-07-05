@@ -7,12 +7,12 @@ class Loader implements ILoader  {
     private baseLink: string;
     private options: Options;
 
-    constructor(baseLink: string, options: { [apiKey: string]: string}) {
+    constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp<T>({ endpoint, options}: { endpoint: string; options?: { [apiKey: string]: string} }, 
+    getResp<T>({ endpoint, options}: { endpoint: string; options?: Partial<Options>}, 
         callback: Callback<T> = () => {
             console.error('No callback for GET response');
         }): void {
@@ -30,10 +30,10 @@ class Loader implements ILoader  {
     }
 
     makeUrl(options: Partial<Options>, endpoint: string): string {
-        const urlOptions: { [key: string]: string } = { ...this.options, ...options };
+        const urlOptions: Partial<Options> = { ...this.options, ...options };
         let url: string = `${this.baseLink}${endpoint}?` as string;
 
-        Object.keys(urlOptions).forEach((key) => {
+        Object.keys(urlOptions).forEach((key: string) => {
             url += `${key}=${urlOptions[key]}&`;
         });
 
@@ -50,5 +50,3 @@ class Loader implements ILoader  {
 }
 
 export default Loader;
-
-
