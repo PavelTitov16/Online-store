@@ -3,12 +3,13 @@ import { IAppController } from '../../models/controller.models';
 import { Callback} from '../../models/callback.models'
 import { IResponseArticles } from '../../models/article.models';
 import { IResponseSources } from '../../models/source.models';
+import { Endpoints } from '../../models/controller.models';
 
 class AppController extends AppLoader implements IAppController {
     getSources( callback: Callback<IResponseSources>): void {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: Endpoints.Sources,
             },
             callback
         );
@@ -25,7 +26,7 @@ class AppController extends AppLoader implements IAppController {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
                         {
-                            endpoint: 'everything',
+                            endpoint: Endpoints.Everything,
                             options: {
                                 sources: sourceId,
                             },
