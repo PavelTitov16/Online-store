@@ -1,6 +1,5 @@
-import { IResponseArticles } from "./article.models";
 import { Callback } from "./callback.models";
-import { IResponseSources } from "./source.models";
+
 
 export type Options = {
     [key: string]: string
@@ -16,9 +15,9 @@ export const enum ResponseStatuses {
 }
 
 export interface ILoader {
-    getResp({ endpoint, options}: { endpoint: string; options?: Partial<Options>}, callback: Callback<IResponseArticles>): void;
+    getResp<T>({ endpoint, options}: { endpoint: string; options?: Partial<Options>}, callback: Callback<T>): void;
     errorHandler(res: Response): Response;
     makeUrl(options: Partial<Options>, endpoint: string): string;
-    load(method: string, endpoint: string, callback: Callback<IResponseSources>, options: Partial<Options>): void;
+    load<T>(method: string, endpoint: string, callback: Callback<T>, options: Partial<Options>): void;
 }
 
