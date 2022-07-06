@@ -1,6 +1,6 @@
 import AppLoader from './appLoader';
 import { IAppController } from '../../models/controller.models';
-import { Callback} from '../../models/callback.models'
+import { Callback } from '../../models/callback.models'
 import { IResponseArticles } from '../../models/article.models';
 import { IResponseSources } from '../../models/source.models';
 import { Endpoints } from '../../models/controller.models';

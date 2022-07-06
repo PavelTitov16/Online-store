@@ -1,5 +1,5 @@
 import { ILoader } from '../../models/loader.models';
-import { Callback} from '../../models/callback.models';
+import { Callback } from '../../models/callback.models';
 import { Options } from '../../models/loader.models';
 import { ResponseStatuses } from '../../models/loader.models';
 
