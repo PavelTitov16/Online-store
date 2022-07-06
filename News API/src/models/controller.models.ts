@@ -4,7 +4,7 @@ import { IResponseSources } from "./source.models";
 
 export interface IAppController {
     getSources(callback: Callback<IResponseSources>): void; 
-    getNews(event: Event, callback: Callback<IResponseArticles>): void;
+    getNews(event: MouseEvent, callback: Callback<IResponseArticles>): void;
 }
 
 export const enum Endpoints {

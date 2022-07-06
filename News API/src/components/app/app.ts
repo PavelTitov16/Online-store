@@ -17,7 +17,7 @@ class App implements IApp {
     start(): void {
         const sources: HTMLElement = document.querySelector('.sources') as HTMLElement;
        
-        sources.addEventListener('click', (event: Event) => this.controller.getNews(event, (data: IResponseArticles) => 
+        sources.addEventListener('click', (event: MouseEvent) => this.controller.getNews(event, (data: IResponseArticles) => 
                 this.view.drawNews(data)));
         this.controller.getSources((data: IResponseSources) => this.view.drawSources(data));
     }

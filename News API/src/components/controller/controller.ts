@@ -15,7 +15,7 @@ class AppController extends AppLoader implements IAppController {
         );
     }
 
-    getNews(event: Event, callback: Callback<IResponseArticles>): void {
+    getNews(event: MouseEvent, callback: Callback<IResponseArticles>): void {
         let target: HTMLElement = event.target as HTMLElement;
         const newsContainer: HTMLElement = event.currentTarget as HTMLElement;
 

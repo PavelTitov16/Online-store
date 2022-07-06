@@ -7,5 +7,5 @@ export interface IAppView {
     sources: DrawModel<ISourceData>;
 
     drawNews(data: IResponseArticles): void;
-    drawSources(data:IResponseSources): void;
+    drawSources(data: IResponseSources): void;
 }
