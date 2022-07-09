@@ -1,12 +1,247 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Webpack App</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <h2>Tip: Check your console</h2>
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./src/icons/kindpng_199565.ico">
+    <title>Hogwarts Shop</title>
+</head>
+
+<body>
+    <header class="header-wrapper">
+        <div class="header-container">
+            <div class="header-side left">
+                <div class="audio-payer">
+                    <div class="controls">
+                        <div id="prev" class="audio-payer__btn prev"></div>
+                        <div class="audio-payer__btn play"></div>
+                        <div id="next" class="audio-payer__btn next"></div>
+                    </div>
+                    <div class="progress-bar">  </div>
+                    <div id="mute" class="audio-payer__btn mute"></div>
+                </div>
+                <hr class="header-line">
+                <ul class="header-nav__list">
+                    <li class="header-nav__item"><a class="header-nav__link" href="#summary">
+                            About shop</a>
+                    </li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="#catalogue">
+                            Catalogue</a>
+                    </li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="#faculty">
+                            Collections</a>
+                    </li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="#contacts">
+                            Privacy policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-logo logo"></div>
+            <div class="header-side right">
+                <div class="header-right__items">
+                    <q class="header-cite">After all this time? Always...</q>
+                    <div class="header-chest">
+                        <div class="header-chest__image"></div>
+                        <div class="header-chest__text">
+                            <span>0 items</span>
+                            <span>0 to pay</span>
+                        </div>
+                    </div>
+                    <div class="header-menu">
+                        <div class="header-menu__bar"></div>
+                        <div class="header-menu__bar"></div>
+                        <div class="header-menu__bar"></div>
+                    </div>
+                    <div class="shadow-box"></div>
+                </div>
+                <hr class="header-line right-line">
+                <div class="header-search">
+                    <input type="search" class="header-search__bar" placeholder="Type your wish here"
+                        autocomplete="off">
+                    <button class="header-search__btn button">Revelio</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="about-wrapper" id="summary">
+        <div class="about-container">
+            <div class="about-block">
+                <div class="about-text">
+                    <h1 class="about-block__title">
+                        Hogwarts Shop
+                    </h1>
+                    <p class="about-block__text">
+                        Explore a selection of best-loved Harry Potter products, including bespoke collectables, 
+                        unique wands, souvenirs, delicious confectionery, fan-favourites and more, perfect for gifting 
+                        any witch or wizard to add to their collection
+                    </p>
+                </div>
+                <div class="shop-items"></div>
+            </div>
+        </div>
+    </section>
+    <div class="hero-wrapper">
+        <section class="hero-container">
+            <div class="hero-text">
+                <h3 class="hero-text__title" id="catalogue">Catalogue</h3>
+                <p class="hero-text__subtext">
+                    Explore a selection of best-loved Harry Potter products, including bespoke collectables, unique
+                    wands, souvenirs, delicious confectionery, fan-favourites and more, perfect for gifting any witch 
+                    or wizard to add to their collection.
+                </p>
+            </div>
+        </section>
+    </div>
+    <main class="main-container">
+        <section class="main-filtres">
+            <h3>Filtres</h3>
+        </section>
+        <section class="main-goods">
+            <div class="goods-block">
+                <h3 class="goods-block__title">
+                    goods
+                </h3>
+                <div class="goods-slider">
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__image"></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__image"></div>
+                        <p class="goods-name">
+                            tie
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__image"></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__case""></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__case""></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__case"></div>
+                        <p class="goods-name">
+                            coat
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__coat"></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__coat"></div>
+                        <p class="goods-name">
+                            wand
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                    <div class="goods-slider__card">
+                        <div class="goods-slider__coat"></div>
+                        <p class="goods-name">
+                            coat
+                        </p>
+                        <div class="goods-slider__buy">
+                            <span class="price">60</span>
+                            <button class="goods-btn">Accio</button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <div class="faculty-wrapper">
+        <div class="faculty-container">
+            <h1 class="about-block__title faculty-title" id="faculty">
+                Chose your Hogwarts house
+            </h1>
+            <div class="faculty-container__items">
+                <div class="faculty-card hupple"></div>
+                <div class="faculty-card leo"></div>
+                <div class="faculty-card snake"></div>
+                <div class="faculty-card raven"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-wrapper" id="contacts">
+        <div class="footer-container">
+            <div class="footer-side left">
+                <p class="footer-text">All rights are reserved for JK Rowling and Warner Bros. ©</p>
+                <hr class="header-line">
+                <div class="footer-git">
+                    <a href="https://github.com/PavelTitov16" class="github-link"></a>
+                    <a href="#" class="footer__btn button">Spongify ↑</a>
+                </div>
+            </div>
+            <div class="footer-logo logo"></div>
+            <div class="footer-side right">
+                <p class="footer-text rights">All materials are used just for educational purposes</p>
+                <hr class="header-line right-line">
+                <div class="footer-rss">
+                    <p class="footer-text">The Rolling Scopes School, 2022</p>
+                    <a href="https://rs.school/js/" class="rss"></a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
     
+
+          
+    
+   
+       
+</body> 
+
 </html>
+
+
+
