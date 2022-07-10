@@ -146,7 +146,7 @@ body {
     padding: 36px 100px 24px 100px;
     margin: 0 auto;
     height: 13em;
-    width: 108em;
+    max-width: 108em;
 }
 
 .header-side {
@@ -155,10 +155,21 @@ body {
     justify-content: space-between;
 }
 
-.header-line {
+.left-line {
     border: none; 
     background: var(--left-line);
     height: 1.6px;
+    width: 14em;
+}
+
+.right-line {
+    border: none; 
+    background: var(--right-line);
+    height: 1.6px;
+    width: 14em;
+}
+
+.header-line {
     width: 500px;
 }
 
@@ -187,10 +198,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-}
-
-.right-line {
-    background: var(--right-line);
 }
 
 .header-cite {
@@ -222,6 +229,7 @@ body {
     flex-direction: column;
     color: var(--color-font);
     justify-content: center;
+    font-family: 'Crimson Text', serif;
 }
 
 .header-nav__list {
@@ -446,7 +454,7 @@ body {
 
 .about-wrapper {
     margin: 0 auto;
-    width: 108.5em;
+    max-width: 108.5em;
     padding: 0 100px;
 }
 
@@ -454,7 +462,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3em 0;
+    padding: 3em 1em;
 }
 
 .about-text {
@@ -491,7 +499,7 @@ body {
     margin: 0 auto;
     background: url(./src/images/catalogue_bg.jpg);
     height: 42em;
-    width: 108.5em;
+    max-width: 108.5em;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -525,12 +533,34 @@ body {
     margin: 0 auto;
     min-height: 100em;
     display: flex;
-    padding: 0 100px;
+    padding: 30px 100px;
     max-width: 108.5em;
 }
 
 .main-filtres {
     flex: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.filter-btn {
+    margin: 0.8em 0;
+    display: flex;
+    gap: 0.8em;
+    font-family: 'Poppins', sans-serif;
+    font-style: regular;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.filtres-title {
+    font-family: 'Crimson Text', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .main-goods {
@@ -549,7 +579,7 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 35px;
-    line-height: 45px;
+    line-height: 30px;
     text-align: center;
     letter-spacing: 0.06em;
     color: var(--title-color);
@@ -589,7 +619,7 @@ body {
     display: block;
     font-family: 'Crimson Text', serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     display: flex;
@@ -661,7 +691,7 @@ body {
 
 .faculty-wrapper {
     margin: 0 auto;
-    width: 108.5em;
+    max-width: 108.5em;
     background-size: 100%;
     background-image: url(./src/images/shop_bg.jpg);
     background-repeat: no-repeat;
@@ -693,37 +723,28 @@ body {
     width: 16em;
     cursor: pointer;
     transition: 0.4s ease-in-out;
-}
-
-.hupple {
-    background-image: url(./src/images/Faculty/hufflepuff-crest.png);
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.huffle {
+    background-image: url(./src/images/Faculty/hufflepuff-crest.png);
     filter: invert(49%) sepia(99%) saturate(1004%) hue-rotate(16deg) brightness(96%) contrast(102%);
 }
 
 .snake {
     background-image: url(./src/images/Faculty/snake.png);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
     filter: invert(80%) sepia(11%) saturate(4492%) hue-rotate(120deg) brightness(96%) contrast(98%);
 }
 
 .leo {
     background-image: url(./src/images/Faculty/leo.png);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
     filter: invert(57%) sepia(54%) saturate(6969%) hue-rotate(348deg) brightness(45%) contrast(110%);
 }
 
 .raven {
     background-image: url(./src/images/Faculty/raven.png);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
     filter: invert(73%) sepia(18%) saturate(1438%) hue-rotate(186deg) brightness(94%) contrast(95%);
 }
 
@@ -741,7 +762,6 @@ body {
     max-width: 108em;
     padding: 0 100px 0 100px;
     margin: 0 auto;
-    max-height: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;

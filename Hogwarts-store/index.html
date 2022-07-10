@@ -23,7 +23,7 @@
                     <div class="progress-bar">  </div>
                     <div id="mute" class="audio-payer__btn mute"></div>
                 </div>
-                <hr class="header-line">
+                <hr class="header-line left-line">
                 <ul class="header-nav__list">
                     <li class="header-nav__item"><a class="header-nav__link" href="#summary">
                             About shop</a>
@@ -84,9 +84,9 @@
         </div>
     </section>
     <div class="hero-wrapper">
-        <section class="hero-container">
+        <section class="hero-container" id="catalogue">
             <div class="hero-text">
-                <h3 class="hero-text__title" id="catalogue">Catalogue</h3>
+                <h3 class="hero-text__title">Catalogue</h3>
                 <p class="hero-text__subtext">
                     Explore a selection of best-loved Harry Potter products, including bespoke collectables, unique
                     wands, souvenirs, delicious confectionery, fan-favourites and more, perfect for gifting any witch 
@@ -97,12 +97,86 @@
     </div>
     <main class="main-container">
         <section class="main-filtres">
-            <h3>Filtres</h3>
+            <h2 class="goods-name">Use to sort ↓</h2>
+            <hr class="left-line">
+            <div class="filter-btn">
+                <input type="radio" id="contactChoice1" name="contact" value="email">
+                <label for="contactChoice1">All products</label>
+            </div>
+            <hr class="left-line">
+            <div class="filtres-block" id="filters">
+                <div class="filtres-faculty">
+                    <h3 class="filtres-title">Hogwarts houses</h3>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">Gryffindor</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">Slytherin</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">Hufflepuff</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">Ravenclaw</label>
+                    </div>
+                </div>
+                <hr class="left-line">
+                <div class="filtres-categories">
+                    <h3 class="filtres-title">Category</h3>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="1">  Study</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="2">  Books</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Wands</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Quidditch</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="3">  Jewellery</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Sweets And Treats</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Travel</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Trunks</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Soft Toys</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Souvenirs</label></div>
+                </div>
+                <hr class="left-line">
+                <div class="filtres-faculty">
+                    <h3 class="filtres-title">Price</h3>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">Under £10</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">£10 - £25</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">£25 - £50</label>
+                    </div>
+                    <div class="filter-btn">
+                        <input type="radio" id="contactChoice1" name="contact" value="email">
+                        <label for="contactChoice1">£50+</label>
+                    </div>
+                </div>
+                <hr class="left-line">
+                <div class="col-md-4">
+                    <h4>Сортировка</h4>
+                    <br>
+                    <select id="sort" name="sort" class="form-control">
+                        <option value="price_asc">По цене, сначала дешевые</option>
+                        <option value="price_desc">По цене, сначала дорогие</option>
+                        <option value="rating_desc">По популярности</option>
+                        <option value="good_asc">По названию, A-Z</option>
+                        <option value="good_desc">По названию, Z-A</option>
+                    </select>
+                </div>
+                <hr class="left-line">
+            </div>
         </section>
         <section class="main-goods">
             <div class="goods-block">
                 <h3 class="goods-block__title">
-                    goods
+                    Chose your stuff
                 </h3>
                 <div class="goods-slider">
                     <div class="goods-slider__card">
@@ -204,7 +278,7 @@
                 Chose your Hogwarts house
             </h1>
             <div class="faculty-container__items">
-                <div class="faculty-card hupple"></div>
+                <div class="faculty-card huffle"></div>
                 <div class="faculty-card leo"></div>
                 <div class="faculty-card snake"></div>
                 <div class="faculty-card raven"></div>
@@ -215,7 +289,7 @@
         <div class="footer-container">
             <div class="footer-side left">
                 <p class="footer-text">All rights are reserved for JK Rowling and Warner Bros. ©</p>
-                <hr class="header-line">
+                <hr class="header-line left-line">
                 <div class="footer-git">
                     <a href="https://github.com/PavelTitov16" class="github-link"></a>
                     <a href="#" class="footer__btn button">Spongify ↑</a>
@@ -229,16 +303,9 @@
                     <p class="footer-text">The Rolling Scopes School, 2022</p>
                     <a href="https://rs.school/js/" class="rss"></a>
                 </div>
-                
             </div>
         </div>
     </footer>
-    
-
-          
-    
-   
-       
 </body> 
 
 </html>
