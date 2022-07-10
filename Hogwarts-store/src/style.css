@@ -16,8 +16,8 @@
 
 @font-face {
 	font-family: 'Potter';
-	src: url('/src/font/ Potter.eot');
-	src: local('☺'), url('/src/font/Harry Potter.woff') format('woff'), url('/src/font/Harry Potter.ttf') format('truetype'), url('/src/font/Harry Potter.svg') format('svg');
+	src: url(../src/font/Harry\ Potter.eot);
+	src: local('☺'), url(../src/font/Harry\ Potter.woff) format('woff'), url(../src/font/Harry\ Potter.ttf) format('truetype'), url(../src/font/Harry\ Potter.svg) format('svg');
 	font-weight: 500;
 	font-style: normal;
 }   
