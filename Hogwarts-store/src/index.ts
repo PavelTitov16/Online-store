@@ -1,3 +1,4 @@
 console.log('Hello World!');
 import './style.css';
-import './modules/appload';
+import './components/appload';
+import './components/generate';

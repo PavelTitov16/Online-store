@@ -1,23 +1,5 @@
 import * as goods from '../goods.json';
-import { IGoods } from './goods.model';
-
-const enum Goods {
-    name = 'name',
-    img = 'img',
-    house = 'house',
-    categories = 'categories',
-    price = 'price',
-    id = 'id'
-}
-
-const enum GoodsJSON {
-    name = 'name',
-    img = 'img',
-    house = 'house',
-    categories = 'categories',
-    price = 'price',
-    id = 'id'
-}
+import { IGoods, Goods, GoodsJSON } from '../modules/goods.model';
 
 function mapJsonToProducts(jsonResponse: IGoods[]) {
     return jsonResponse.map((jsonObject: IGoods) => {
@@ -32,4 +14,13 @@ function mapJsonToProducts(jsonResponse: IGoods[]) {
     });
 }
 
-console.log(mapJsonToProducts(Array.from(goods)));
+
+export const goodsArray = mapJsonToProducts(Array.from(goods));
+/*class AppLoader {
+    constructor() {
+        mapJsonToProducts(Array.from(goods));
+    }
+}*/
+
+
+/*export default AppLoader;*/

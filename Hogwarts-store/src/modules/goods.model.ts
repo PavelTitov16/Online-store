@@ -7,3 +7,20 @@ export interface IGoods {
     id: string
 }
 
+export const enum Goods {
+    name = 'name',
+    img = 'img',
+    house = 'house',
+    categories = 'categories',
+    price = 'price',
+    id = 'id'
+}
+
+export const enum GoodsJSON {
+    name = 'name',
+    img = 'img',
+    house = 'house',
+    categories = 'categories',
+    price = 'price',
+    id = 'id'
+}

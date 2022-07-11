@@ -6,10 +6,16 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
+
+
 const config = {
     entry: './src/index',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+        assetModuleFilename: 'images/[name][ext]',
+        publicPath: '',
+        clean: true,
     },
     devServer: {
         open: true,
@@ -19,11 +25,8 @@ const config = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
-        
-
         new MiniCssExtractPlugin(),
         new EslintPlugin({ extensions: 'ts' })
-        
     ],
     module: {
         rules: [
@@ -37,10 +40,26 @@ const config = {
                 use: [stylesHandler, 'css-loader'],
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
+                test: /\.(eot|ttf|woff|woff2)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/fonts/[name][ext]'
+                },
             },
-
+            {
+                test: /\.(ico|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/icons/[name][ext]'
+                },
+            },
+            {
+                test: /\.(?:gif|png|jpg|jpeg|webp)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/images/[name][ext]'
+                }
+            },
         ],
     },
     resolve: {
@@ -51,8 +70,6 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
     } else {
         config.mode = 'development';
     }

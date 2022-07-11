@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./icons/hogwarts.ico">
+    <link rel="icon" href="../src/icons/hogwarts.ico">
     <title>Hogwarts Shop</title>
 </head>
 
@@ -28,11 +28,11 @@
                     <li class="header-nav__item"><a class="header-nav__link" href="#summary">
                             About shop</a>
                     </li>
-                    <li class="header-nav__item"><a class="header-nav__link" href="#catalogue">
-                            Catalogue</a>
-                    </li>
                     <li class="header-nav__item"><a class="header-nav__link" href="#faculty">
                             Collections</a>
+                    </li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="#catalogue">
+                            Catalogue</a>
                     </li>
                     <li class="header-nav__item"><a class="header-nav__link" href="#contacts">
                             Privacy policy</a>
@@ -84,14 +84,20 @@
             </div>
         </div>
     </section>
-    <div class="hero-wrapper">
-        <section class="hero-container" id="catalogue">
-            <div class="hero-text">
-                <h3 class="hero-text__title about-block__title">Catalogue</h3>
+    <div class="faculty-wrapper">
+        <div class="faculty-container">
+            <h1 class="about-block__title faculty-title" id="faculty">
+                Chose your Hogwarts house
+            </h1>
+            <div class="faculty-container__items">
+                <div class="faculty-card huffle" data-f="hufflepuff"></div>
+                <div class="faculty-card leo" data-f="gryffindor"></div>
+                <div class="faculty-card snake" data-f="slytherin"></div>
+                <div class="faculty-card raven" data-f="ravenclaw"></div>
             </div>
-        </section>
+        </div>
     </div>
-    <main class="main-container">
+    <main class="main-container" id="catalogue">
         <section class="main-filtres">
             <h2 class="goods-name">Use to sort ↓</h2>
             <hr class="left-line">
@@ -170,124 +176,14 @@
         <section class="main-goods">
             <div class="goods-block">
                 <h3 class="goods-block__title">
-                    Chose your stuff
+                    Get closer to the Magic
                 </h3>
                 <div class="goods-slider">
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__image"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__image"></div>
-                        <p class="goods-name">
-                            Personalised Gryffindor Triwizard Shirt
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__image"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__case"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__case"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__case"></div>
-                        <p class="goods-name">
-                            coat
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__coat"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__coat"></div>
-                        <p class="goods-name">
-                            wand
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
-                    <div class="goods-slider__card">
-                        <div class="goods-slider__coat"></div>
-                        <p class="goods-name">
-                            coat
-                        </p>
-                        <div class="goods-slider__buy">
-                            <span class="price">60£</span>
-                            <div class="favourite"></div>
-                            <button class="goods-btn">Accio</button>
-                        </div>
-                    </div>
+
                 </div>
         </section>
     </main>
-    <div class="faculty-wrapper">
-        <div class="faculty-container">
-            <h1 class="about-block__title faculty-title" id="faculty">
-                Chose your Hogwarts house
-            </h1>
-            <div class="faculty-container__items">
-                <div class="faculty-card huffle" data-f="hufflepuff"></div>
-                <div class="faculty-card leo" data-f="gryffindor"></div>
-                <div class="faculty-card snake" data-f="slytherin"></div>
-                <div class="faculty-card raven" data-f="ravenclaw"></div>
-            </div>
-        </div>
-    </div>
+    <div class="hero-wrapper"></div>
     <footer class="footer-wrapper" id="contacts">
         <div class="footer-container">
             <div class="footer-side left">

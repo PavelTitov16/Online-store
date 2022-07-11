@@ -174,7 +174,7 @@ body {
 }
 
 .header-logo {
-    background-image: url(./icons/Hogwarts.svg);
+    background-image: url(../src/icons/Hogwarts.svg);
 }
 
 .header-logo__title {
@@ -201,7 +201,7 @@ body {
 }
 
 .favourite {
-    background-image: url(./icons/like.svg);
+    background-image: url(../src/icons/like.svg);
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -209,23 +209,19 @@ body {
     height: 2.7em;
     cursor: pointer;
     transition: 0.3s ease-in;
-    filter: invert(37%) sepia(42%) saturate(2033%) hue-rotate(322deg) brightness(99%) contrast(86%);
+    filter: invert(56%) sepia(35%) saturate(2182%) hue-rotate(235deg) brightness(84%) contrast(84%);
 }
 
 .header-favourite {
-    background-image: url(./icons/like.svg);
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 2em;
-    height: 2.7em;
-    cursor: pointer;
-    transition: 0.3s ease-in;
     filter: none;
 }
 
-.header-favourite:hover {
-    filter: invert(37%) sepia(42%) saturate(2033%) hue-rotate(322deg) brightness(99%) contrast(86%);
+.favourite:hover {
+    filter: invert(47%) sepia(42%) saturate(2033%) hue-rotate(322deg) brightness(99%) contrast(86%);
+}
+
+.favourite:active {
+    filter: invert(47%) sepia(42%) saturate(2033%) hue-rotate(322deg) brightness(99%) contrast(86%);
 }
 
 .header-chest {
@@ -237,7 +233,7 @@ body {
 .header-chest__image {
     width: 2.7em;
     height: 2.7em;
-    background-image: url(./images/chest.png);
+    background-image: url(../src/images/chest.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -256,7 +252,7 @@ body {
     margin: 0.4em 0 0.5em 0;
     height: 2em;
     display: flex;
-    gap: 20px;
+    gap: 0.7em;
     justify-content: flex-start;
 }
 
@@ -411,7 +407,7 @@ body {
 }
 
 .prev {
-    background-image: url('./player/prev.svg');
+    background-image: url('../src/player/prev.svg');
 }
 
 .controls .prev:active {
@@ -419,12 +415,12 @@ body {
 }
 
 .play {
-    background-image: url('./player/play.svg');
+    background-image: url('../src/player/play.svg');
     filter: invert(0%) sepia(6%) saturate(48%) hue-rotate(195deg) brightness(113%) contrast(91%);
 }
 
 .paused {
-    background-image: url('./player/pause.svg');
+    background-image: url('../src/player/pause.svg');
     background-repeat: no-repeat;
     width: 2em;
     height: 2em;
@@ -432,7 +428,7 @@ body {
 }
 
 .next {
-    background-image: url('./player/skip.svg');
+    background-image: url('../src/player/skip.svg');
 }
 
 .controls .next:active {
@@ -466,7 +462,7 @@ body {
 }
 
 .mute {
-    background-image: url('./player/mute.svg');
+    background-image: url('../src/player/mute.svg');
     margin-right: 1em;
 }
 /* Player */
@@ -509,7 +505,7 @@ body {
 .shop-items {
     width: 45em;
     height: 35em;
-    background: url(./images/items.png);
+    background: url(../src/images/items.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -518,7 +514,7 @@ body {
 
 .hero-wrapper {
     margin: 0 auto;
-    background: url(./images/catalogue_bg.jpg);
+    background: url(../src/images/catalogue_bg.jpg);
     height: 42em;
     max-width: 108.5em;
     background-size: 100%;
@@ -656,20 +652,7 @@ body {
 }
 
 .goods-slider__image {
-    background: url(./images/Goods/cards.png);
-    width: 240px;
-    height: 240px;
-}
-
-.goods-slider__case {
-    background: url(./images/Goods/case.png);
-    width: 240px;
-    height: 240px;
-}
-
-.goods-slider__coat {
-    background: url(./images/Goods/hogwarts_ticket.png);
-    background-size: 100%;
+    display: block;
     width: 240px;
     height: 240px;
 }
@@ -705,7 +688,7 @@ body {
     margin: 0 auto;
     max-width: 108.5em;
     background-size: 100%;
-    background-image: url(./images/shop_bg.jpg);
+    background-image: url(../src/images/shop_bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0 100px;
@@ -741,22 +724,22 @@ body {
 }
 
 .huffle {
-    background-image: url(./images/Faculty/hufflepuff-crest.png);
+    background-image: url(../src/images/Faculty/hufflepuff-crest.png);
     filter: invert(49%) sepia(99%) saturate(1004%) hue-rotate(16deg) brightness(96%) contrast(102%);
 }
 
 .snake {
-    background-image: url(./images/Faculty/snake.png);
+    background-image: url(../src/images/Faculty/snake.png);
     filter: invert(80%) sepia(11%) saturate(4492%) hue-rotate(120deg) brightness(96%) contrast(98%);
 }
 
 .leo {
-    background-image: url(./images/Faculty/leo.png);
+    background-image: url(../src/images/Faculty/leo.png);
     filter: invert(57%) sepia(54%) saturate(6969%) hue-rotate(348deg) brightness(45%) contrast(110%);
 }
 
 .raven {
-    background-image: url(./images/Faculty/raven.png);
+    background-image: url(../src/images/Faculty/raven.png);
     filter: invert(73%) sepia(18%) saturate(1438%) hue-rotate(186deg) brightness(94%) contrast(95%);
 }
 
@@ -797,7 +780,7 @@ body {
 .github-link {
     width: 7em;
     height: 2em;
-    background-image: url("./icons/GihHub.svg");
+    background-image: url("../src/icons/GihHub.svg");
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(80%) sepia(87%) saturate(679%) hue-rotate(193deg) brightness(125%) contrast(91%);
@@ -819,7 +802,7 @@ body {
 }
 
 .footer-logo {
-    background-image: url(./icons/Potter.svg);
+    background-image: url(../src/icons/Potter.svg);
 }
 
 .footer-rss {
@@ -843,7 +826,7 @@ body {
 .rss {
     width: 7em;
     height: 3em;
-    background-image: url("./icons/rs_school.svg");
+    background-image: url("../src/icons/rs_school.svg");
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(80%) sepia(87%) saturate(679%) hue-rotate(193deg) brightness(125%) contrast(91%);
