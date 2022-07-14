@@ -1,7 +1,7 @@
 import * as goods from '../goods.json';
 import { IGoods, Goods, GoodsJSON } from '../modules/goods.model';
 
-function mapJsonToProducts(jsonResponse: IGoods[]) {
+export function mapJsonToProducts(jsonResponse: IGoods[]) {
     return jsonResponse.map((jsonObject: IGoods) => {
         return {
             [Goods.name]: jsonObject[GoodsJSON.name],
@@ -15,11 +15,17 @@ function mapJsonToProducts(jsonResponse: IGoods[]) {
 }
 
 
+
+
+
+
+
+
+
 export const goodsArray = mapJsonToProducts(Array.from(goods));
+
 /*class AppLoader {
-    constructor() {
-        mapJsonToProducts(Array.from(goods));
-    }
+    mapJsonToProducts(Array.from(goods));
 }*/
 
 

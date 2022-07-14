@@ -15,9 +15,10 @@
         <div class="header-container">
             <div class="header-side left">
                 <div class="audio-payer">
+                    <audio id="audio" src="./audio/Hedwig's Theme.mp3"></audio>
                     <div class="controls">
                         <div id="prev" class="audio-payer__btn prev"></div>
-                        <div class="audio-payer__btn play"></div>
+                        <div class="audio-payer__btn play paused"></div>
                         <div id="next" class="audio-payer__btn next"></div>
                     </div>
                     <div class="progress-bar">  </div>
@@ -47,8 +48,8 @@
                     <div class="header-chest">
                         <div class="header-chest__image"></div>
                         <div class="header-chest__text">
-                            <span>0 items</span>
-                            <span>0£ to pay</span>
+                            <span id="goods-counter">0 items</span>
+                            <span id="money-counter">0£ to pay</span>
                         </div>
                     </div>
                     <div class="header-menu">
@@ -60,9 +61,11 @@
                 </div>
                 <hr class="header-line right-line">
                 <div class="header-search">
-                    <input type="search" class="header-search__bar" placeholder="Type your wish here"
+                    <form action="search" id="form">
+                        <input type="search" class="header-search__bar" placeholder="Type your wish here"
                         autocomplete="off">
-                    <button class="header-search__btn button">Revelio</button>
+                        <button class="header-search__btn button">Revelio</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -90,10 +93,10 @@
                 Chose your Hogwarts house
             </h1>
             <div class="faculty-container__items">
-                <div class="faculty-card huffle" data-f="hufflepuff"></div>
-                <div class="faculty-card leo" data-f="gryffindor"></div>
-                <div class="faculty-card snake" data-f="slytherin"></div>
-                <div class="faculty-card raven" data-f="ravenclaw"></div>
+                <a class="faculty-card__link" href="#catalogue"><div class="faculty-card huffle" data-h="hufflepuff"></div></a>
+                <a class="faculty-card__link" href="#catalogue"><div class="faculty-card leo" data-h="gryffindor"></div></a>
+                <a class="faculty-card__link" href="#catalogue"><div class="faculty-card snake" data-h="slytherin"></div></a>
+                <a class="faculty-card__link" href="#catalogue"><div class="faculty-card raven" data-h="ravenclaw"></div></a>
             </div>
         </div>
     </div>
@@ -101,76 +104,79 @@
         <section class="main-filtres">
             <h2 class="goods-name">Use to sort ↓</h2>
             <hr class="left-line">
-            <div class="filter-btn">
-                <input type="radio" id="contactChoice1" name="contact" value="email">
-                <label for="contactChoice1">All products</label>
-            </div>
-            <hr class="left-line">
             <div class="filtres-block" id="filters">
                 <div class="filtres-faculty">
                     <h3 class="filtres-title">Hogwarts houses</h3>
-                    <div class="filter-btn">
-                        <input type="radio" id="faculty__gryf" name="house" data-f="gryffindor">
-                        <label for="faculty__gryf">Gryffindor</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="faculty__slyth" name="house" data-f="slytherin">
-                        <label for="faculty__slyth">Slytherin</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="faculty__huffl" name="house" data-f="hufflepuff">
-                        <label for="faculty__huffl">Hufflepuff</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="faculty__raven" name="house" data-f="ravenclaw">
-                        <label for="faculty__raven">Ravenclaw</label>
+                    <div class="filters-btns">
+                        <div class="filter-btn">
+                            <input class="house-btn" type="radio" id="all_houses" name="house" data-h="all" checked>
+                            <label for="all_houses">All houses</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input class="house-btn" type="radio" id="faculty__gryf" name="house" data-h="gryffindor">
+                            <label for="faculty__gryf">Gryffindor</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input class="house-btn" type="radio" id="faculty__slyth" name="house" data-h="slytherin">
+                            <label for="faculty__slyth">Slytherin</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input class="house-btn" type="radio" id="faculty__huffl" name="house" data-h="hufflepuff">
+                            <label for="faculty__huffl">Hufflepuff</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input class="house-btn" type="radio" id="faculty__raven" name="house" data-h="ravenclaw">
+                            <label for="faculty__raven">Ravenclaw</label>
+                        </div>
                     </div>
                 </div>
                 <hr class="left-line">
                 <div class="filtres-categories">
                     <h3 class="filtres-title">Category</h3>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="1">  Clothes</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="2">  Books</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Wands</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Quidditch</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Sweets And Treats</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Travel</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Soft Toys</label></div>
-                    <div class="filter-btn"><label><input type="checkbox" name="brands[]" value="4">  Souvenirs</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Clothes" id="Clothes">  Clothes</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Books" id="Books">  Books</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Wands" id="Wands">  Wands</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Quidditch" id="Quidditch">  Quidditch</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Sweets" id="Sweets">  Sweets And Treats</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Travel" id="Travel">  Travel</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Toys" id="Toys">  Soft Toys</label></div>
+                    <div class="filter-btn"><label><input type="checkbox" name="category" value="Souvenirs" id="Souvenirs">  Souvenirs</label></div>
                 </div>
                 <hr class="left-line">
                 <div class="filtres-faculty">
-                    <h3 class="filtres-title">Price</h3>
-                    <div class="filter-btn">
-                        <input type="radio" id="contactChoice1" name="contact" value="email">
-                        <label for="contactChoice1">Under £10</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="contactChoice1" name="contact" value="email">
-                        <label for="contactChoice1">£10 - £25</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="contactChoice1" name="contact" value="email">
-                        <label for="contactChoice1">£25 - £50</label>
-                    </div>
-                    <div class="filter-btn">
-                        <input type="radio" id="contactChoice1" name="contact" value="email">
-                        <label for="contactChoice1">£50+</label>
+                    <h3 class="filtres-title">Sorting</h3>
+                    <div class="sorting-btns">
+                        <div class="filter-btn">
+                            <input type="radio" id="price_up" name="sort" value="price_up">
+                            <label for="contactChoice1">Price ↑</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input type="radio" id="price_down" name="sort" value="price_down">
+                            <label for="contactChoice1">Price ↓</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input type="radio" id="like" name="sort" value="like">
+                            <label for="contactChoice1">Favourites</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input type="radio" id="name_up" name="sort" value="name_up">
+                            <label for="contactChoice1">By name, A-Z</label>
+                        </div>
+                        <div class="filter-btn">
+                            <input type="radio" id="name_down" name="sort" value="name_down">
+                            <label for="contactChoice1">By name, Z-A</label>
+                        </div>
                     </div>
                 </div>
                 <hr class="left-line">
-                <div class="col-md-4">
-                    <h4>Сортировка</h4>
-                    <br>
-                    <select id="sort" name="sort" class="form-control">
-                        <option value="price_asc">По цене, сначала дешевые</option>
-                        <option value="price_desc">По цене, сначала дорогие</option>
-                        <option value="rating_desc">По популярности</option>
-                        <option value="good_asc">По названию, A-Z</option>
-                        <option value="good_desc">По названию, Z-A</option>
-                    </select>
+                <h3 class="filtres-title">Range price</h3>
+                <div class="price-field">
+                    <input type="range" min="30" max="100" value="20" id="lower" />
+                    <input class="price-filter" type="range" min="0" max="100" value="100" id="upper" />
                 </div>
                 <hr class="left-line">
+                <h3 class="filtres-title">To reset filters say</h3>
+                <button class="reset-btn footer__btn button">Obliviate</button>
             </div>
         </section>
         <section class="main-goods">
@@ -179,7 +185,7 @@
                     Get closer to the Magic
                 </h3>
                 <div class="goods-slider">
-
+                    
                 </div>
         </section>
     </main>
