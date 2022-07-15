@@ -751,9 +751,13 @@ body {
 }
 
 .back {
-    background-color: var(--left-line);
+    background: var(--left-line);
     position: absolute;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     left: 0;
     top: 0;
     right: 0;
@@ -765,7 +769,8 @@ body {
     padding: 15px;
     text-align: center;   
     transition: all 0.7s;
-    border-radius: 20px;
+    border-radius: 5em;
+    color: var(--color-font);
 } 
 
 .back.active {
@@ -776,6 +781,11 @@ body {
 
 .back-btn {
     background: transparent;
+    color: var(--color-font);
+}
+
+.back-btn:hover {
+    background: var(--background);
 }
 
 .goods-btn {
@@ -1019,6 +1029,10 @@ body {
 
 .reset-btn {
     border: 2px solid var(--color-border); 
+}
+
+.back-btn:hover {
+    background: var(--background);
 }
 
 @media (min-width: 768px) and (max-width: 1224px) {

@@ -9,22 +9,26 @@ const houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
 
 housesContainer.addEventListener('click', (event) => {
     const selectedHouseElement = event.target as HTMLDivElement;
-    console.log('container', selectedHouseElement);
     const selectedHouse = selectedHouseElement.dataset['h'] as string;
-    console.log('container', selectedHouse);
     localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
     selectHouse(selectedHouse);
-    updateGoods();
+    //Container.classList.add("left");
+    setTimeout(updateGoods, 300);
+    //updateGoods();
 });
 
-function selectHouse(value) {
+/*
+  Container.addEventListener("animationend", () => {
+    Container.classList.remove("left");
+  });*/
+
+
+
+function selectHouse(value: string) {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
-    console.log('hpse btns', houseBtns);
     houseBtns.forEach(btn => {
-        console.log(btn);
         if (btn.dataset['h'] === value) {
             btn.checked = true;
-            console.log(btn);
         } 
     });
 }
@@ -32,9 +36,7 @@ function selectHouse(value) {
 houseFilters.addEventListener('click', (event) => {
     const selectedHouseElement = event.target as HTMLInputElement;
     if (selectedHouseElement.tagName === 'INPUT') {
-        console.log('filterElement', selectedHouseElement); 
         const selectedHouse = selectedHouseElement.dataset['h'] as string;
-        console.log('filter', selectedHouse);
         localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
         updateGoods();
     }
@@ -52,12 +54,7 @@ filtersContainer.addEventListener('click', (event) => {
     }
     updateGoods();
     /*const selectedCategory = selectedFilter.value as string;*/
- 
-    
-
 });
-
-/*checked*/
 
 function addCategory(value: string) {
     const activeCategories = localStorageService.getFilters()[Goods.categories];

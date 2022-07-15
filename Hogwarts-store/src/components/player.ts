@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
     playMusic();
 });
 
-function loadMusic (currentSound) {
+function loadMusic (currentSound: number) {
     soundMagic.src = `./audio/${playList[currentSound]}.mp3`;
 }
 
