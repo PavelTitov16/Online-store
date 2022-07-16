@@ -2,6 +2,8 @@ import { Goods } from '../modules/goods.model';
 import { goodsArray } from './appload';
 import { localStorageService } from './localStorage';
 import { Houses } from '../modules/goods.model';
+import { sortGoods } from './sorting';
+import { isSearchDataExist, searchData } from './search';
 
 export const slider = document.querySelector('.goods-slider') as HTMLDivElement;
 
@@ -15,9 +17,9 @@ export function generateGoods(goods = goodsArray) {
                     "${good.name}"
                 </p>
                 <div class="goods-slider__buy">
-                    <span class="price">"${good.price}"</span>
+                    <span class="price">"£${good.price}"</span>
                     <div class="favourite"></div>
-                    <button class="goods-btn">Accio</button>
+                    <button class="goods-btn" id="${good.id}">Accio</button>
                 </div>
             </section>
             <section class="back">
@@ -26,8 +28,8 @@ export function generateGoods(goods = goodsArray) {
                     In cart
                 </p>
                 <div class="goods-slider__buy">
-                    <span class="price">"${good.price}"</span>
-                    <button class="goods-btn back-btn">Depulso</button>
+                    <span class="price">"£${good.price}"</span>
+                    <button class="back-btn" id="${good.id}">Depulso</button>
                 </div>
             </section>   
         </div>`;
@@ -46,19 +48,25 @@ export function generateGoods(goods = goodsArray) {
 }*/
 
 export function updateGoods() {
+    const sortValue = localStorageService.getSorters();
     const filters = localStorageService.getFilters();
     const filtersKeys = Object.keys(filters);
     let updatedGoods = [...goodsArray];
-    // search + regxp */
-    console.log(updatedGoods);
-    console.log(filtersKeys);
+    console.log(isSearchDataExist());
+    if (isSearchDataExist()) {
+        updatedGoods = searchData();
+    }
+    
+   
+    
     if (filtersKeys) {
         if (filtersKeys.includes(Goods.house) ) {
             if (filters[Goods.house] !== Houses.All) {
                 updatedGoods = updatedGoods.filter(good => {
                     return good.house === filters[Goods.house];
+
                 });
-            }
+            } 
         }
         if (filtersKeys.includes(Goods.categories) ) {
             if (filters[Goods.categories].length !== 0) {
@@ -72,6 +80,9 @@ export function updateGoods() {
             }
         }
     }
+    if (sortValue?.sort) {
+        updatedGoods = sortGoods(sortValue.sort, updatedGoods);
+    }
     console.log(updatedGoods);
     deleteGoods();
     generateGoods(updatedGoods);
@@ -83,19 +94,8 @@ export function deleteGoods() {
 
 /* сортировка по убыванию-возрастанию по цене
 сортировка по алфавиту убыванию-возрастанию  
-фавориты с локал хранилищем
+корзина с локал хранилищем
 фильтрация чекбоксы
 цена с локал хранилищем И РЕЙНДЖИ
 обновление фильтрации по дому
-
-
-
-Если товаров, соответствующих всем выбранным фильтрам нет, на странице выводится уведомление в человекочитаемом формате, 
-например, "Извините, совпадений не обнаружено"
-Сброс фильтров +20
-есть кнопка reset для сброса фильтров +10
-Кнопка reset сбрасывает только фильтры, не влияя на порядок сортировки или товары, добавленные в избранное.
-После использования кнопки reset фильтры остаются работоспособными
-при сбросе фильтров кнопкой reset, ползунки range slider сдвигаются к краям, значения ползунков возвращаются к 
-первоначальным, range slider закрашивается одним цветом +10
 */

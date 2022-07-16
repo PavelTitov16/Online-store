@@ -1,31 +1,34 @@
 import { localStorageService } from './localStorage';
 import { slider } from './generate';
+import { Goods } from '../modules/goods.model';
 
 const cartNum = document.getElementById('goods-counter') as HTMLSpanElement;
 const cashNum = document.getElementById('money-counter') as HTMLSpanElement;
-/*const accio = document.querySelector('.goods-btn') as HTMLButtonElement;
-const depulso = document.querySelector('.back-btn') as HTMLButtonElement;*/
 
-//export function workCart() {
-/*
-let goodsCount = 0;
-let moneyCount = 0; // local suda
+updatePaymentInfo();
 
-export function addToCart(good) {
-    if (goodsCount < 20) {
-        goodsCount++;
-        moneyCount += good.price; // upd local
-    } else alert('Sorry, your chest is full');
-    
+export function updatePaymentInfo() {
+    cartNum.innerHTML = `${localStorageService.getCart().length} to buy`;
+    cashNum.innerHTML = `${localStorageService.getPrice()}£ to pay`;
 }
 
-export function removeToCart(good) {
-    goodsCount--;
-    moneyCount -= good.price; // upd local
-}*/
+export function addToCart(name: string) {
+    localStorageService.updateCart([...localStorageService.getCart(), name]);
+    updatePaymentInfo();
+}
+
+export function removeFromCart(name: string) {
+    const currentGoodsCount = localStorageService.getCart().length;
+    if (currentGoodsCount > 0) {
+        const currentGoods = localStorageService.getCart();
+        const newCart = currentGoods.filter((item: string) => item !== name);
+        localStorageService.updateCart(newCart);
+        updatePaymentInfo();
+    }
+}
+
 
 slider.addEventListener('click', (event) => {
-    //let target = event.target.closest('div');
     const targetElem = event.target as HTMLButtonElement;
     const buttonDiv = targetElem.parentNode as HTMLDivElement;
     const frontSection = buttonDiv.parentNode as HTMLElement;
@@ -34,46 +37,21 @@ slider.addEventListener('click', (event) => {
     const frontVIew = goodCard.firstElementChild as HTMLElement;
 
     if (targetElem.classList.contains('goods-btn')) {
-        frontSection.classList.add('active');
-        goodCard.classList.toggle('active');
-        backSection.classList.toggle('active');
+        const currentGoodsCount = localStorageService.getCart().length;
+        if (currentGoodsCount < 20) {
+            frontSection.classList.add('active');
+            goodCard.classList.add('active');
+            backSection.classList.add('active');
+            console.log('aadd', goodCard.id);
+            addToCart(goodCard.id);
+        } else alert('Sorry, your chest is full');
     }
 
     if (targetElem.classList.contains('back-btn')) {
+        goodCard.classList.remove('active');
         frontVIew.classList.remove('active');
         backSection.classList.remove('active');
+        console.log(goodCard.id);
+        removeFromCart(goodCard.id);
     }
 });
-//}
-//const currentElem = event.currentTarget as HTMLButtonElement;
-
-/* if (currentElem.classList.contains('goods-btn')) {
-        targetElem.classList.toggle('active');*/
-//targetElem.parent('goods-slider__card').addClass('active');
-    
-/*if (targetElem.classList.contains('goods-btn') ) {
-        console.log(targetElem);
-        goodsCard.classList.toggle('active');
-        frontCard.classList.toggle('active');
-        backCard.classList.toggle('active');*/
-/*addToCart(good);
-        cartNum.textContent = goodsCount;
-        cashNum.textContent = moneyCount;
-    } */
-
-/*if (targetElem.classList.contains('back-btn') ) {
-        goodsCard.classList.remove('active');
-        frontCard.classList.remove('active');
-        backCard.classList.remove('active');
-         removeToCart(good)
-        cartNum.textContent = goodsCount;
-        cashNum.textContent = moneyCount;
-    }*/
-
-
-
-
-
-
-/* на странице отображается количество добавленных в корзину товаров. При попытке добавить в корзину больше 20 товаров, 
-выводится всплывающее уведомление с текстом "Извините, все слоты заполнены" +10 */

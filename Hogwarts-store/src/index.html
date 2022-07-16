@@ -15,7 +15,7 @@
         <div class="header-container">
             <div class="header-side left">
                 <div class="audio-payer">
-                    <audio id="audio" src="./audio/Hedwig's Theme.mp3"></audio>
+                    <audio class="audio" id="audio" src="./audio/hedwigstheme.mp3 Theme.mp3"></audio>
                     <div class="controls">
                         <div id="prev" class="audio-payer__btn prev"></div>
                         <div class="audio-payer__btn play paused"></div>
@@ -61,11 +61,9 @@
                 </div>
                 <hr class="header-line right-line">
                 <div class="header-search">
-                    <form action="search" id="form">
-                        <input type="search" class="header-search__bar" placeholder="Type your wish here"
-                        autocomplete="off">
-                        <button class="header-search__btn button">Revelio</button>
-                    </form>
+                    <input id="search-form" type="search" class="header-search__bar" placeholder="Type your wish here"
+                        name="finder" autocomplete="off" autofocus>
+                    <button id="search-btn" class="header-search__btn button">Revelio</button>
                 </div>
             </div>
         </div>
@@ -147,23 +145,23 @@
                     <h3 class="filtres-title">Sorting</h3>
                     <div class="sorting-btns">
                         <div class="filter-btn">
-                            <input type="radio" id="price_up" name="sort" value="price_up">
+                            <input type="radio" id="price_up" name="sort" value="price_up" data-sort="price_up">
                             <label for="contactChoice1">Price ↑</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="price_down" name="sort" value="price_down">
+                            <input type="radio" id="price_down" name="sort" value="price_down" data-sort="price_down">
                             <label for="contactChoice1">Price ↓</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="like" name="sort" value="like">
+                            <input type="radio" id="like" name="sort" value="like" data-sort="like">
                             <label for="contactChoice1">Favourites</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="name_up" name="sort" value="name_up">
+                            <input type="radio" id="name_up" name="sort" value="name_up" data-sort="name_up">
                             <label for="contactChoice1">By name, A-Z</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="name_down" name="sort" value="name_down">
+                            <input type="radio" id="name_down" name="sort" value="name_down" data-sort="name_down">
                             <label for="contactChoice1">By name, Z-A</label>
                         </div>
                     </div>

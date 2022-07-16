@@ -1,3 +1,6 @@
+import { IGoods } from '../modules/goods.model';
+import { goodsArray } from './appload';
+
 class LocalStorage {
     public sortKey = 'sortKey';
     public filtersKey = 'filtersKey';
@@ -36,9 +39,28 @@ class LocalStorage {
         return sorters ? JSON.parse(sorters) : {};
     }
 
-/* public updateCart() {
+    public updateCart(cartGoods: string[]) {
+        localStorage.setItem(this.cartKey, JSON.stringify(cartGoods));
+    }
 
-    }*/
+    public getCart() {
+        const cartGoods = localStorage.getItem(this.cartKey);
+        return cartGoods ? JSON.parse(cartGoods) : [];
+    }
+
+    public getPrice() {
+        const cartGoodsID = this.getCart();
+        return goodsArray.reduce((acc: number, good: IGoods) => {
+            if (cartGoodsID.includes(good.id)) {
+                console.log('cart id',cartGoodsID);
+                console.log('id', good.id);
+                acc += Number(good.price);
+                console.log('id + acc', acc);
+                return acc;
+            }
+            return acc;
+        }, 0);
+    }
 }
 
 export const localStorageService = new LocalStorage();
