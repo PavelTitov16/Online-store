@@ -32,6 +32,10 @@ const config = {
                 {
                     from: path.resolve(__dirname, './src/audio'), 
                     to: path.resolve(__dirname, 'dist')
+                },
+                {
+                    from: path.resolve(__dirname, './src/images/Goods'), 
+                    to: path.resolve(__dirname, 'dist/images')
                 }
             ]
         })
