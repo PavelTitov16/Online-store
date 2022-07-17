@@ -11,7 +11,7 @@
         "name": "Gryffindor Quidditch Bear",
         "img": "./images/gryf_bear.png",
         "house": "gryffindor",
-        "categories": ["Quidditch", "Soft Toys", "Souvenirs"],
+        "categories": ["Quidditch", "Toys", "Souvenirs"],
         "price": "36",
         "id": "2"
       },
@@ -27,7 +27,7 @@
         "name": "Gryffindor Gift Trunk",
         "img": "./images/gryf_gift_set.png",
         "house": "gryffindor",
-        "categories": ["Clothes", "Books", "Wands", "Sweets And Treats", "Travel", "Soft Toys", "Souvenirs"],
+        "categories": ["Clothes", "Books", "Wands", "Sweets", "Travel", "Toys", "Souvenirs"],
         "price": "175",
         "id": "4"
       },
@@ -131,7 +131,7 @@
       "name": "Gryffindor Milk Chocolate Bar",
       "img": "./images/gryf_choco.png",
       "house": "gryffindor",
-      "categories": ["Sweets And Treats", "Souvenirs"],
+      "categories": ["Sweets", "Souvenirs"],
       "price": "5",
       "id": "17"
     },
@@ -178,7 +178,7 @@
     {
         "name": "First Edition Gryffindor Enamel Pin Set",
         "img": "./images/gryf_pins.png",
-        "house": "hufflepuff",
+        "house": "gryffindor",
         "categories": ["Clothes", "Travel", "Souvenirs"],
         "price": "50",
         "id": "23"
@@ -203,7 +203,7 @@
         "name": "Hufflepuff Gift Trunk",
         "img": "./images/huff_gift_set.png",
         "house": "hufflepuff",
-        "categories": ["Clothes", "Books", "Wands", "Sweets And Treats", "Travel", "Soft Toys", "Souvenirs"],
+        "categories": ["Clothes", "Books", "Wands", "Sweets", "Travel", "Toys", "Souvenirs"],
         "price": "175",
         "id": "26"
       },
@@ -296,7 +296,7 @@
         "id": "37"
       },
       {
-        "name": "Gryffindor T-Shirt",
+        "name": "Hufflepuff T-Shirt",
         "img": "./images/huff_shirt.png",
         "house": "hufflepuff",
         "categories": ["Clothes", "Travel"],
@@ -304,10 +304,10 @@
         "id": "38"
       },
       {
-      "name": "Gryffindor Milk Chocolate Bar",
+      "name": "Hufflepuff Milk Chocolate Bar",
       "img": "./images/huff_choco.png",
       "house": "hufflepuff",
-      "categories": ["Sweets And Treats", "Souvenirs"],
+      "categories": ["Sweets", "Souvenirs"],
       "price": "5",
       "id": "39"
     },
@@ -371,7 +371,7 @@
         "name": "Ravenclaw Gift Trunk",
         "img": "./images/raven_gift_set.png",
         "house": "ravenclaw",
-        "categories": ["Clothes", "Books", "Wands", "Sweets And Treats", "Travel", "Soft Toys", "Souvenirs"],
+        "categories": ["Clothes", "Books", "Wands", "Sweets", "Travel", "Toys", "Souvenirs"],
         "price": "175",
         "id": "47"
       },
@@ -483,7 +483,7 @@
       "name": "Ravenclaw Milk Chocolate Bar",
       "img": "./images/raven_choco.png",
       "house": "ravenclaw",
-      "categories": ["Sweets And Treats", "Souvenirs"],
+      "categories": ["Sweets", "Souvenirs"],
       "price": "5",
       "id": "61"
     },
@@ -571,7 +571,7 @@
         "name": "Slytherin Gift Trunk",
         "img": "./images/slyth_gift_set.png",
         "house": "slytherin",
-        "categories": ["Clothes", "Books", "Wands", "Sweets And Treats", "Travel", "Soft Toys", "Souvenirs"],
+        "categories": ["Clothes", "Books", "Wands", "Sweets", "Travel", "Toys", "Souvenirs"],
         "price": "175",
         "id": "72"
       },
@@ -683,7 +683,7 @@
       "name": "Slytherin Milk Chocolate Bar",
       "img": "./images/slyth_choco.png",
       "house": "slytherin",
-      "categories": ["Sweets And Treats", "Souvenirs"],
+      "categories": ["Sweets", "Souvenirs"],
       "price": "5",
       "id": "86"
     },
@@ -771,7 +771,7 @@
         "name": "Bertie Bott's Every Flavour Beans",
         "img": "./images/beans.png",
         "house": ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"],
-        "categories": ["Sweets And Treats", "Travel", "Souvenirs"],
+        "categories": ["Sweets", "Travel", "Souvenirs"],
         "price": "10",
         "id": "97"
     },
@@ -779,7 +779,7 @@
         "name": "Chocolate Frog with Personalised Wizard Card",
         "img": "./images/choco_toad.png",
         "house": ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"],
-        "categories": ["Sweets And Treats", "Travel", "Souvenirs"],
+        "categories": ["Sweets", "Travel", "Souvenirs"],
         "price": "15",
         "id": "98"
     },
@@ -787,7 +787,7 @@
         "name": "Chocolate Frog Souvenir Tin",
         "img": "./images/cards.png",
         "house": ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"],
-        "categories": ["Sweets And Treats", "Travel", "Souvenirs"],
+        "categories": ["Sweets", "Travel", "Souvenirs"],
         "price": "16",
         "id": "99"
     },
@@ -795,7 +795,7 @@
         "name": "Peppermint Toads",
         "img": "./images/pepper_toads.png",
         "house": ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"],
-        "categories": ["Sweets And Treats", "Travel", "Souvenirs"],
+        "categories": ["Sweets", "Travel", "Souvenirs"],
         "price": "5",
         "id": "100"
     },
@@ -803,7 +803,7 @@
         "name": "Bottled Butterbeer",
         "img": "./images/butt_beer.png",
         "house": ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"],
-        "categories": ["Sweets And Treats", "Travel", "Souvenirs"],
+        "categories": ["Sweets", "Travel", "Souvenirs"],
         "price": "6",
         "id": "101"
     },

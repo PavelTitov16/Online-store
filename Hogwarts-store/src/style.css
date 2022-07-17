@@ -451,6 +451,10 @@ body {
     background: var(--right-line);
 }
 
+progress::-webkit-progress-value {
+    background: var(--right-line);
+}
+
 .progress-bar::before {
     content: "";
     position: absolute;
@@ -694,6 +698,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
 }
 
 .goods-slider.filter {
@@ -971,7 +976,7 @@ body {
     font-family: 'Poppins', sans-serif; 
     font-style: medium;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     letter-spacing: 0.15px;
     color: var(--color-font);
@@ -1003,6 +1008,12 @@ body {
 
 .reset-btn {
     border: 2px solid var(--color-border); 
+    margin: 0.5em 0;
+}
+
+.reset-category__btn {
+    border: 2px solid var(--color-border); 
+    margin: 0.3em 0;
 }
 
 .back-btn {
@@ -1155,7 +1166,7 @@ body {
 }
 
 
-@media (min-width: 1225px) and (max-width: 1400px) {
+@media (min-width: 1225px) and (max-width: 1399px) {
 
     .about-block {
         padding: 100;

@@ -12,8 +12,8 @@ const config = {
     entry: './src/index',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
-        assetModuleFilename: 'images/[name][ext]',
+        filename: 'main.js',
+        assetModuleFilename: 'assets/[hash][ext][query]',
         publicPath: '',
         clean: true,
     },
@@ -29,10 +29,6 @@ const config = {
         new EslintPlugin({ extensions: 'ts' }),
         new CopyWebpackPlugin({
             patterns: [
-                {
-                    from: path.resolve(__dirname, './src/audio'), 
-                    to: path.resolve(__dirname, 'dist')
-                },
                 {
                     from: path.resolve(__dirname, './src/images/Goods'), 
                     to: path.resolve(__dirname, 'dist/images')

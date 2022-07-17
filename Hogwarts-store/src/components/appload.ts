@@ -14,19 +14,4 @@ export function mapJsonToProducts(jsonResponse: IGoods[]) {
     });
 }
 
-
-
-
-
-
-
-
-
 export const goodsArray = mapJsonToProducts(Array.from(goods));
-
-/*class AppLoader {
-    mapJsonToProducts(Array.from(goods));
-}*/
-
-
-/*export default AppLoader;*/

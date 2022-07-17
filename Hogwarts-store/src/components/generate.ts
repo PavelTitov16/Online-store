@@ -18,7 +18,6 @@ export function generateGoods(goods = goodsArray) {
                 </p>
                 <div class="goods-slider__buy">
                     <span class="price">"£${good.price}"</span>
-                    <div class="favourite"></div>
                     <button class="goods-btn" id="${good.id}">Accio</button>
                 </div>
             </section>
@@ -43,12 +42,10 @@ export function generateGoods(goods = goodsArray) {
 
 export function updateGoods() {
     const sortValue = localStorageService.getSorters();
-    console.log('sort value', sortValue);
     const filters = localStorageService.getFilters();
     const filtersKeys = Object.keys(filters);
     let updatedGoods = [...goodsArray];
-    console.log(updatedGoods);
-    console.log(isSearchDataExist());
+
     if (isSearchDataExist()) {
         updatedGoods = searchData();
     }
@@ -73,13 +70,11 @@ export function updateGoods() {
             }
         }
     }
-    console.log('sortValue?.sort', sortValue?.sort);
     if (sortValue?.sort) {
-        console.log('sortValue?.sort', sortValue?.sort);
-        console.log('sort goods', updatedGoods);
         updatedGoods = sortGoods(sortValue.sort, updatedGoods);
+    } else {
+        updatedGoods = sortGoods('default', updatedGoods);
     }
-    console.log(updatedGoods);
     deleteGoods();
     generateGoods(updatedGoods);
 }
@@ -88,10 +83,11 @@ export function deleteGoods() {
     slider.innerHTML = '';
 }
 
-/* сортировка по убыванию-возрастанию по цене
-сортировка по алфавиту убыванию-возрастанию  
+/*  
 корзина с локал хранилищем
 фильтрация чекбоксы
 цена с локал хранилищем И РЕЙНДЖИ
-обновление фильтрации по дому
 */
+
+//expect with methods through dot
+//suggest to test JS functions

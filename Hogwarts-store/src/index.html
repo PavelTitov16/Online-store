@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="../src/icons/hogwarts.ico">
+    <link rel="icon" href="assets/icons/hogwarts.ico">
     <title>Hogwarts Shop</title>
 </head>
 
@@ -15,13 +15,13 @@
         <div class="header-container">
             <div class="header-side left">
                 <div class="audio-payer">
-                    <audio class="audio" id="audio" src="./audio/hedwigstheme.mp3"></audio>
+                    <audio class="audio" id="audio"></audio>
                     <div class="controls">
                         <div id="prev" class="audio-payer__btn prev"></div>
                         <div class="audio-payer__btn play"></div>
                         <div id="next" class="audio-payer__btn next"></div>
                     </div>
-                    <div class="progress-bar">  </div>
+                    <progress class="progress-bar" id="progress-bar" value="0" max="1"></progress>
                     <div id="mute" class="audio-payer__btn mute"></div>
                 </div>
                 <hr class="header-line left-line">
@@ -145,23 +145,23 @@
                     <div class="sorting-btns">
                         <div class="filter-btn">
                             <input type="radio" id="price_up" name="sort" value="price_up" data-sort="price_up">
-                            <label for="contactChoice1">Price ↑</label>
+                            <label for="price_up">Price ↑</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="price_down" name="sort" value="price_down" data-sort="price_down">
-                            <label for="contactChoice1">Price ↓</label>
+                            <input type="radio" id="price_down" name="sort" value="price_down" data-sort="price_down" checked>
+                            <label for="price_down">Price ↓</label>
                         </div>
                         <div class="filter-btn">
-                            <input type="radio" id="like" name="sort" value="cart" data-sort="cart">
-                            <label for="contactChoice1">Favourites</label>
+                            <input type="radio" id="cart" name="sort" value="cart" data-sort="cart">
+                            <label for="cart">Goods to buy</label>
                         </div>
                         <div class="filter-btn">
                             <input type="radio" id="name_up" name="sort" value="name_up" data-sort="name_up">
-                            <label for="contactChoice1">By name, A-Z</label>
+                            <label for="name_up">By name, A-Z</label>
                         </div>
                         <div class="filter-btn">
                             <input type="radio" id="name_down" name="sort" value="name_down" data-sort="name_down">
-                            <label for="contactChoice1">By name, Z-A</label>
+                            <label for="name_down">By name, Z-A</label>
                         </div>
                     </div>
                 </div>
@@ -171,6 +171,9 @@
                     <input type="range" min="30" max="100" value="20" id="lower" />
                     <input class="price-filter" type="range" min="0" max="100" value="100" id="upper" />
                 </div>
+                <hr class="left-line">
+                <h3 class="filtres-title">To dispel categories say</h3>
+                <button class="reset-category__btn footer__btn button">Finite</button>
                 <hr class="left-line">
                 <h3 class="filtres-title">To forget all settings say</h3>
                 <button class="reset-btn footer__btn button">Obliviate</button>

@@ -1,6 +1,5 @@
 import { localStorageService } from './localStorage';
 import { slider } from './generate';
-import { Goods } from '../modules/goods.model';
 
 const cartNum = document.getElementById('goods-counter') as HTMLSpanElement;
 const cashNum = document.getElementById('money-counter') as HTMLSpanElement;

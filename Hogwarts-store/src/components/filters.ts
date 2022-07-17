@@ -1,27 +1,28 @@
 import { localStorageService } from './localStorage';
-import { updateGoods, slider } from './generate';
+import { updateGoods, slider, generateGoods, deleteGoods } from './generate';
 import { Goods } from '../modules/goods.model';
-import { goodsArray } from './appload';
-
 
 const housesContainer = document.querySelector('.faculty-container__items') as HTMLDivElement;
+const filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;
 const houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
+const resetFiltersBtn = document.querySelector('.reset-category__btn') as HTMLButtonElement;
+const resetLocalBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
+
+export function filterMagic() {
+    slider.classList.add('filter');
+    setTimeout(updateGoods, 300);
+    slider.addEventListener('animationend', () => {
+        slider.classList.remove('filter');
+    });
+}
 
 housesContainer.addEventListener('click', (event) => {
     const selectedHouseElement = event.target as HTMLDivElement;
     const selectedHouse = selectedHouseElement.dataset['h'] as string;
     localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
     selectHouse(selectedHouse);
-    slider.classList.add('filter');
-    setTimeout(updateGoods, 300);
-    slider.addEventListener('animationend', () => {
-        slider.classList.remove('filter');
-    });
+    filterMagic();
 });
-
-
-  
-  
 
 function selectHouse(value: string) {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
@@ -37,15 +38,9 @@ houseFilters.addEventListener('click', (event) => {
     if (selectedHouseElement.tagName === 'INPUT') {
         const selectedHouse = selectedHouseElement.dataset['h'] as string;
         localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
-        slider.classList.add('filter');
-        setTimeout(updateGoods, 300);
-        slider.addEventListener('animationend', () => {
-            slider.classList.remove('filter');
-        });
+        filterMagic();
     }
 });
-
-const filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;
 
 filtersContainer.addEventListener('click', (event) => {
     const selectedItem = event.target as HTMLInputElement;
@@ -55,11 +50,7 @@ filtersContainer.addEventListener('click', (event) => {
             addCategory(selectedItem.value);
         } else deleteCategory(selectedItem.value);
     }
-    slider.classList.add('filter');
-    setTimeout(updateGoods, 300);
-    slider.addEventListener('animationend', () => {
-        slider.classList.remove('filter');
-    });
+    filterMagic();
 });
 
 function addCategory(value: string) {
@@ -79,6 +70,15 @@ function deleteCategory(value: string) {
     localStorageService.setFilters( {key: Goods.categories, values: newCategories } );
 }
 
+resetLocalBtn?.addEventListener('click', () => {
+    localStorage.clear(); 
+    location.reload();
+});
+
+resetFiltersBtn.addEventListener('click', () => {
+    selectHouse('all');
+});
+
 /*
 Сброс фильтров +20
 есть кнопка reset для сброса фильтров +10
@@ -87,9 +87,3 @@ function deleteCategory(value: string) {
 при сбросе фильтров кнопкой reset, ползунки range slider сдвигаются к краям, значения ползунков возвращаются к 
 первоначальным, range slider закрашивается одним цветом +10
 */
-const resetLocalBtn = document.querySelector('.reset-btn');
-
-resetLocalBtn?.addEventListener('click', () => {
-    localStorage.clear(); 
-    location.reload();
-});
