@@ -84,4 +84,5 @@ const resetLocalBtn = document.querySelector('.reset-btn');
 
 resetLocalBtn?.addEventListener('click', () => {
     localStorage.clear(); 
+    location.reload();
 });

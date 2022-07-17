@@ -66,19 +66,19 @@ const config = {
                 },
             },
             {
-                test: /\.(ico|svg)$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: './assets/icons/[name][ext]'
-                },
-            },
-            {
                 test: /\.(?:gif|png|jpg|jpeg|webp)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: './assets/images/[name][ext]'
                 }
             },
+            {
+                test: /\.(ico|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/icons/[name][ext]'
+                },
+            }
         ],
     },
     resolve: {

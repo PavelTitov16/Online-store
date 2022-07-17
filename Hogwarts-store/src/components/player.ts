@@ -22,16 +22,18 @@ let currentSound = 0;
 
 export function loadMusic (currentSound: number) {
     audio.src = `./${playList[currentSound]}.mp3` as string;
-    //soundMagic.load();
     console.log('path', audio.src);
     audio.load();
     console.log(audio);
 }
 
-export async function playMusic() {
+export function playMusic() {
     playBtn.classList.add('paused');
-    await audio.play();
+    audio.play();
     console.log('play', audio);
+    if (audio.ended) {
+        nextMusic();
+    } 
 }
 
 export function pauseMusic() {
@@ -63,10 +65,11 @@ export function prevMusic() {
 }
 
 export function pressMute() {
-    if (audio.muted) {
-        !audio.muted;
-    } else audio.muted;
-    //audio.muted ? audio.muted = false : audio.muted = true;
+    if (audio.muted) {  
+        audio.muted = false;
+    } else {
+        audio.muted = true;
+    }
     console.log('m', audio);
 }
 
@@ -77,10 +80,12 @@ export function pressMute() {
 
 playBtn.addEventListener('click', ()=> {
     loadMusic(currentSound);
-    if (audio.paused) {
+    if (playBtn.classList.contains('paused')) {
+        pauseMusic();
+        
+    } else {
         playMusic();
-    } else pauseMusic();
-    //audio.paused ? playMusic() : pauseMusic();
+    }
     console.log('pplll', audio);
 });
 
@@ -98,23 +103,3 @@ muteBtn.addEventListener('click', () => {
     pressMute(); 
     console.log('mmmmmmmmmmm', audio);
 });
-
-/*
-window.addEventListener('load', () => {
-    audio.load();
-    fetch(audio.src)
-        .then(response => response.blob())
-        .then(blob => {
-            audio.srcObject = blob;
-            return audio.play();
-        })
-        .then(_ => {
-            console.log(audio);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-});*/
-
-
-  
