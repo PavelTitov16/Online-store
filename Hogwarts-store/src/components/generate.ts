@@ -83,11 +83,7 @@ export function deleteGoods() {
     slider.innerHTML = '';
 }
 
-/*  
-корзина с локал хранилищем
-фильтрация чекбоксы
-цена с локал хранилищем И РЕЙНДЖИ
-*/
 
+//цена с локал хранилищем И РЕЙНДЖИ
 //expect with methods through dot
 //suggest to test JS functions

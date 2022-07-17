@@ -34,16 +34,11 @@ export function updateSorterStatus() {
 updateSorterStatus();
 
 export function updateCategoriesStatus() {
-    console.log('filtersActive', filtersActive);
-    console.log('Goods.catego', filtersActive[Goods.categories]);
     if (filtersActive[Goods.categories]) {
         const activeCategory = filtersActive[Goods.categories];
         const categoryInputs = Array.from(filtersContainer.querySelectorAll('input'));
-        console.log('categoryInputs', categoryInputs);
+
         categoryInputs.forEach(input => {
-            console.log('activeCategory', activeCategory.categories);
-            console.log('input', input);
-            console.log('nput.dataset', input.dataset);
             if (activeCategory.includes(input.id)) {
                 input.checked = true;
             }
@@ -51,8 +46,5 @@ export function updateCategoriesStatus() {
     }
 }
 updateCategoriesStatus();
-
-
-//reset button
 
 //cartStatus during F5

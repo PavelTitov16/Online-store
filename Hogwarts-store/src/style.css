@@ -340,12 +340,17 @@ body {
     display: none;
 }
 
+.header-search {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header-search__bar {
     background: transparent;
     border: 3px solid var(--color-border);
     border-radius: 0.8em;
-    height: 2em;
-    width: 19em;
+    height: 1.7em;
+    width: 20em;
     font-style: normal;
     font-weight: normal;
     padding-left: 18px;
@@ -368,12 +373,13 @@ body {
 .button {
     background: var(--left-line);
     border-radius: 3em;
+    padding: 3px;
     height: 2.5em;
     width: 5em;
     font-family: 'Poppins', sans-serif;
     font-style: medium;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.06em;
     color: var(--color-font);
@@ -955,7 +961,7 @@ progress::-webkit-progress-value {
     background: var(--right-line);
     border-radius: 2em;
     height: 1.8em;
-    width: 6em;
+    width: 7em;
     display: flex;  
     justify-content: center;
     align-items: center;

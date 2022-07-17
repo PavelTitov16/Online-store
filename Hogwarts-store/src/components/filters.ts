@@ -71,19 +71,22 @@ function deleteCategory(value: string) {
 }
 
 resetLocalBtn?.addEventListener('click', () => {
-    localStorage.clear(); 
+    localStorage.clear();
     location.reload();
 });
 
 resetFiltersBtn.addEventListener('click', () => {
+    const activeCategories = localStorageService.getFilters()[Goods.categories];
+    const categoryInputs = Array.from(filtersContainer.querySelectorAll('input'));
+   
+    categoryInputs.forEach(input => {
+        if (activeCategories.includes(input.id)) {
+            input.checked = false;
+            deleteCategory(input.id);
+        }
+    });
     selectHouse('all');
+    localStorageService.setFilters({key: Goods.house, values: 'all'} );
+    filterMagic();
 });
 
-/*
-Сброс фильтров +20
-есть кнопка reset для сброса фильтров +10
-Кнопка reset сбрасывает только фильтры, не влияя на порядок сортировки или товары, добавленные в избранное.
-После использования кнопки reset фильтры остаются работоспособными
-при сбросе фильтров кнопкой reset, ползунки range slider сдвигаются к краям, значения ползунков возвращаются к 
-первоначальным, range slider закрашивается одним цветом +10
-*/
