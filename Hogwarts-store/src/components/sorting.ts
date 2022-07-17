@@ -9,6 +9,7 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
     
     switch(value) {
     case 'name_up':
+        console.log('name up', value);
         callback = (a: { name: string }, b: { name: string }) =>  {
             return (a.name > b.name ? 1 : -1);
             /*if (a.name < b.name) {
@@ -20,12 +21,8 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
             else return 0;*/
         };
         break;
-    case 'cart':
-        callback = () => {
-            return localStorageService.getCart();
-        };
-        break;
     case 'name_down':
+        console.log('name down', value);
         callback = (a: { name: string }, b: { name: string }) =>  {
             return (a.name > b.name ? -1 : 1);
             /*if (a.name < b.name) {
@@ -37,13 +34,21 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
             else return 0;*/
         };
         break;
+    case 'cart':
+        console.log('cart', value);
+        callback = () => {
+            return localStorageService.getCart();
+        };
+        break;
     case 'price_down':
+        console.log('price_down', value);
         callback = (a: {price: string}, b: {price: string}) =>  {
             return (Number(a.price) > Number(b.price)) ? 1 : -1;
             //return goods.sort((a: { cost: number }, b: { cost: number }) => (a.cost > b.cost ? ));
         };
         break;
     default:
+        console.log('default', value);
         callback = (a: {price: string}, b: {price: string}) =>  {
             return (Number(a.price) > Number(b.price)) ? -1 : 1;
             //return Number(a.price) - Number(b.price);
@@ -54,7 +59,7 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
 
 sortFilters.addEventListener('click', (event) => {
     const selectedSortElement = event.target as HTMLInputElement;
-    
+    console.log(selectedSortElement);
     if (selectedSortElement.tagName === 'INPUT' ) {
         const selectedSort = selectedSortElement.value as string; 
         localStorageService.setSort({key: 'sort', values: selectedSort});

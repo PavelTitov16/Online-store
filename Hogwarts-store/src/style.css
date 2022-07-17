@@ -27,11 +27,11 @@
     transform: translateX(0);
   }
   25% {
-    transform: translateX(116%);
+    transform: translateX(150%);
     opacity: 0;
   }
   50% {
-    transform: translateX(-116%);
+    transform: translateX(150%);
     opacity: 0;
   }
   to {

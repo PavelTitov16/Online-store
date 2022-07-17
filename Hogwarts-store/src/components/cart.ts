@@ -27,7 +27,6 @@ export function removeFromCart(name: string) {
     }
 }
 
-
 slider.addEventListener('click', (event) => {
     const targetElem = event.target as HTMLButtonElement;
     const buttonDiv = targetElem.parentNode as HTMLDivElement;
@@ -42,7 +41,6 @@ slider.addEventListener('click', (event) => {
             frontSection.classList.add('active');
             goodCard.classList.add('active');
             backSection.classList.add('active');
-            console.log('aadd', goodCard.id);
             addToCart(goodCard.id);
         } else alert('Sorry, your chest is full');
     }
@@ -51,7 +49,6 @@ slider.addEventListener('click', (event) => {
         goodCard.classList.remove('active');
         frontVIew.classList.remove('active');
         backSection.classList.remove('active');
-        console.log(goodCard.id);
         removeFromCart(goodCard.id);
     }
 });

@@ -20,9 +20,12 @@ class LocalStorage {
 
     public setSort(sorters: {key: string; values: string}) {
         const currentSorters = localStorage.getItem(this.sortKey);
+        console.log('curr Sorters', currentSorters);
         if (currentSorters) {
             const parsedCurrentSorters = JSON.parse(currentSorters);
+            console.log('arsedCurrentSorters', parsedCurrentSorters);
             const sortValue = JSON.stringify({...parsedCurrentSorters, sorters});
+            console.log('sortValue', sortValue);
             localStorage.setItem(this.sortKey, sortValue);
         } else {
             localStorage.setItem(this.sortKey, JSON.stringify(sorters));
@@ -36,6 +39,7 @@ class LocalStorage {
 
     public getSorters() {
         const sorters = localStorage.getItem(this.sortKey);
+        console.log('get Sorters', sorters);
         return sorters ? JSON.parse(sorters) : {};
     }
 
@@ -52,10 +56,7 @@ class LocalStorage {
         const cartGoodsID = this.getCart();
         return goodsArray.reduce((acc: number, good: IGoods) => {
             if (cartGoodsID.includes(good.id)) {
-                console.log('cart id',cartGoodsID);
-                console.log('id', good.id);
                 acc += Number(good.price);
-                console.log('id + acc', acc);
                 return acc;
             }
             return acc;

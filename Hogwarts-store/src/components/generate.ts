@@ -37,28 +37,21 @@ export function generateGoods(goods = goodsArray) {
     });
 }
 
-
-
-
-
-
-
 /*export function showGoods(goodsList: string) {
     
 }*/
 
 export function updateGoods() {
     const sortValue = localStorageService.getSorters();
+    console.log('sort value', sortValue);
     const filters = localStorageService.getFilters();
     const filtersKeys = Object.keys(filters);
     let updatedGoods = [...goodsArray];
+    console.log(updatedGoods);
     console.log(isSearchDataExist());
     if (isSearchDataExist()) {
         updatedGoods = searchData();
     }
-    
-   
-    
     if (filtersKeys) {
         if (filtersKeys.includes(Goods.house) ) {
             if (filters[Goods.house] !== Houses.All) {
@@ -80,7 +73,10 @@ export function updateGoods() {
             }
         }
     }
+    console.log('sortValue?.sort', sortValue?.sort);
     if (sortValue?.sort) {
+        console.log('sortValue?.sort', sortValue?.sort);
+        console.log('sort goods', updatedGoods);
         updatedGoods = sortGoods(sortValue.sort, updatedGoods);
     }
     console.log(updatedGoods);

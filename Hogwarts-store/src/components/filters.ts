@@ -1,5 +1,5 @@
 import { localStorageService } from './localStorage';
-import { updateGoods } from './generate';
+import { updateGoods, slider } from './generate';
 import { Goods } from '../modules/goods.model';
 import { goodsArray } from './appload';
 
@@ -12,17 +12,16 @@ housesContainer.addEventListener('click', (event) => {
     const selectedHouse = selectedHouseElement.dataset['h'] as string;
     localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
     selectHouse(selectedHouse);
-    //Container.classList.add("left");
+    slider.classList.add('filter');
     setTimeout(updateGoods, 300);
-    //updateGoods();
+    slider.addEventListener('animationend', () => {
+        slider.classList.remove('filter');
+    });
 });
 
-/*
-  Container.addEventListener("animationend", () => {
-    Container.classList.remove("left");
-  });*/
 
-
+  
+  
 
 function selectHouse(value: string) {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
@@ -38,7 +37,11 @@ houseFilters.addEventListener('click', (event) => {
     if (selectedHouseElement.tagName === 'INPUT') {
         const selectedHouse = selectedHouseElement.dataset['h'] as string;
         localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
-        updateGoods();
+        slider.classList.add('filter');
+        setTimeout(updateGoods, 300);
+        slider.addEventListener('animationend', () => {
+            slider.classList.remove('filter');
+        });
     }
 });
 
@@ -52,7 +55,11 @@ filtersContainer.addEventListener('click', (event) => {
             addCategory(selectedItem.value);
         } else deleteCategory(selectedItem.value);
     }
-    updateGoods();
+    slider.classList.add('filter');
+    setTimeout(updateGoods, 300);
+    slider.addEventListener('animationend', () => {
+        slider.classList.remove('filter');
+    });
 });
 
 function addCategory(value: string) {

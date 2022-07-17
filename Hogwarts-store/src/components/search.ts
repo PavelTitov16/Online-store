@@ -25,7 +25,6 @@ export function isSearchDataExist() {
 
 searchBtn.addEventListener('click', () => {
     searchLink?.scrollIntoView();
-    console.log(searchData());
     updateGoods();
 });
 
