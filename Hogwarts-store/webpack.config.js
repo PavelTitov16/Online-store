@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const EslintPlugin = require('eslint-webpack-plugin'); 
 const isProduction = process.env.NODE_ENV == 'production';
-
+const CopyWebpackPlugin =  require('copy-webpack-plugin');
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 
@@ -26,7 +26,15 @@ const config = {
             template: './src/index.html',
         }),
         new MiniCssExtractPlugin(),
-        new EslintPlugin({ extensions: 'ts' })
+        new EslintPlugin({ extensions: 'ts' }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './src/audio'), 
+                    to: path.resolve(__dirname, 'dist')
+                }
+            ]
+        })
     ],
     module: {
         rules: [
@@ -44,6 +52,13 @@ const config = {
                 type: 'asset/resource',
                 generator: {
                     filename: './assets/fonts/[name][ext]'
+                },
+            },
+            {
+                test: /\.mp3$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/audio/[name][ext]'
                 },
             },
             {

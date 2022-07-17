@@ -1,7 +1,7 @@
 
 const playBtn = document.querySelector('.play') as HTMLDivElement;
-const prevBtn = document.getElementById('#prev') as HTMLDivElement;
-const nextBtn = document.getElementById('#next') as HTMLDivElement;
+const prevBtn = document.getElementById('prev') as HTMLDivElement;
+const nextBtn = document.getElementById('next') as HTMLDivElement;
 const muteBtn = document.querySelector('.mute') as HTMLDivElement;
 const audio = document.querySelector('.audio') as HTMLAudioElement;
 
@@ -16,27 +16,28 @@ export const playList = [
 ];
     
 let currentSound = 0;
-//export const soundMagic = new Audio() as HTMLAudioElement;
-audio.src = `http://127.0.0.1:5500/src/audio/${playList[currentSound]}.mp3` as string;
+
+//audio.src = `http://127.0.0.1:5500/src/audio/${playList[currentSound]}.mp3` as string;
+
 
 export function loadMusic (currentSound: number) {
-    audio.src = `./audio/${playList[currentSound]}.mp3` as string;
-    //soundMagic.src = `./audio/${playList[currentSound]}.mp3` as string;
+    audio.src = `./${playList[currentSound]}.mp3` as string;
     //soundMagic.load();
+    console.log('path', audio.src);
     audio.load();
     console.log(audio);
 }
 
-export function playMusic() {
+export async function playMusic() {
     playBtn.classList.add('paused');
-    //soundMagic.play();
-    audio.play();
+    await audio.play();
+    console.log('play', audio);
 }
 
 export function pauseMusic() {
     playBtn.classList.remove('paused');
     audio.pause();
-    //soundMagic.pause();
+    console.log('pause', audio);
 }
 
 export function nextMusic() {
@@ -47,6 +48,7 @@ export function nextMusic() {
     
     loadMusic(currentSound);
     playMusic();
+    console.log('++', audio);
 }
 
 export function prevMusic() {
@@ -57,34 +59,44 @@ export function prevMusic() {
 
     loadMusic(currentSound);
     playMusic();
+    console.log('--', audio);
 }
 
 export function pressMute() {
-    audio.muted ? audio.muted = false : audio.muted = true;
+    if (audio.muted) {
+        !audio.muted;
+    } else audio.muted;
+    //audio.muted ? audio.muted = false : audio.muted = true;
+    console.log('m', audio);
 }
 
-window.addEventListener('load', () => {
+/*window.addEventListener('load', () => {
     loadMusic(currentSound);
     playMusic();
-});
+});*/
 
 playBtn.addEventListener('click', ()=> {
-    audio.paused ? playMusic() : pauseMusic();
-
+    loadMusic(currentSound);
+    if (audio.paused) {
+        playMusic();
+    } else pauseMusic();
+    //audio.paused ? playMusic() : pauseMusic();
+    console.log('pplll', audio);
 });
 
 nextBtn.addEventListener('click', () =>{
     nextMusic();
+    console.log('nxxxx', audio);
 
 });
 prevBtn.addEventListener('click', () =>{
     prevMusic();
-   
+    console.log('prrvvvv', audio);
 });
 
 muteBtn.addEventListener('click', () => {
     pressMute(); 
- 
+    console.log('mmmmmmmmmmm', audio);
 });
 
 /*

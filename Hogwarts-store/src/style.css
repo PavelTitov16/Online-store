@@ -773,26 +773,6 @@ body {
     transform: rotateY(-180deg);
 }
 
-.back-btn {
-    background: var(--gold);
-    color: var(--color-font);
-}
-
-.back-btn:hover {
-    background: var(--background);
-}
-
-.goods-btn {
-    background: var(--background);
-    border: 2px solid var(--background);
-    color: var(--color-font);
-}
-
-.goods-btn:hover {
-    background: var(--like);
-    color: var(--color-font);
-}
-
 .goods-name {
     display: block;
     font-family: 'Crimson Text', serif;
@@ -1027,7 +1007,23 @@ body {
 
 .back-btn {
     background: var(--gold);
+    border: 2px solid var(--color-border);
+    border-radius: 100px;
+    height: 3em;
+    width: 7em;
+    font-family: 'Crimson Text', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 40px;
+    letter-spacing: 0.06em;
+    text-align: center;
     color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.6s;
 }
 
 .back-btn:hover {

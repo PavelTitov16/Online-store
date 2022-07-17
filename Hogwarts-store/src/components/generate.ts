@@ -8,7 +8,7 @@ import { isSearchDataExist, searchData } from './search';
 export const slider = document.querySelector('.goods-slider') as HTMLDivElement;
 
 export function generateGoods(goods = goodsArray) {
-    goods.sort( () => Math.random() - 0.5).forEach((good) => {
+    goods.forEach((good) => {
         const goodsList = `
         <div class="goods-slider__card" id="${good.id}" data-h="${good.house}">
             <section class="front">

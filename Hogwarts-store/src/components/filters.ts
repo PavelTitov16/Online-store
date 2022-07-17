@@ -53,7 +53,6 @@ filtersContainer.addEventListener('click', (event) => {
         } else deleteCategory(selectedItem.value);
     }
     updateGoods();
-    /*const selectedCategory = selectedFilter.value as string;*/
 });
 
 function addCategory(value: string) {
@@ -81,3 +80,8 @@ function deleteCategory(value: string) {
 при сбросе фильтров кнопкой reset, ползунки range slider сдвигаются к краям, значения ползунков возвращаются к 
 первоначальным, range slider закрашивается одним цветом +10
 */
+const resetLocalBtn = document.querySelector('.reset-btn');
+
+resetLocalBtn?.addEventListener('click', () => {
+    localStorage.clear(); 
+});

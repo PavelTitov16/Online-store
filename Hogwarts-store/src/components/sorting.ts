@@ -9,35 +9,44 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
     
     switch(value) {
     case 'name_up':
-        callback = (a: any, b: any) =>  {
-            if (a.name < b.name) {
+        callback = (a: { name: string }, b: { name: string }) =>  {
+            return (a.name > b.name ? 1 : -1);
+            /*if (a.name < b.name) {
                 return -1;
             }              
             if (a.name >  b.name) {
                 return 1;
             }
-            else return 0;
+            else return 0;*/
+        };
+        break;
+    case 'cart':
+        callback = () => {
+            return localStorageService.getCart();
         };
         break;
     case 'name_down':
-        callback = (a: any, b: any) =>  {
-            if (a.name < b.name) {
+        callback = (a: { name: string }, b: { name: string }) =>  {
+            return (a.name > b.name ? -1 : 1);
+            /*if (a.name < b.name) {
                 return 1;
             }              
             if (a.name >  b.name) {
                 return -1;
             }
-            else return 0;
+            else return 0;*/
         };
         break;
     case 'price_down':
-        callback = (a: any, b: any) =>  {
-            return b.price-a.price;
+        callback = (a: {price: string}, b: {price: string}) =>  {
+            return (Number(a.price) > Number(b.price)) ? 1 : -1;
+            //return goods.sort((a: { cost: number }, b: { cost: number }) => (a.cost > b.cost ? ));
         };
         break;
     default:
-        callback = (a: any, b: any) =>  {
-            return a.price-b.price;
+        callback = (a: {price: string}, b: {price: string}) =>  {
+            return (Number(a.price) > Number(b.price)) ? -1 : 1;
+            //return Number(a.price) - Number(b.price);
         };
     }
     return updatedGoods.sort(callback);
@@ -47,8 +56,6 @@ sortFilters.addEventListener('click', (event) => {
     const selectedSortElement = event.target as HTMLInputElement;
     
     if (selectedSortElement.tagName === 'INPUT' ) {
-        const currentSort: string = <string>(<HTMLElement>event.target).dataset.sort;
-        //console.log(sortGoods(currentSort, updatedGoods));
         const selectedSort = selectedSortElement.value as string; 
         localStorageService.setSort({key: 'sort', values: selectedSort});
 
