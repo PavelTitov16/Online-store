@@ -79,7 +79,7 @@ function startAutoPlay() {
     playMusic();
 }
 
-//window.addEventListener('click', startAutoPlay,{once:true});
+window.addEventListener('click', startAutoPlay,{once:true});
 
 audio.ontimeupdate = () => {
     if (!Number.isNaN(audio.duration)) {

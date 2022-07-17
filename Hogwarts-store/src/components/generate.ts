@@ -4,6 +4,7 @@ import { localStorageService } from './localStorage';
 import { Houses } from '../modules/goods.model';
 import { sortGoods } from './sorting';
 import { isSearchDataExist, searchData } from './search';
+import { updateCartStatus } from './updateFiltersStatus';
 
 export const slider = document.querySelector('.goods-slider') as HTMLDivElement;
 
@@ -77,12 +78,12 @@ export function updateGoods() {
     }
     deleteGoods();
     generateGoods(updatedGoods);
+    updateCartStatus();
 }
 
 export function deleteGoods() {
     slider.innerHTML = '';
 }
-
 
 //цена с локал хранилищем И РЕЙНДЖИ
 //expect with methods through dot

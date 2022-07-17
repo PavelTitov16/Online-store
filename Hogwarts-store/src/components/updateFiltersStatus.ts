@@ -1,13 +1,13 @@
 import { Goods } from '../modules/goods.model';
 import { localStorageService } from './localStorage';
 
-
 const houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
 const filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;
 const sortFilters = document.querySelector('.sorting-btns') as HTMLDivElement;
-
 const filtersActive = localStorageService.getFilters();
 const sortersActive = localStorageService.getSorters();
+const goodsInCart = localStorageService.getCart();
+console.log(goodsInCart);
 
 export function updateFiltersStatus() {
     if (filtersActive[Goods.house]) {
@@ -23,7 +23,6 @@ export function updateFiltersStatus() {
 updateFiltersStatus();
 
 export function updateSorterStatus() {
-    console.log(sortersActive);
     const sortInputs = Array.from(sortFilters.querySelectorAll('input'));
     sortInputs.forEach(input => {
         if (input.dataset['sort'] === sortersActive.sort) {
@@ -47,4 +46,18 @@ export function updateCategoriesStatus() {
 }
 updateCategoriesStatus();
 
-//cartStatus during F5
+export function updateCartStatus() {
+    const goodsToCheck = Array.from(document.querySelectorAll('.goods-slider__card'));
+    goodsToCheck.forEach(good => {
+
+        for (let i = 0; i < goodsInCart.length; i++) {
+
+            if (good.id === goodsInCart[i]) {
+                (<HTMLDivElement>good).classList.add('active');
+                (<HTMLElement>good.firstElementChild).classList.add('active');
+                (<HTMLElement>good.lastElementChild).classList.add('active');
+            }
+        } 
+    });
+}
+
