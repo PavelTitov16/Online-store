@@ -26,11 +26,11 @@
     transform: translateX(0);
   }
   25% {
-    transform: translateX(116%);
+    transform: translateX(150%);
     opacity: 0;
   }
   50% {
-    transform: translateX(-116%);
+    transform: translateX(150%);
     opacity: 0;
   }
   to {
@@ -339,12 +339,17 @@ body {
     display: none;
 }
 
+.header-search {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header-search__bar {
     background: transparent;
     border: 3px solid var(--color-border);
     border-radius: 0.8em;
-    height: 2em;
-    width: 19em;
+    height: 1.7em;
+    width: 20em;
     font-style: normal;
     font-weight: normal;
     padding-left: 18px;
@@ -367,12 +372,13 @@ body {
 .button {
     background: var(--left-line);
     border-radius: 3em;
+    padding: 3px;
     height: 2.5em;
     width: 5em;
     font-family: 'Poppins', sans-serif;
     font-style: medium;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.06em;
     color: var(--color-font);
@@ -447,6 +453,10 @@ body {
     width: 100%;
     border-radius: 0.8em;
     position: relative;
+    background: var(--right-line);
+}
+
+progress::-webkit-progress-value {
     background: var(--right-line);
 }
 
@@ -693,6 +703,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
 }
 
 .goods-slider.filter {
@@ -949,7 +960,7 @@ body {
     background: var(--right-line);
     border-radius: 2em;
     height: 1.8em;
-    width: 6em;
+    width: 7em;
     display: flex;  
     justify-content: center;
     align-items: center;
@@ -970,7 +981,7 @@ body {
     font-family: 'Poppins', sans-serif; 
     font-style: medium;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     letter-spacing: 0.15px;
     color: var(--color-font);
@@ -1002,6 +1013,12 @@ body {
 
 .reset-btn {
     border: 2px solid var(--color-border); 
+    margin: 0.5em 0;
+}
+
+.reset-category__btn {
+    border: 2px solid var(--color-border); 
+    margin: 0.3em 0;
 }
 
 .back-btn {
@@ -1154,7 +1171,7 @@ body {
 }
 
 
-@media (min-width: 1225px) and (max-width: 1400px) {
+@media (min-width: 1225px) and (max-width: 1399px) {
 
     .about-block {
         padding: 100;
