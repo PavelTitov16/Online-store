@@ -60,4 +60,4 @@ export function updateCartStatus() {
         } 
     });
 }
-
+setTimeout(updateCartStatus, 100);

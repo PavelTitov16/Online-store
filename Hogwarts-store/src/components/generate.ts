@@ -37,10 +37,6 @@ export function generateGoods(goods = goodsArray) {
     });
 }
 
-/*export function showGoods(goodsList: string) {
-    
-}*/
-
 export function updateGoods() {
     const sortValue = localStorageService.getSorters();
     const filters = localStorageService.getFilters();
@@ -84,7 +80,3 @@ export function updateGoods() {
 export function deleteGoods() {
     slider.innerHTML = '';
 }
-
-//цена с локал хранилищем И РЕЙНДЖИ
-//expect with methods through dot
-//suggest to test JS functions

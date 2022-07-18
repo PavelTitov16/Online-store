@@ -1,5 +1,5 @@
 import { goodsArray } from './appload';
-import { slider, updateGoods } from './generate';
+import { updateGoods } from './generate';
 
 const search = document.querySelector('.header-search__bar') as HTMLInputElement;
 const searchBtn = document.querySelector('.header-search__btn') as HTMLButtonElement;

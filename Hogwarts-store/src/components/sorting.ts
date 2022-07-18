@@ -1,6 +1,7 @@
 import { localStorageService } from './localStorage';
 import { updateGoods } from './generate';
 import { IGoods } from '../modules/goods.model';
+import { updateCartStatus } from './updateFiltersStatus';
 
 const sortFilters = document.querySelector('.sorting-btns') as HTMLDivElement;
 
@@ -44,8 +45,7 @@ sortFilters.addEventListener('click', (event) => {
         const selectedSort = selectedSortElement.value as string; 
         localStorageService.setSort({key: 'sort', values: selectedSort});
         updateGoods();
+        updateCartStatus();
     }
 });
 
-
-// status + cartStatus during F5

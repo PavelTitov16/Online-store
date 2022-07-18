@@ -1,5 +1,5 @@
 import { localStorageService } from './localStorage';
-import { updateGoods, slider, generateGoods, deleteGoods } from './generate';
+import { updateGoods, slider } from './generate';
 import { Goods } from '../modules/goods.model';
 
 const housesContainer = document.querySelector('.faculty-container__items') as HTMLDivElement;

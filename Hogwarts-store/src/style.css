@@ -589,91 +589,6 @@ progress::-webkit-progress-value {
     line-height: 20px;
 }
 
-.price-field {
-  position: relative;
-  height: 40px;
-  box-sizing: border-box;
-  background: var(--left-line);
-  border-radius: 40px;
-  width: 14em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1em 0;
-}
-
-.price-field input[type=range] {
-    position: absolute;
-}
-
-/* Reset style for input range */
-
-.price-field input[type=range] {
-  width: 188px;
-  height: 2px; 
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
-  border-radius: 5px;
-  pointer-events: none;
-  -webkit-appearance: none;
-}
-
-.price-field input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-}
-
-.price-field input[type=range]:active,
-.price-field input[type=range]:focus {
-  outline: 0;
-}
-
-.price-field input[type=range]::-ms-track {
-  width: 188px;
-  height: 2px; 
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
-  border-radius: 5px;
-  pointer-events: none;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-  border-radius: 5px;
-}
-
-/* Style toddler input range */
-
-.price-field input[type=range]::-webkit-slider-thumb { 
-  /* WebKit/Blink */
-    position: relative;
-    -webkit-appearance: none;
-    margin: 0;
-    border: 0;
-    outline: 0;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    margin-top: -4px;
-    background-color: var(--color-font);
-    cursor: pointer;
-    cursor: pointer;
-    pointer-events: all;
-    z-index: 100;
-}
-
-/* Style track input range */
-
-.price-field input[type=range]::-webkit-slider-runnable-track { 
-  /* WebKit/Blink */
-  width: 188px;
-  height: 2px;
-  cursor: pointer;
-  background: var(--color-font);
-  border-radius: 5px;
-}
-
-
 .main-goods {
     flex: 80%;
 }
@@ -964,7 +879,7 @@ progress::-webkit-progress-value {
     width: 7em;
     display: flex;  
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 
 .footer-logo {
@@ -1015,11 +930,13 @@ progress::-webkit-progress-value {
 .reset-btn {
     border: 2px solid var(--color-border); 
     margin: 0.5em 0;
+    transition: all 0.3s ease-in-out;
 }
 
 .reset-category__btn {
     border: 2px solid var(--color-border); 
     margin: 0.3em 0;
+    transition: all 0.6s ease-in;
 }
 
 .back-btn {

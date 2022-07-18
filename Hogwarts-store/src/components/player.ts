@@ -68,11 +68,6 @@ export function pressMute() {
     }
 }
 
-/*window.addEventListener('load', () => {
-    loadMusic(currentSound);
-    playMusic();
-});*/
-
 function startAutoPlay() {
     audio.muted = false;
     loadMusic(currentSound);
