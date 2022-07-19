@@ -572,13 +572,52 @@ progress::-webkit-progress-value {
 
 .filter-btn {
     margin: 0.8em 0;
-    display: flex;
-    gap: 0.8em;
     font-family: 'Poppins', sans-serif;
     font-style: regular;
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 10px;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.label {
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 33px;
+  cursor: pointer;
+}
+
+.label-radio::before,
+.label-checkbox::before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #2D0DAE;
+  border-radius: 50%;
+}
+
+.label-checkbox::before {
+  border-radius: 4px;
+}
+
+.house-btn:checked ~ .label::before {
+  background: linear-gradient(270deg, #2D0DAE 0%, #8453D5 100%);
 }
 
 .filtres-title {
