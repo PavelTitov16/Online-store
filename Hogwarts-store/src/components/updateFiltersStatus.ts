@@ -7,9 +7,8 @@ const sortFilters = document.querySelector('.sorting-btns') as HTMLDivElement;
 const filtersActive = localStorageService.getFilters();
 const sortersActive = localStorageService.getSorters();
 const goodsInCart = localStorageService.getCart();
-console.log(goodsInCart);
 
-export function updateFiltersStatus() {
+export function updateFiltersStatus(): void {
     if (filtersActive[Goods.house]) {
         const activeHouse = filtersActive[Goods.house];
         const houseInputs = Array.from(houseFilters.querySelectorAll('input'));
@@ -22,7 +21,7 @@ export function updateFiltersStatus() {
 }
 updateFiltersStatus();
 
-export function updateSorterStatus() {
+export function updateSorterStatus(): void {
     const sortInputs = Array.from(sortFilters.querySelectorAll('input'));
     sortInputs.forEach(input => {
         if (input.dataset['sort'] === sortersActive.sort) {
@@ -32,7 +31,7 @@ export function updateSorterStatus() {
 }
 updateSorterStatus();
 
-export function updateCategoriesStatus() {
+export function updateCategoriesStatus(): void {
     if (filtersActive[Goods.categories]) {
         const activeCategory = filtersActive[Goods.categories];
         const categoryInputs = Array.from(filtersContainer.querySelectorAll('input'));
@@ -46,7 +45,7 @@ export function updateCategoriesStatus() {
 }
 updateCategoriesStatus();
 
-export function updateCartStatus() {
+export function updateCartStatus(): void {
     const goodsToCheck = Array.from(document.querySelectorAll('.goods-slider__card'));
     goodsToCheck.forEach(good => {
 

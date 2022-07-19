@@ -37,7 +37,7 @@ export function generateGoods(goods = goodsArray) {
     });
 }
 
-export function updateGoods() {
+export function updateGoods(): void {
     const sortValue = localStorageService.getSorters();
     const filters = localStorageService.getFilters();
     const filtersKeys = Object.keys(filters);
@@ -51,7 +51,6 @@ export function updateGoods() {
             if (filters[Goods.house] !== Houses.All) {
                 updatedGoods = updatedGoods.filter(good => {
                     return good.house === filters[Goods.house];
-
                 });
             } 
         }
@@ -77,6 +76,7 @@ export function updateGoods() {
     updateCartStatus();
 }
 
-export function deleteGoods() {
+export function deleteGoods(): void {
     slider.innerHTML = '';
 }
+

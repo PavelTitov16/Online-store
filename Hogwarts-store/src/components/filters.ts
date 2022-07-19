@@ -8,7 +8,7 @@ const houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
 const resetFiltersBtn = document.querySelector('.reset-category__btn') as HTMLButtonElement;
 const resetLocalBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
 
-export function filterMagic() {
+export function filterMagic(): void {
     slider.classList.add('filter');
     setTimeout(updateGoods, 300);
     slider.addEventListener('animationend', () => {
@@ -16,7 +16,7 @@ export function filterMagic() {
     });
 }
 
-housesContainer.addEventListener('click', (event) => {
+housesContainer.addEventListener('click', (event: MouseEvent) => {
     const selectedHouseElement = event.target as HTMLDivElement;
     const selectedHouse = selectedHouseElement.dataset['h'] as string;
     localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
@@ -24,7 +24,7 @@ housesContainer.addEventListener('click', (event) => {
     filterMagic();
 });
 
-function selectHouse(value: string) {
+export function selectHouse(value: string): void {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
     houseBtns.forEach(btn => {
         if (btn.dataset['h'] === value) {
@@ -33,7 +33,7 @@ function selectHouse(value: string) {
     });
 }
 
-houseFilters.addEventListener('click', (event) => {
+houseFilters.addEventListener('click', (event: MouseEvent) => {
     const selectedHouseElement = event.target as HTMLInputElement;
     if (selectedHouseElement.tagName === 'INPUT') {
         const selectedHouse = selectedHouseElement.dataset['h'] as string;
@@ -42,7 +42,7 @@ houseFilters.addEventListener('click', (event) => {
     }
 });
 
-filtersContainer.addEventListener('click', (event) => {
+filtersContainer.addEventListener('click', (event: MouseEvent) => {
     const selectedItem = event.target as HTMLInputElement;
 
     if (selectedItem.tagName === 'INPUT') {
@@ -53,7 +53,7 @@ filtersContainer.addEventListener('click', (event) => {
     filterMagic();
 });
 
-function addCategory(value: string) {
+function addCategory(value: string): void {
     const activeCategories = localStorageService.getFilters()[Goods.categories];
 
     if (!activeCategories) {
@@ -63,7 +63,7 @@ function addCategory(value: string) {
     }
 }
 
-function deleteCategory(value: string) {
+export function deleteCategory(value: string): void {
     const activeCategories = localStorageService.getFilters()[Goods.categories];
     const newCategories = activeCategories.filter((category: string) => category !== value);
 

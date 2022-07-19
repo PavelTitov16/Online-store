@@ -38,7 +38,7 @@ export function sortGoods(value: string, updatedGoods: IGoods[]) {
     return updatedGoods.sort(callback);
 }
 
-sortFilters.addEventListener('click', (event) => {
+sortFilters.addEventListener('click', (event: MouseEvent) => {
     const selectedSortElement = event.target as HTMLInputElement;
 
     if (selectedSortElement.tagName === 'INPUT' ) {

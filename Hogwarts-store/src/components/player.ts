@@ -6,12 +6,12 @@ import '../audio/awindowtothepast.mp3';
 import '../audio/leavinghogwarts.mp3';
 import '../audio/harrywondrousworld.mp3';
 
-const playBtn = document.querySelector('.play') as HTMLDivElement;
+export const playBtn = document.querySelector('.play') as HTMLDivElement;
 const prevBtn = document.getElementById('prev') as HTMLDivElement;
 const nextBtn = document.getElementById('next') as HTMLDivElement;
 const muteBtn = document.querySelector('.mute') as HTMLDivElement;
-const audio = document.querySelector('.audio') as HTMLAudioElement;
-const progressbar = document.getElementById('progress-bar');
+export const audio = document.querySelector('.audio') as HTMLAudioElement;
+const progressbar = document.getElementById('progress-bar') as HTMLProgressElement;
 
 export const playList = [
     'hedwigstheme',
@@ -22,25 +22,25 @@ export const playList = [
     'leavinghogwarts',
     'harrywondrousworld'
 ];
-    
+
 let currentSound = 0;
 
-export function loadMusic (currentSound: number) {
+export function loadMusic (currentSound: number): void {
     audio.src = `assets/audio/${playList[currentSound]}.mp3` as string;
     audio.load();
 }
 
-export function playMusic() {
+export function playMusic(): void {
     playBtn.classList.add('paused');
     audio.play();
 }
 
-export function pauseMusic() {
+export function pauseMusic(): void {
     playBtn.classList.remove('paused');
     audio.pause();
 }
 
-export function nextMusic() {
+export function nextMusic(): void {
     currentSound++;
     if (currentSound > playList.length) {
         currentSound = 0;
@@ -50,7 +50,7 @@ export function nextMusic() {
     playMusic();
 }
 
-export function prevMusic() {
+export function prevMusic(): void {
     currentSound--;
     if (currentSound < 0) {
         currentSound = playList.length - 1;
@@ -60,7 +60,7 @@ export function prevMusic() {
     playMusic();
 }
 
-export function pressMute() {
+export function pressMute(): void {
     if (audio.muted) {  
         audio.muted = false;
     } else {
@@ -68,7 +68,7 @@ export function pressMute() {
     }
 }
 
-function startAutoPlay() {
+export function startAutoPlay(): void {
     audio.muted = false;
     loadMusic(currentSound);
     playMusic();

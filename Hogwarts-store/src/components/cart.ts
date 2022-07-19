@@ -1,23 +1,23 @@
 import { localStorageService } from './localStorage';
 import { slider } from './generate';
 
-const cartNum = document.getElementById('goods-counter') as HTMLSpanElement;
-const cashNum = document.getElementById('money-counter') as HTMLSpanElement;
+export const cartNum = document.getElementById('goods-counter') as HTMLSpanElement;
+export const cashNum = document.getElementById('money-counter') as HTMLSpanElement;
 
 updatePaymentInfo();
 
-export function updatePaymentInfo() {
+export function updatePaymentInfo(): void {
     cartNum.innerHTML = `${localStorageService.getCart().length} to buy`;
     cashNum.innerHTML = `${localStorageService.getPrice()}£ to pay`;
 }
 
-export function addToCart(name: string) {
+export function addToCart(name: string): void {
     localStorageService.updateCart([...localStorageService.getCart(), name]);
     updatePaymentInfo();
 }
 
-export function removeFromCart(name: string) {
-    const currentGoodsCount = localStorageService.getCart().length;
+export function removeFromCart(name: string): void {
+    const currentGoodsCount: number = localStorageService.getCart().length;
     if (currentGoodsCount > 0) {
         const currentGoods = localStorageService.getCart();
         const newCart = currentGoods.filter((item: string) => item !== name);
@@ -26,7 +26,7 @@ export function removeFromCart(name: string) {
     }
 }
 
-slider.addEventListener('click', (event) => {
+slider.addEventListener('click', (event: MouseEvent) => {
     const targetElem = event.target as HTMLButtonElement;
     const buttonDiv = targetElem.parentNode as HTMLDivElement;
     const frontSection = buttonDiv.parentNode as HTMLElement;

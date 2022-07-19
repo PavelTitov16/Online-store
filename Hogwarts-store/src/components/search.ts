@@ -1,9 +1,9 @@
 import { goodsArray } from './appload';
 import { updateGoods } from './generate';
 
-const search = document.querySelector('.header-search__bar') as HTMLInputElement;
+export const search = document.querySelector('.header-search__bar') as HTMLInputElement;
 const searchBtn = document.querySelector('.header-search__btn') as HTMLButtonElement;
-const searchLink = document.querySelector('#catalogue');
+const searchLink = document.querySelector('#catalogue') as HTMLLinkElement;
 
 export function searchData() {
     const input: string = <string>search.value.toLowerCase();
@@ -17,7 +17,7 @@ export function searchData() {
     return foundGoods;
 }
 
-export function isSearchDataExist() {
+export function isSearchDataExist(): boolean {
     const input: string = <string>search.value.toLowerCase();
     return Boolean(input);
 }
