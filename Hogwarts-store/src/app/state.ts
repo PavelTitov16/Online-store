@@ -1,12 +1,13 @@
-import { IGoods } from '../modules/goods.model';
-import { goodsArray } from './appload';
+import { GoodModel } from '../models/goods.model';
+import { FiltersState, SortState } from '../models/state.model';
 
-class LocalStorage {
-    public sortKey = 'sortKey';
-    public filtersKey = 'filtersKey';
-    public cartKey = 'cartKey';
-    //ключи приватные
-    public setFilters(filters: {key: string; values: string | Array<string>}) {
+
+export class State {
+    private sortKey = 'sortKey';
+    private filtersKey = 'filtersKey';
+    private cartKey = 'cartKey';
+
+    public setFilters(filters: {key: string; values: string | Array<string>}): void {
         const currentFilters = localStorage.getItem(this.filtersKey);
 
         if (currentFilters) {
@@ -18,33 +19,33 @@ class LocalStorage {
         }
     }
 
-    public setSort(sorters: {key: string; values: string}) {
+    public setSort(sorters: {key: string; values: string}): void {
         localStorage.setItem(this.sortKey, JSON.stringify({[sorters.key]: sorters.values}));
     }
 
 
-    public getFilters() {
+    public getFilters(): FiltersState {
         const filters = localStorage.getItem(this.filtersKey);
         return filters ? JSON.parse(filters) : {};
     }
 
-    public getSorters() {
+    public getSorters(): SortState {
         const sorters = localStorage.getItem(this.sortKey);
         return sorters ? JSON.parse(sorters) : {};
     }
 
-    public updateCart(cartGoods: string[]) {
+    public updateCart(cartGoods: string[]): void {
         localStorage.setItem(this.cartKey, JSON.stringify(cartGoods));
     }
 
-    public getCart() {
+    public getCart(): string[] {
         const cartGoods = localStorage.getItem(this.cartKey);
         return cartGoods ? JSON.parse(cartGoods) : [];
     }
 
-    public getPrice() {
+    public getPrice(goodsArray: GoodModel[]): number {
         const cartGoodsID = this.getCart();
-        return goodsArray.reduce((acc: number, good: IGoods) => {
+        return goodsArray.reduce((acc: number, good: GoodModel) => {
             if (cartGoodsID.includes(good.id)) {
                 acc += Number(good.price);
                 return acc;
@@ -54,4 +55,3 @@ class LocalStorage {
     }
 }
 //типы у методов
-export const localStorageService = new LocalStorage();

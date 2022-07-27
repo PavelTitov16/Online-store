@@ -38,6 +38,11 @@ search.addEventListener('keydown', (event: KeyboardEvent) => {
     }
 });
 
+export class SearchForm {
+    
+}
+
+
 
 /*start() {
 updatePaymentInfo();

@@ -36,7 +36,7 @@ export function generateGoods(goods = goodsArray) {
         slider.insertAdjacentHTML('beforeend', goodsList);
     });
 }
-
+//документ фрагмент + слайдер после фор ича
 export function updateGoods(): void {
     const sortValue = localStorageService.getSorters();
     const filters = localStorageService.getFilters();
@@ -80,3 +80,4 @@ export function deleteGoods(): void {
     slider.innerHTML = '';
 }
 
+//дефолт в конст

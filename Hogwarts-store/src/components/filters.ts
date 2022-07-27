@@ -15,7 +15,7 @@ export function filterMagic(): void {
         slider.classList.remove('filter');
     });
 }
-
+//300 в конст
 housesContainer.addEventListener('click', (event: MouseEvent) => {
     const selectedHouseElement = event.target as HTMLDivElement;
     const selectedHouse = selectedHouseElement.dataset['h'] as string;
@@ -23,7 +23,7 @@ housesContainer.addEventListener('click', (event: MouseEvent) => {
     selectHouse(selectedHouse);
     filterMagic();
 });
-
+// фильтры листенер в функцию
 export function selectHouse(value: string): void {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
     houseBtns.forEach(btn => {
@@ -32,7 +32,7 @@ export function selectHouse(value: string): void {
         } 
     });
 }
-
+//датасет Н переименовать 
 houseFilters.addEventListener('click', (event: MouseEvent) => {
     const selectedHouseElement = event.target as HTMLInputElement;
     if (selectedHouseElement.tagName === 'INPUT') {
@@ -41,7 +41,7 @@ houseFilters.addEventListener('click', (event: MouseEvent) => {
         filterMagic();
     }
 });
-
+//все типизоровать по типам
 filtersContainer.addEventListener('click', (event: MouseEvent) => {
     const selectedItem = event.target as HTMLInputElement;
 
@@ -70,11 +70,11 @@ export function deleteCategory(value: string): void {
     localStorageService.setFilters( {key: Goods.categories, values: newCategories } );
 }
 
-resetLocalBtn?.addEventListener('click', () => {
+resetLocalBtn.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
 });
-
+//резет через вопрос убрать + резет фильтров в функцию
 resetFiltersBtn.addEventListener('click', () => {
     const activeCategories = localStorageService.getFilters()[Goods.categories];
     const categoryInputs = Array.from(filtersContainer.querySelectorAll('input'));
@@ -90,3 +90,4 @@ resetFiltersBtn.addEventListener('click', () => {
     filterMagic();
 });
 
+//олл к конст

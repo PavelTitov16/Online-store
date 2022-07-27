@@ -1,6 +1,8 @@
 import './icons/hogwarts.ico';
 import './style.css';
-import './components/appload';
+import { App } from './app/app';
+import { AppModel } from './models/app.model';
+/*import './components/appload';
 import './components/generate';
 import './components/filters';
 import { updateGoods } from './components/generate';
@@ -10,6 +12,7 @@ import './components/sorting';
 import './components/player';
 import './components/updateFiltersStatus';
 
+updateGoods();*/
 
-
-updateGoods();
+const app: AppModel = new App();
+app.init();

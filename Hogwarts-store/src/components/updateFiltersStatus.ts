@@ -7,7 +7,7 @@ const sortFilters = document.querySelector('.sorting-btns') as HTMLDivElement;
 const filtersActive = localStorageService.getFilters();
 const sortersActive = localStorageService.getSorters();
 const goodsInCart = localStorageService.getCart();
-
+//конст датасет
 export function updateFiltersStatus(): void {
     if (filtersActive[Goods.house]) {
         const activeHouse = filtersActive[Goods.house];
@@ -20,7 +20,7 @@ export function updateFiltersStatus(): void {
     }
 }
 updateFiltersStatus();
-
+//апдейт функции в старт
 export function updateSorterStatus(): void {
     const sortInputs = Array.from(sortFilters.querySelectorAll('input'));
     sortInputs.forEach(input => {
@@ -60,3 +60,5 @@ export function updateCartStatus(): void {
     });
 }
 setTimeout(updateCartStatus, 100);
+//апдейт функции в старт
+//число в конст

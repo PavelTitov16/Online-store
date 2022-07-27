@@ -15,3 +15,6 @@ export function mapJsonToProducts(jsonResponse: IGoods[]) {
 }
 
 export const goodsArray = mapJsonToProducts(Array.from(goods));
+
+/*type JsonDataItem = {[key: string]: value}
+jsonResponse: JsonDataItem[]*/

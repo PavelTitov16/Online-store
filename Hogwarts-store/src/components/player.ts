@@ -22,7 +22,7 @@ export const playList = [
     'leavinghogwarts',
     'harrywondrousworld'
 ];
-
+//тип плейлиста
 let currentSound = 0;
 
 export function loadMusic (currentSound: number): void {
@@ -104,3 +104,5 @@ muteBtn.addEventListener('click', () => {
 });
 
 audio.onended = nextMusic;
+
+//класс плеера

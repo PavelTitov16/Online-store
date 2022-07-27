@@ -49,3 +49,6 @@ sortFilters.addEventListener('click', (event: MouseEvent) => {
     }
 });
 
+//значения свича в енам
+//листенеры в функцию
+//ключ сорт
