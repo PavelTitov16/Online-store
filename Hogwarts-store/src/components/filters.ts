@@ -7,10 +7,12 @@ const filtersContainer = document.querySelector('.filtres-categories') as HTMLDi
 const houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
 const resetFiltersBtn = document.querySelector('.reset-category__btn') as HTMLButtonElement;
 const resetLocalBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
+const generateNumber = 300;
+const filterAllHouses = 'all';
 
 export function filterMagic(): void {
     slider.classList.add('filter');
-    setTimeout(updateGoods, 300);
+    setTimeout(updateGoods, generateNumber);
     slider.addEventListener('animationend', () => {
         slider.classList.remove('filter');
     });
@@ -27,7 +29,7 @@ housesContainer.addEventListener('click', (event: MouseEvent) => {
 export function selectHouse(value: string): void {
     const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
     houseBtns.forEach(btn => {
-        if (btn.dataset['h'] === value) {
+        if (btn.dataset['house'] === value) {
             btn.checked = true;
         } 
     });
@@ -36,7 +38,7 @@ export function selectHouse(value: string): void {
 houseFilters.addEventListener('click', (event: MouseEvent) => {
     const selectedHouseElement = event.target as HTMLInputElement;
     if (selectedHouseElement.tagName === 'INPUT') {
-        const selectedHouse = selectedHouseElement.dataset['h'] as string;
+        const selectedHouse = selectedHouseElement.dataset['house'] as string;
         localStorageService.setFilters({key: Goods.house, values: selectedHouse} );
         filterMagic();
     }
@@ -85,8 +87,8 @@ resetFiltersBtn.addEventListener('click', () => {
             deleteCategory(input.id);
         }
     });
-    selectHouse('all');
-    localStorageService.setFilters({key: Goods.house, values: 'all'} );
+    selectHouse(filterAllHouses);
+    localStorageService.setFilters({key: Goods.house, values: filterAllHouses} );
     filterMagic();
 });
 

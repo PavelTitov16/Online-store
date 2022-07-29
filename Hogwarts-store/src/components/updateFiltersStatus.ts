@@ -13,7 +13,7 @@ export function updateFiltersStatus(): void {
         const activeHouse = filtersActive[Goods.house];
         const houseInputs = Array.from(houseFilters.querySelectorAll('input'));
         houseInputs.forEach(input => {
-            if (input.dataset['h'] === activeHouse) {
+            if (input.dataset['house'] === activeHouse) {
                 input.checked = true;
             }
         });

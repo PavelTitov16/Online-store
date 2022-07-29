@@ -4,7 +4,7 @@ export interface IFilters {
     price: string;
 }
 
-/*export interface ICategories {
+export interface ICategories {
     Books: string;
     Wands: string;
     Quidditch: string;
@@ -12,9 +12,9 @@ export interface IFilters {
     Travel: string;
     Soft Toys: string;
     Souvenirs: string;
-}*/
+}
 
-/*const enum Categories {
+const enum Categories {
     Books = 'books',
     Wands = 'wands',
     Quidditch = 'quidditch',
@@ -22,5 +22,5 @@ export interface IFilters {
     Travel = 'travel',
     Soft Toys = 'toys'
     Souvenirs: souvenirs;
-}*/
+}
 
