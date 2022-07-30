@@ -344,11 +344,11 @@
         "id": "43"
     },
     {
-        "name": "First Edition Hufflepuff Enamel Pin Set",
-        "img": "./images/huff_pins.png",
+        "name": "Hufflepuff Mascot Badger Soft Toy",
+        "img": "./images/huff_pet.png",
         "house": "hufflepuff",
-        "categories": ["Clothes", "Travel", "Souvenirs"],
-        "price": "50",
+        "categories": ["Toys", "Quidditch", "Souvenirs"],
+        "price": "27",
         "id": "44"
     },
     {
@@ -760,11 +760,11 @@
         "id": "95"
     },
     {
-        "name": "First Edition Slytherin Enamel Pin Set",
-        "img": "./images/slyth_pins.png",
+        "name": "Slytherin House Cushion",
+        "img": "./images/slyth_pillow.png",
         "house": "slytherin",
-        "categories": ["Clothes", "Travel", "Souvenirs"],
-        "price": "50",
+        "categories": ["Toys", "Travel", "Souvenirs"],
+        "price": "26",
         "id": "96"
     },
     {

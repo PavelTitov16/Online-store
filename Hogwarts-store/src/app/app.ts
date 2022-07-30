@@ -13,6 +13,7 @@ import { Sorting } from './sorting';
 import { SearchForm } from './search-form';
 import { Player } from './player';
 
+
 export const slider = document.querySelector('.goods-slider') as HTMLDivElement;
 
 export class App implements AppModel {
@@ -48,10 +49,7 @@ export class App implements AppModel {
         this.cart.subscribeOnUserActions();
         this.filters.subscribeHouseFilters(this.parseGoodsList.bind(this));
         this.filters.subscribeCategories(this.parseGoodsList.bind(this));
-        this.updatePageStatus.updateFiltersStatus();
-        this.updatePageStatus.updateSorterStatus();
-        this.updatePageStatus.updateCategoriesStatus();
-        this.updatePageStatus.updateCartStatus();
+        this.updatePageStatus.init();
         this.sorting.subscribeOnSort(this.parseGoodsList.bind(this));
         this.filters.resetFilters(this.parseGoodsList.bind(this));
         this.filters.resetLocalStorage();

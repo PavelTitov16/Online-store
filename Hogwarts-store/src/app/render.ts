@@ -1,6 +1,7 @@
 import { Good, GoodModel } from '../models/goods.model';
 import { RenderModel } from '../models/render.model';
 
+
 export class Render implements RenderModel {
     
     public renderItems(items: GoodModel[]): void {

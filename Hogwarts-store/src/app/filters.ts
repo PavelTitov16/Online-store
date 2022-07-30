@@ -2,6 +2,7 @@ import { State } from './state';
 import { Good, GoodModel } from '../models/goods.model';
 import { keys } from '../models/render.model';
 
+
 export class Filters {
     public housesContainer = document.querySelector('.faculty-container__items') as HTMLDivElement;
     public filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;

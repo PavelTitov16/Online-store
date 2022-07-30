@@ -6,6 +6,7 @@ import '../audio/awindowtothepast.mp3';
 import '../audio/leavinghogwarts.mp3';
 import '../audio/harrywondrousworld.mp3';
 
+
 export class Player {
     public audio = document.querySelector('.audio') as HTMLAudioElement;
     public playBtn = document.querySelector('.play') as HTMLDivElement;
@@ -79,7 +80,7 @@ export class Player {
         window.addEventListener('click', this.startAutoPlay.bind(this), {once:true});
     }
 
-    public timeUpdate() {
+    public timeUpdate(): void {
         this.audio.ontimeupdate = () => {
             if (!Number.isNaN(this.audio.duration)) {
                 (this.progressbar as HTMLProgressElement).value = this.audio.currentTime / this.audio.duration;
@@ -87,7 +88,7 @@ export class Player {
         };
     }
 
-    public pressPlayMusic() {
+    public pressPlayMusic(): void {
         this.playBtn.addEventListener('click', ()=> {
             this.loadMusic(this.currentSound);
             if (this.playBtn.classList.contains('paused')) {
@@ -99,29 +100,29 @@ export class Player {
         });
     }
 
-    public pressNextMusic() {
+    public pressNextMusic(): void {
         this.nextBtn.addEventListener('click', () =>{
             this.nextMusic();
         });
     }
 
-    public pressPrevMusic() {
+    public pressPrevMusic(): void {
         this.prevBtn.addEventListener('click', () =>{
             this.prevMusic();
         });
     }
 
-    public pressMuteMusic() {
+    public pressMuteMusic(): void {
         this.muteBtn.addEventListener('click', () => {
             this.pressMute(); 
         });
     }
 
-    public continuePlay() {
+    public continuePlay(): void {
         this.audio.onended = this.nextMusic;
     }
 
-    public init() {
+    public init(): void {
         this.subscribeAutoPlay();
         this.timeUpdate();
         this.pressPlayMusic();

@@ -1,6 +1,7 @@
 import { GoodsGeneratorModel } from '../models/goods-generator.model';
 import { GoodJSONModel, GoodJSON, GoodModel, Good } from '../models/goods.model';
 
+
 export class GoodsGenerator implements GoodsGeneratorModel {
     public mapJsonToProducts(jsonResponse: GoodJSONModel[], goodsInCart: string[]): GoodModel[] {
         return Array.from(jsonResponse).map((jsonObject: GoodJSONModel) => {

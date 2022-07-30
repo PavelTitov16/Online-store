@@ -3,6 +3,7 @@ import { FiltersState, SortState } from '../models/state.model';
 import { Good, GoodModel } from '../models/goods.model';
 import { keys } from '../models/render.model';
 
+
 export class UpdatePageStatus {
     public state: State;
     public houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
@@ -67,13 +68,21 @@ export class UpdatePageStatus {
             } 
         });
     }
+
+    public init(): void {
+        this.updateFiltersStatus();
+        this.updateSorterStatus();
+        this.updateCategoriesStatus();
+        this.updateCartStatus();
+    }
 }
 
 
-//конст датасет
+
 //updateFiltersStatus();
 //апдейт функции в старт
 //updateSorterStatus();
 //updateCategoriesStatus();
 //апдейт функции в старт
-//число в конст
+//59
+//49

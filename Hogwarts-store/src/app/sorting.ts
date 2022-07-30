@@ -1,7 +1,7 @@
 
 import { keys } from '../models/render.model';
 import { State } from './state';
-import { Good, GoodModel } from '../models/goods.model';
+import { GoodModel } from '../models/goods.model';
 
 const enum sortCases {
     Cart = 'cart',
@@ -18,7 +18,7 @@ export class Sorting {
         this.state = new State();
     }
 
-    public sortGoods(value: string, updatedGoods: GoodModel[]) {
+    public sortGoods(value: string, updatedGoods: GoodModel[]): GoodModel[] {
         let callback;
     
         if (value === sortCases.Cart) {
@@ -51,7 +51,7 @@ export class Sorting {
         return updatedGoods.sort(callback);
     }
 
-    public subscribeOnSort(callback: () => void) {
+    public subscribeOnSort(callback: () => void): void {
         this.sortFilters.addEventListener('click', (event: MouseEvent) => {
             const selectedSortElement = event.target as HTMLInputElement;
         
