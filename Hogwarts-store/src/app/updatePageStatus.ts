@@ -1,6 +1,6 @@
 import { State } from './state';
 import { FiltersState, SortState } from '../models/state.model';
-import { Good, GoodModel } from '../models/goods.model';
+import { Good } from '../models/goods.model';
 import { keys } from '../models/render.model';
 
 

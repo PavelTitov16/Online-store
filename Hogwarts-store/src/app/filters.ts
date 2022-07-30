@@ -1,5 +1,5 @@
 import { State } from './state';
-import { Good, GoodModel } from '../models/goods.model';
+import { Good } from '../models/goods.model';
 import { keys } from '../models/render.model';
 
 
