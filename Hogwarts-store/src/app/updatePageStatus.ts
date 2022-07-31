@@ -78,12 +78,3 @@ export class UpdatePageStatus implements UpdatePageStatusModel {
     }
 }
 
-
-
-//updateFiltersStatus();
-//апдейт функции в старт
-//updateSorterStatus();
-//updateCategoriesStatus();
-//апдейт функции в старт
-//59
-//49

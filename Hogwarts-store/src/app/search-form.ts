@@ -9,7 +9,7 @@ export class SearchForm implements SearchFormModel {
 
     public searchData(data: GoodModel[]): GoodModel[] {
         const input: string = <string>this.search.value.toLowerCase();
-        const foundGoods = data.filter((good) => {
+        const foundGoods = data.filter((good: GoodModel) => {
             const currName = good.name.trim().toLowerCase();
     
             if (currName.includes(input)) {
@@ -52,5 +52,3 @@ export class SearchForm implements SearchFormModel {
         this.subscribeSearchKeydown();
     }
 }
-
-//типизация

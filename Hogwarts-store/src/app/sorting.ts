@@ -23,7 +23,7 @@ export class Sorting implements SortingModel {
     
         if (value === SortCases.Cart) {
             const names = this.state.getCart();
-            return updatedGoods.filter((good) => names.includes(good.id));
+            return updatedGoods.filter((good: GoodModel) => names.includes(good.id));
         }
     
         switch(value) {
