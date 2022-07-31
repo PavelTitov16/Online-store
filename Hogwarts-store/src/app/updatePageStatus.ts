@@ -2,9 +2,10 @@ import { State } from './state';
 import { FiltersState, SortState } from '../models/state.model';
 import { Good } from '../models/goods.model';
 import { keys } from '../models/render.model';
+import { UpdatePageStatusModel } from '../models/updatePageStatus.model';
 
 
-export class UpdatePageStatus {
+export class UpdatePageStatus implements UpdatePageStatusModel {
     public state: State;
     public houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
     public filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;

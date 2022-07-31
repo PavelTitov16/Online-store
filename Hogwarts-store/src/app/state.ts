@@ -1,8 +1,8 @@
 import { GoodModel } from '../models/goods.model';
-import { FiltersState, SortState } from '../models/state.model';
+import { StateModel, FiltersState, SortState } from '../models/state.model';
 
 
-export class State {
+export class State implements StateModel {
     private sortKey = 'sortKey';
     private filtersKey = 'filtersKey';
     private cartKey = 'cartKey';

@@ -1,8 +1,8 @@
 import { GoodModel } from '../models/goods.model';
 import { State } from './state';
+import { CartModel } from '../models/cart.model';
 
-
-export class Cart {
+export class Cart implements CartModel {
     public limitMaxNumber = 20;
     public limitMinNumber = 0;
     public slider: HTMLDivElement;

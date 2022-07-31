@@ -1,7 +1,8 @@
 import { GoodModel } from '../models/goods.model';
+import { SearchFormModel } from '../models/search-form.model';
 
 
-export class SearchForm {
+export class SearchForm implements SearchFormModel {
     public search = document.querySelector('.header-search__bar') as HTMLInputElement;
     public searchBtn = document.querySelector('.header-search__btn') as HTMLButtonElement;
     public searchLink = document.querySelector('#catalogue') as HTMLLinkElement;

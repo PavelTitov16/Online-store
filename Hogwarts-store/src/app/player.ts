@@ -5,9 +5,10 @@ import '../audio/theroomofrequirement.mp3';
 import '../audio/awindowtothepast.mp3';
 import '../audio/leavinghogwarts.mp3';
 import '../audio/harrywondrousworld.mp3';
+import { PlayerModel } from '../models/player.model';
 
 
-export class Player {
+export class Player implements PlayerModel {
     public audio = document.querySelector('.audio') as HTMLAudioElement;
     public playBtn = document.querySelector('.play') as HTMLDivElement;
     public prevBtn = document.getElementById('prev') as HTMLDivElement;

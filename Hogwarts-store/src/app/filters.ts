@@ -1,9 +1,10 @@
 import { State } from './state';
 import { Good } from '../models/goods.model';
 import { keys } from '../models/render.model';
+import { FiltersModel } from '../models/filters.model';
 
 
-export class Filters {
+export class Filters implements FiltersModel {
     public housesContainer = document.querySelector('.faculty-container__items') as HTMLDivElement;
     public filtersContainer = document.querySelector('.filtres-categories') as HTMLDivElement;
     public houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
@@ -16,6 +17,7 @@ export class Filters {
     constructor() {
         this.state = new State();
     }
+
     public selectHouse(value: string): void {
         const houseBtns = Array.from(document.querySelectorAll('.house-btn')) as HTMLInputElement[];
         houseBtns.forEach(btn => {

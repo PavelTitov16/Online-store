@@ -1,16 +1,16 @@
-
+import { SortingModel } from '../models/sorting.model';
 import { keys } from '../models/render.model';
 import { State } from './state';
 import { GoodModel } from '../models/goods.model';
 
-const enum sortCases {
+const enum SortCases {
     Cart = 'cart',
     Name_up = 'name_up',
     Name_down = 'name_down',
     Price_up = 'price_up', 
 }
 
-export class Sorting {
+export class Sorting implements SortingModel {
     public sortFilters = document.querySelector('.sorting-btns') as HTMLDivElement;
     public state: State;
 
@@ -21,23 +21,23 @@ export class Sorting {
     public sortGoods(value: string, updatedGoods: GoodModel[]): GoodModel[] {
         let callback;
     
-        if (value === sortCases.Cart) {
+        if (value === SortCases.Cart) {
             const names = this.state.getCart();
             return updatedGoods.filter((good) => names.includes(good.id));
         }
     
         switch(value) {
-        case sortCases.Name_up:
+        case SortCases.Name_up:
             callback = (a: { name: string }, b: { name: string }) =>  {
                 return (a.name > b.name ? 1 : -1);
             };
             break;
-        case sortCases.Name_down:
+        case SortCases.Name_down:
             callback = (a: { name: string }, b: { name: string }) =>  {
                 return (a.name > b.name ? -1 : 1);
             };
             break;
-        case sortCases.Price_up:
+        case SortCases.Price_up:
             callback = (a: {price: string}, b: {price: string}) =>  {
                 return Number(a.price) - Number(b.price);
             };
