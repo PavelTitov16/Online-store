@@ -6,3 +6,5 @@ test('test full goods container', () => {
     generateGoods();
     expect(slider.children).toBeTruthy;
 });
+
+//render and array of goods again :(

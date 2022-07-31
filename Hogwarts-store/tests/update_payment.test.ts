@@ -1,9 +1,10 @@
 import { noContext } from './context_inner';
 document.body.innerHTML = noContext;
-import { updatePaymentInfo, cartNum } from '../src/components/cart';
+import { Cart } from '../src/app/cart';
 
 test('test goods count value', () => {
-    updatePaymentInfo();
-    expect(cartNum).toBeVisible;
+    const cart = new Cart();
+    cart.updatePaymentInfo();
+    expect(cart.cartNum).toBeVisible;
 });
-
+//array of goods

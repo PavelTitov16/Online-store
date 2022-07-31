@@ -1,8 +1,9 @@
 import { noContext } from './context_inner';
 document.body.innerHTML = noContext;
-import { playMusic, playBtn } from '../src/components/player';
+import { Player } from '../src/app/player';
 
 test('audio play', () => {
-    playMusic();
-    expect(playBtn.classList.contains).toBe('paused');
+    const player = new Player();
+    player.playMusic();
+    expect(player.playBtn.classList.contains).toBe('paused');
 });

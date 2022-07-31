@@ -1,8 +1,10 @@
 import { noContext } from './context_inner';
 document.body.innerHTML = noContext;
-import { loadMusic, audio } from '../src/components/player';
+import { Player } from '../src/app/player';
+
 
 test('audio loaded', () => {
-    loadMusic(1);
-    expect(audio.src).toBe(String);
+    const player = new Player();
+    player.loadMusic(1);
+    expect(player.audio.src).toBe(String);
 });

@@ -1,7 +1,8 @@
 import { noContext } from './context_inner';
 document.body.innerHTML = noContext;
-import { isSearchDataExist} from '../src/components/search';
+import { SearchForm } from '../src/app/search-form';
 
 test('search input exist', () => {
-    expect(isSearchDataExist()).toBeFalsy;
+    const search = new SearchForm();
+    expect(search.isSearchDataExist()).toBeFalsy;
 });

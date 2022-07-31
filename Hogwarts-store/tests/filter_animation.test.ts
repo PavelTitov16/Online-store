@@ -8,4 +8,4 @@ test('test animation effect', () => {
     expect(slider.classList).toContain('filter');
 });
 
-
+//need to rewrite after class solution

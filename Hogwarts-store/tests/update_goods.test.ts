@@ -1,8 +1,9 @@
 import { noContext } from './context_inner';
 document.body.innerHTML = noContext;
-import { updateGoods, deleteGoods } from '../src/components/generate';
+import { App, deleteGoods } from '../src/app/app';
 
 test('test to call inner function', () => {
-    updateGoods();
+    const app = new App();
+    app.parseGoodsList();
     expect(deleteGoods).toBeCalled;
 });
