@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="assets/icons/race.ico">
+    <title>Async Race</title>
+</head>
+
+<body>
+    <header class="header-wrapper">
+        <div class="header-container">
+            <h1 class="header-container__title" id="app-title">
+                Async Race
+            </h1>
+            <nav class="header-nav">
+                <ul class="header-nav__list">
+                    <li class="header-nav__item"><a class="header-nav__link active" href="#">Garage</a></li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="../pets/index.html">Winners</a></li>
+                </ul>
+            </nav>
+            <button id="garage-btn" class="header__btn button">
+                Garage
+            </button>
+            <button id="garage-btn" class="header__btn button">
+                Winners
+            </button>
+        </div>
+    </header>
+    <main class="main-container">
+        <div class="garage-page">
+            <h2 class="main-container__title" id="main-title">
+                Garage
+            </h2>
+            <div class="main-container__panel">
+                <div class="garage-btns">
+                    <button id="garage-btn" class="header__btn button">
+                        Add cars
+                    </button>
+                    <button id="garage-btn" class="header__btn button">
+                        Let's race!
+                    </button>
+                    <button id="garage-btn" class="header__btn button">
+                        Reset race
+                    </button>
+                </div>
+                <div class="main-container__inputs">
+                    <div class="garage-input">
+                        <input type="text" placeholder="Введите название" />
+                        <input type="color" name="color-panel" id="color-changer" value="#0000ff">
+                        <button id="garage-btn" class="header__btn button">
+                            Add car
+                        </button>
+                    </div>
+                    <div class="garage-input">
+                        <input type="text" placeholder="Введите название" />
+                        <input type="color" name="color-panel" id="color-changer" value="#0000ff">
+                        <button id="garage-btn" class="header__btn button">
+                            Update car
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="main-container__tracks">
+                <div class="main-container__track">
+                    <div class="track-btns">
+                        <button id="garage-btn" class="track-btn">
+                            Select
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Remove
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Drive
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Back
+                        </button>
+                    </div>
+                    <div class="track">
+                        <hr class="line">
+                        <div class="track-items">
+                            <div class="car"></div>
+                            <div class="finish"></div>
+                        </div>
+                        <hr class="line">
+                    </div>
+                </div>
+                <div class="main-container__track">
+                    <div class="track-btns">
+                        <button id="garage-btn" class="track-btn">
+                            Select
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Remove
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Drive
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Back
+                        </button>
+                    </div>
+                    <div class="track">
+                        <hr class="line">
+                        <div class="track-items">
+                            <div class="car"></div>
+                            <div class="finish"></div>
+                        </div>
+                        <hr class="line">
+                    </div>
+                </div>
+                <div class="main-container__track">
+                    <div class="track-btns">
+                        <button id="garage-btn" class="track-btn">
+                            Select
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Remove
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Drive
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Back
+                        </button>
+                    </div>
+                    <div class="track">
+                        <hr class="line">
+                        <div class="track-items">
+                            <div class="car"></div>
+                            <div class="finish"></div>
+                        </div>
+                        <hr class="line">
+                    </div>
+                </div>
+                <div class="main-container__track">
+                    <div class="track-btns">
+                        <button id="garage-btn" class="track-btn">
+                            Select
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Remove
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Drive
+                        </button>
+                        <button id="garage-btn" class="track-btn">
+                            Back
+                        </button>
+                    </div>
+                    <div class="track">
+                        <hr class="line">
+                        <div class="track-items">
+                            <div class="car"></div>
+                            <div class="finish"></div>
+                        </div>
+                        <hr class="line">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="winners-page">
+            <table>
+                <caption><b>Winners</b></caption>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Car</th>
+                        <th>Car model</th>
+                        <th>Wins</th>
+                        <th>Best time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="car"></div>
+                        </td>
+                        <td>Nissan</td>
+                        <td>1</td>
+                        <td>10.3</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div class="car"></div>
+                        </td>
+                        <td>Dodge</td>
+                        <td>2</td>
+                        <td>9.3</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="pets-block__buttons">
+            <button class="pets-block__button" id="swipeL">
+                <img src="./assets/images/swipe-left.svg" alt="swipe left">
+            </button>
+            <button class="pets-block__button" id="leftB">
+                <img src="./assets/images/icon-left.svg" alt="arrow left">
+            </button>
+            <button class="pets-block__button" id="rightB">
+                <img src="./assets/images/icon-right.svg" alt="arrow right">
+            </button>
+            <button class="pets-block__button" id="swipeR">
+                <img src="./assets/images/swipe-right.svg" alt="swipe right">
+            </button>
+        </div>
+    </main>
+    <footer class="footer-wrapper" id="footer">
+        <div class="footer-container">
+            <div class="footer-git">
+                <p class="footer-text">2022</p>
+                <a href="https://github.com/PavelTitov16" class="github-link"></a>
+            </div>
+            <div class="footer-rss">
+                <a href="https://rs.school/js/" class="rss"></a>
+            </div>
+        </div>
+    </footer>
+</body>
