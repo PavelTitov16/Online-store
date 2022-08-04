@@ -3,6 +3,7 @@ import './api/apiProvider';
 import './api/paths';
 import './app/app';
 import './app/appController';
+import './app/appView';
 
 import App from './app/app';
 import './style.css';

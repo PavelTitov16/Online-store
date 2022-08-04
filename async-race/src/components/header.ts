@@ -1,10 +1,10 @@
-import { HeaderModel } from "../models/header.model";
+import { HeaderModel } from '../models/header.model';
 
 export class Header implements HeaderModel {
-    public template: string;
+  public template: string;
 
-    public async init(): Promise<string> {
-        return this.template = `
+  public async init(): Promise<string> {
+    this.template = `
         <header class="header-wrapper">
             <div class="header-container">
                 <h1 class="header-container__title" id="app-title">
@@ -24,11 +24,11 @@ export class Header implements HeaderModel {
                 </nav>
             </div>
         </header>`;
-    }
+    return this.template;
+  }
 
-    public async render(): Promise<string> {
-        await this.init();
-        return this.template;
-    }
+  public async render(): Promise<string> {
+    await this.init();
+    return this.template;
+  }
 }
-

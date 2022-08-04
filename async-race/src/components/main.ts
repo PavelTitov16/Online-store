@@ -1,17 +1,17 @@
-import { AppController } from "../app/appController";
-import { MainModel } from "../models/main.model";
+import { AppController } from '../app/appController';
+import { MainModel } from '../models/main.model';
 
 export class Main implements MainModel {
-    public template: string;
-    public controller: AppController;
+  public template: string;
 
-    constructor() {
-        this.controller = new AppController();
-    }
+  public controller: AppController;
 
-    public async init(): Promise<string> {
-        console.log(this);
-        return (this.template = `
+  constructor() {
+    this.controller = new AppController();
+  }
+
+  public async init(): Promise<string> {
+    this.template = `
         <main class="main-container">
         <div class="garage-page">
             <h2 class="main-container__title" id="main-title">
@@ -32,7 +32,7 @@ export class Main implements MainModel {
                 <div class="main-container__inputs">
                     <div class="garage-input">
                         <form action="" class="create-car">
-                            <input type="text" placeholder="Введите название" />
+                            <input type="text" class="garage-input__item" placeholder="Fill the name" />
                             <input type="color" name="color-panel" id="color-changer" value="#000000">
                             <button id="garage-btn" class="header__btn button">
                                 Add car
@@ -41,7 +41,7 @@ export class Main implements MainModel {
                     </div>
                     <div class="garage-input">
                         <form action="" class="update-car">
-                            <input type="text" placeholder="Введите название" />
+                            <input type="text" class="garage-input__item" placeholder="Fill the name" />
                             <input type="color" name="color-panel" id="color-changer" value="#000000">
                             <button id="garage-btn" class="header__btn button">
                                 Update car
@@ -54,15 +54,17 @@ export class Main implements MainModel {
                 ${await this.trackInit()}
             </div>
         </div>
-        </main>`);
-    }
+        </main>`;
+    return this.template;
+  }
 
-    public async trackInit(): Promise<string> {
-        await this.controller.getCars();
-        return `${ this.controller
-            .getCarsArray()
-            .map(
-                ({ name, color, id }) => `
+  public async trackInit(): Promise<string> {
+    await this.controller.getCars();
+    console.log(this.controller.getCars());
+    return `${ this.controller
+      .getCarsArray()
+      .map(
+        ({ name, color, id }) => `
                 <div class="main-container__track" id="${id}">
                     <div class="track-btns">
                         <button id="garage-btn" class="track-btn current-car" id="${id}">
@@ -82,24 +84,21 @@ export class Main implements MainModel {
                         <hr class="line">
                         <div class="track-items">
                             <div class="car-items">
-                                <div class="car"></div>
+                                <div class="car">
+                                </div>
                                 <h2 class="car-title">${name}</h2>
                             </div>
                             <div class="finish"></div>
                         </div>
                         <hr class="line">
                     </div>
-                </div>`)
-            .join("")}`;
-    }
+                </div>`
+      )
+      .join('')}`;
+  }
 
-    public async render(): Promise<string> {
-        await this.init();
-        return this.template;
-    }
+  public async render(): Promise<string> {
+    await this.init();
+    return this.template;
+  }
 }
-
-
-
-
-               

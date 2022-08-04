@@ -1,10 +1,10 @@
 :root {
     --background: black;
-    --color-border: #8453D4;
+    --color-input: #bdae82;
     --color-font: #F4F4F4;
-    --color-body: #fcf5e7;
-    --color-hover: #f1edd1;
-    --card-bg: #FAFAFA;
+    --rina: #32C2E2;
+    --color-hover: #090D10;
+    --under-gold: #C8A65F;
     --gold: #af9a1d;
 }
 
@@ -136,26 +136,27 @@ body {
 }
 
 .button {
-    background: var(--gold);
+    background: var(--under-gold);
     border-radius: 3em;
     padding: 3px;
     height: 2.5em;
-    width: 5em;
+    width: 8em;
     font-family: 'Poppins', sans-serif;
     font-style: medium;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.06em;
-    color: var(--color-font);
+    color: var(--color-hover);
     text-align: center;
     cursor: pointer;
     transition: 0.5s ease-out;
 }
 
 .button:hover {
-    background: var(--color-font);
-    color: var(--gold);
+    background: var(--color-hover);
+    color: var(--under-gold);
+    border: 2px solid var(--under-gold);
 }
 
 .header-container__title {
@@ -163,10 +164,8 @@ body {
     font-style: normal;
     font-size: 4em;
     line-height: 1em;
-    color: var(--gold);
+    color: var(--under-gold);
 }
-
-
 
 .footer-wrapper {
     width: 100%;
@@ -210,16 +209,6 @@ body {
     filter: invert(64%) sepia(90%) saturate(386%) hue-rotate(14deg) brightness(92%) contrast(90%);
 }
 
-.footer__btn {
-    background: var(--right-line);
-    border-radius: 2em;
-    height: 1.8em;
-    width: 7em;
-    display: flex;  
-    justify-content: center;
-    align-items: center; 
-}
-
 .footer-rss {
     padding: 0 3em;
     display: flex;
@@ -254,7 +243,7 @@ body {
 
 
 .main-container {
-    background: url(./assets/images/need.jpg);
+    background: url(./assets/images/underground.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -269,20 +258,22 @@ body {
 .main-container__title {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-size: 2em;
+    font-size: 3em;
     line-height: 1em;
-    color: var(--gold);
+    color: var(--under-gold);
 }
 
 .main-container__panel {
     display: flex;
     padding: 0 5em;
     justify-content: space-between;
+    margin-bottom: 2em;
 }
 
 .main-container__inputs {
-    background: var(--color-border);
-
+    display:flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .garage-btns {
@@ -319,7 +310,7 @@ body {
 
 .line {
     border: none; 
-    background: var(--gold);
+    background: var(--under-gold);
     height: 1.6px;
     width: 100%;
 }
@@ -345,7 +336,7 @@ body {
 }
 
 .car-title {
-    color:#af9a1d;
+    color:var(--under-gold);
     font-size: 16px;
 }
 
@@ -389,7 +380,7 @@ body {
 }
 
 .main-container__button:hover {
-    background: var(--gold);
+    background: var(--under-gold);
 }
 
 .main-container__button.inactive {
@@ -403,13 +394,13 @@ body {
 }
 
 .main-container__button.active {
-    border: 2px solid var(--gold);
+    border: 2px solid var(--under-gold);
     cursor: default;
 }
 
 
 .track-btn {
-    background: var(--gold);
+    background: var(--under-gold);
     border-radius: 2em;
     padding: 3px;
     height: 2em;
@@ -420,11 +411,17 @@ body {
     font-size: 14px;
     line-height: 14px;
     letter-spacing: 0.06em;
-    color: var(--color-font);
+    color: var(--color-hover);
     text-align: center;
     cursor: pointer;
     transition: 0.5s ease-out;
     margin: 0.3em;
+}
+
+.track-btn:hover {
+    background: var(--color-hover);
+    color: var(--under-gold);
+    border: 2px solid var(--under-gold);
 }
 
 .winners-page {
@@ -433,7 +430,7 @@ body {
 }
 
 table, th, td {
-    border: 2px solid var(--gold);
+    border: 2px solid var(--under-gold);
     background: black;
     color: var(--color-font);
 }
@@ -450,3 +447,31 @@ td {
     height: 3em;
 }
 
+
+.garage-input__item {
+    background: transparent;
+    border: 0.15em solid var(--under-gold);
+    border-radius: 3em;
+    background: rgba(0, 0, 0, 0.5);
+    height: 2.8em;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1em;
+    transition: 0.5s;
+}
+input.garage-input__item {
+    color: var(--under-gold);
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 1em;;
+    width: 15em;
+}
+.garage-input__item::placeholder {
+    font-family: inherit;
+    color: var(--under-gold);
+    font-size: 1.1em;
+  }

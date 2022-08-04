@@ -1,10 +1,10 @@
-import { FooterModel } from "../models/footer.model";
+import { FooterModel } from '../models/footer.model';
 
 export class Footer implements FooterModel {
-    public template: string;
+  public template: string;
 
-    public async init(): Promise<string> {
-        return this.template = `
+  public async init(): Promise<string> {
+    this.template = `
         <footer class="footer-wrapper" id="footer">
             <div class="footer-container">
                 <div class="footer-git">
@@ -16,10 +16,11 @@ export class Footer implements FooterModel {
                 </div>
             </div>
         </footer>`;
-    }
+    return this.template;
+  }
 
-    public async render(): Promise<string> {
-        await this.init();
-        return this.template;
-    }
+  public async render(): Promise<string> {
+    await this.init();
+    return this.template;
+  }
 }

@@ -1,4 +1,4 @@
-import { ViewModel } from "./view.model";
+import { ViewModel } from './view.model';
 
 export interface AppModel {
     view: ViewModel;

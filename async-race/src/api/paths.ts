@@ -1,4 +1,4 @@
-export const enum Paths {
+export enum Paths {
     Garage = '/garage',
     Winners = '/winners',
 }

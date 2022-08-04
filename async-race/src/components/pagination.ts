@@ -1,10 +1,10 @@
-import { PaginationModel } from "../models/pagination.model";
+import { PaginationModel } from '../models/pagination.model';
 
 export class Pagination implements PaginationModel {
-    public template: string;
+  public template: string;
 
-    public async init(): Promise<string> {
-        return this.template = `
+  public async init(): Promise<string> {
+    this.template = `
         <div class="main-container__buttons">
             <button class="main-container__button" id="swipeL">
                 <img src="./assets/images/swipe-left.svg" alt="swipe left">
@@ -19,10 +19,11 @@ export class Pagination implements PaginationModel {
                 <img src="./assets/images/swipe-right.svg" alt="swipe right">
             </button>
         </div> `;
-    }
+    return this.template;
+  }
 
-    public async render(): Promise<string> {
-        await this.init();
-        return this.template;
-    }
+  public async render(): Promise<string> {
+    await this.init();
+    return this.template;
+  }
 }

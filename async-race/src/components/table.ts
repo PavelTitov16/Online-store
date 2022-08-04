@@ -1,10 +1,10 @@
 import { TableModel } from '../models/table.model';
 
 export class WinnersTable implements TableModel {
-    public template: string;
+  public template: string;
 
-    public async init(): Promise<string> {
-        return this.template = `
+  public async init(): Promise<string> {
+    this.template = `
         <div class="winners-page">
             <table>
                 <caption><b>Winners</b></caption>
@@ -39,10 +39,11 @@ export class WinnersTable implements TableModel {
                 </tbody>
             </table>
         </div>`;
-    }
+    return this.template;
+  }
 
-    public async render(): Promise<string> {
-        await this.init();
-        return this.template;
-    }
+  public async render(): Promise<string> {
+    await this.init();
+    return this.template;
+  }
 }
