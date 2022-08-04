@@ -20,10 +20,8 @@ export interface UpdateCar {
 }
 
 export interface ControllerModel {
-    carsArray: Array<CarResponse>;
-
-    getCars(): Promise<void>;
-    getCar(id: number): Promise<CarResponse>;
+    getCars(page: number, limit: number): Promise<void>;
+    getCar(id: number): Promise<CarResponse | undefined>;
     createCar(body: CarRequest): Promise<void>;
     updateCar(id: number, body: CarRequest): Promise<void>;
     deleteCar(id: number): Promise<void>;

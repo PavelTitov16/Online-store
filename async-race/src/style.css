@@ -278,9 +278,9 @@ body {
 
 .garage-btns {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1em;
+
 }
 
 .main-container__tracks {
@@ -332,7 +332,15 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    filter: invert(35%) sepia(100%) saturate(368%) hue-rotate(166deg) brightness(95%) contrast(97%);
+}
+
+
+.logo {
+    width: 5em;
+    height: 2.9em;
+  fill: red;
+  -webkit-mask: url("../src/assets/images/car2.svg") no-repeat center;
+  mask: url("../src/assets/images/car2.svg") no-repeat center;
 }
 
 .car-title {
@@ -358,7 +366,7 @@ body {
 }
 
 .main-container__button {
-    background: var(--card-bg);
+    background: var(--color-font);
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
@@ -447,6 +455,11 @@ td {
     height: 3em;
 }
 
+.create-car, .update-car {
+    display: flex;
+    gap: 1.1em;
+    align-items: center;
+}
 
 .garage-input__item {
     background: transparent;
@@ -461,6 +474,7 @@ td {
     line-height: 1em;
     transition: 0.5s;
 }
+
 input.garage-input__item {
     color: var(--under-gold);
     font-family: 'Poppins', sans-serif;
@@ -470,8 +484,99 @@ input.garage-input__item {
     padding-left: 1em;;
     width: 15em;
 }
+
 .garage-input__item::placeholder {
     font-family: inherit;
     color: var(--under-gold);
     font-size: 1.1em;
-  }
+}
+
+.audio-payer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    width: 500px;
+    height: 2.5em;
+    background: transparent;
+    align-items: center;
+    border: 3px solid var(--under-gold);
+    border-radius: 2em;
+}
+
+.controls {
+    margin-left: 1em;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
+.audio-payer__btn {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    filter: invert(100%) sepia(6%) saturate(48%) hue-rotate(195deg) brightness(113%) contrast(91%);
+}
+
+.prev {
+    background-image: url('../src/assets/images/player/prev.svg');
+}
+
+.controls .prev:active {
+    transform: scale(1.8);
+}
+
+.play {
+    background-image: url('../src/assets/images/player/play.svg');
+    filter: invert(0%) sepia(6%) saturate(48%) hue-rotate(195deg) brightness(113%) contrast(91%);
+}
+
+.paused {
+    background-image: url('../src/assets/images/player/pause.svg');
+}
+
+.next {
+    background-image: url('../src/assets/images/player/skip.svg');
+}
+
+.controls .next:active {
+    transform: scale(1.8);
+}
+
+.progress-bar {
+    height: 0.6em;
+    width: 100%;
+    border-radius: 0.8em;
+    position: relative;
+    background: var(--under-gold);
+}
+
+progress::-webkit-progress-value {
+    background: var(--under-gold);
+}
+
+.progress-bar::before {
+    content: "";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border-radius: inherit;
+    background: rgb(255, 0, 0);
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.progress-controls:hover .progress-bar::before {
+    opacity: 1;
+}
+
+.mute {
+    background-image: url('../src/assets/images/player/mute.svg');
+    margin-right: 1em;
+}

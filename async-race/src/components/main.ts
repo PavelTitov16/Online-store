@@ -1,10 +1,13 @@
-import { AppController } from '../app/appController';
 import { MainModel } from '../models/main.model';
+import { state } from '../app/state';
+import '../assets/images/car2.svg';
+import { AppController } from '../app/appController';
+import { ControllerModel } from '../models/controller.model';
 
 export class Main implements MainModel {
   public template: string;
 
-  public controller: AppController;
+  public controller: ControllerModel;
 
   constructor() {
     this.controller = new AppController();
@@ -12,7 +15,7 @@ export class Main implements MainModel {
 
   public async init(): Promise<string> {
     this.template = `
-        <main class="main-container">
+        
         <div class="garage-page">
             <h2 class="main-container__title" id="main-title">
                 Garage
@@ -32,37 +35,41 @@ export class Main implements MainModel {
                 <div class="main-container__inputs">
                     <div class="garage-input">
                         <form action="" class="create-car">
-                            <input type="text" class="garage-input__item" placeholder="Fill the name" />
-                            <input type="color" name="color-panel" id="color-changer" value="#000000">
-                            <button id="garage-btn" class="header__btn button">
+                            <input type="text" id="create-input" class="garage-input__item" placeholder="Fill the name" />
+                            <input type="color" name="color-panel" id="create-color" value="#000000">
+                            <button id="create-btn" class="header__btn button garage-btn">
                                 Add car
                             </button>
                         </form>
                     </div>
                     <div class="garage-input">
                         <form action="" class="update-car">
-                            <input type="text" class="garage-input__item" placeholder="Fill the name" />
-                            <input type="color" name="color-panel" id="color-changer" value="#000000">
-                            <button id="garage-btn" class="header__btn button">
+                            <input type="text" id="update-input" class="garage-input__item" placeholder="Fill the name" />
+                            <input type="color" name="color-panel" id="update-color" value="#000000">
+                            <button id="update-btn" class="header__btn button garage-btn">
                                 Update car
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="main-container__tracks">
+            <div class="main-container__tracks" id="main-container__tracks">
                 ${await this.trackInit()}
             </div>
-        </div>
-        </main>`;
+        </div>`;
     return this.template;
   }
 
+  public async updateTrack(): Promise<void> {
+    const mainTracks = document.getElementById('main-container__tracks') as HTMLDivElement;
+    mainTracks.innerHTML = `
+      ${await this.trackInit()}
+    `;
+  }
+
   public async trackInit(): Promise<string> {
-    await this.controller.getCars();
-    console.log(this.controller.getCars());
-    return `${ this.controller
-      .getCarsArray()
+    return `${ state
+      .getCars()
       .map(
         ({ name, color, id }) => `
                 <div class="main-container__track" id="${id}">
@@ -84,8 +91,7 @@ export class Main implements MainModel {
                         <hr class="line">
                         <div class="track-items">
                             <div class="car-items">
-                                <div class="car">
-                                </div>
+                                <div class="car "></div>
                                 <h2 class="car-title">${name}</h2>
                             </div>
                             <div class="finish"></div>
@@ -100,5 +106,19 @@ export class Main implements MainModel {
   public async render(): Promise<string> {
     await this.init();
     return this.template;
+  }
+
+  public subscribeCreateCar(render: () => void) {
+    const createButton = document.getElementById('create-btn');
+    createButton?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const createInput = document.getElementById('create-input') as HTMLInputElement;
+      const createColor = document.getElementById('create-color') as HTMLInputElement;
+      console.log(createInput);
+      console.log(createColor);
+      await this.controller.createCar({ name: createInput.value, color: createColor.value });
+      render();
+    });
+    console.log(createButton);
   }
 }

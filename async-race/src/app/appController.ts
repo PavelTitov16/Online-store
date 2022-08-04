@@ -2,24 +2,35 @@ import { apiProvider } from '../api/apiProvider';
 import { Paths } from '../api/paths';
 import { CarResponse, ControllerModel, CarRequest } from '../models/controller.model';
 import { Methods } from '../api/methods';
+import { state } from './state';
+import { ResponseStatuses } from '../api/statuses';
 
 export class AppController implements ControllerModel {
-  public carsArray: Array<CarResponse> = [];
-
-  public async getCars(): Promise<void> {
-    const response = await fetch(`${apiProvider}${Paths.Garage}`, {
+  public async getCars(page = 1, limit = 7): Promise<void> {
+    const response = await fetch(`${apiProvider}${Paths.Garage}?` + new URLSearchParams({
+      _page: page.toString(),
+      _limit: limit.toString()
+    }), {
       method: Methods.Get
     });
-
-    const data = await response.json();
-    this.carsArray = data;
+    if (response.status === ResponseStatuses.Ok) {
+      const data: CarResponse[] = await response.json();
+      state.setCars(data);
+      state.setCarsAmount(Number(response.headers.get('X-Total-Count')));
+    }
   }
 
-  public async getCar(id: number): Promise<CarResponse> {
-    const response = await fetch(`${apiProvider}${Paths.Garage}/${id}`);
-    const data = await response.json();
-
-    return data;
+  public async getCar(id: number): Promise<CarResponse | undefined> {
+    try {
+      const response = await fetch(`${apiProvider}${Paths.Garage}/${id}`);
+      if (response.status === ResponseStatuses.Ok) {
+        const data = await response.json();
+        return data;
+      }
+    } catch (error) {
+      console.log(`id ${id} is not found`);
+    }
+    return Promise.resolve(undefined);
   }
 
   public async createCar(body: CarRequest): Promise<void> {
@@ -31,8 +42,9 @@ export class AppController implements ControllerModel {
       body: JSON.stringify(body)
     });
 
-    const data = await response.json();
-    this.carsArray.push(data);
+    const data: CarResponse = await response.json();
+    state.addCar(data);
+    // this.view.render();
   }
 
   public async updateCar(id: number, body: CarRequest): Promise<void> {
@@ -44,24 +56,18 @@ export class AppController implements ControllerModel {
       body: JSON.stringify(body)
     });
 
-    const data = await response.json();
-    // eslint-disable-next-line no-return-assign
-    this.carsArray = this.carsArray.map((car) => (car.id === data.id ? (car = data) : car));
+    const data: CarResponse = await response.json();
+    state.updateCar(data);
   }
 
   public async deleteCar(id: number): Promise<void> {
     const response = await fetch(`${apiProvider}${Paths.Garage}/${id}`, {
       method: Methods.Delete
     });
-    const data = await response.json();
-    this.carsArray = this.carsArray.filter((car) => car.id !== data.id);
-  }
-
-  public getCarsArray(): Array<CarResponse> {
-    return this.carsArray;
-  }
-
-  public clearList(): void {
-    this.carsArray = [];
+    if (response.status === ResponseStatuses.Ok) {
+      await this.getCars();
+    } else if (response.status === ResponseStatuses.NotFound) {
+      console.log(`id ${id} is not found`);
+    }
   }
 }

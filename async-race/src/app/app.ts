@@ -1,9 +1,12 @@
 import { AppModel } from '../models/app.model';
 import { AppController } from './appController';
 import { AppView } from './appView';
+import { Player } from '../components/player';
 
 class App implements AppModel {
   public view: AppView;
+
+  public player: Player;
 
   private controller: AppController;
 
@@ -12,9 +15,11 @@ class App implements AppModel {
     this.view = new AppView();
   }
 
-  start(): void {
-    this.controller.getCars();
-    this.view.render();
+  async start(): Promise<void> {
+    await this.controller.getCars();
+    await this.view.render();
+    this.player = new Player();
+    this.player.init();
   }
 }
 

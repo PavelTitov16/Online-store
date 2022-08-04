@@ -20,6 +20,13 @@ const baseConfig = {
         use: ['style-loader', 'css-loader']
       },
       {
+        test: /\.mp3$/i,
+        type: 'asset/resource',
+        generator: {
+            filename: './assets/audio/[name][ext]'
+        },
+      },
+      {
         test: /.(png|svg|ico|jpg|jpeg)$/i,
         type: 'asset/resource'
       },
