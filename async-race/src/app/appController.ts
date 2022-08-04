@@ -1,13 +1,14 @@
 import { apiProvider } from '../api/apiProvider';
 import { Paths } from '../api/paths';
-import { GarageController, CarResponse } from '../models/garage.model';
+import { CarResponse, ControllerModel, CarRequest } from '../models/controller.model';
+import { Methods } from '../api/methods';
 
-class AppController implements GarageController {
+export class AppController implements ControllerModel {
     public carsArray: Array<CarResponse> = [];
 
     public async getCars(): Promise<void> {
       const response = await fetch(`${apiProvider}${Paths.Garage}`, {
-        method: 'GET',
+        method: Methods.Get,
       });
 
       const data = await response.json();
@@ -20,26 +21,26 @@ class AppController implements GarageController {
       return data;
     }
 
-    public async createCar(): Promise<void> {
+    public async createCar(body: CarRequest): Promise<void> {
       const response = await fetch(`${apiProvider}${Paths.Garage}`, {
-        method: 'POST',
+        method: Methods.Post,
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(),
+        body: JSON.stringify(body),
       });
 
       const data = await response.json();
       this.carsArray.push(data);
     }
 
-    public async updateCar(id: number): Promise<void> {
+    public async updateCar(id: number, body: CarRequest): Promise<void> {
       const response = await fetch(`${apiProvider}${Paths.Garage}/${id}`, {
-        method: 'PUT',
+        method: Methods.Put,
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(),
+        body: JSON.stringify(body),
       });
 
       const data = await response.json();
@@ -48,7 +49,7 @@ class AppController implements GarageController {
 
     public async deleteCar(id: number): Promise<void> {
       const response = await fetch(`${apiProvider}${Paths.Garage}/${id}`, {
-        method: 'DELETE',
+        method: Methods.Delete,
       });
       const data = await response.json();
       this.carsArray = this.carsArray.filter((car) => car.id !== data.id);
@@ -61,9 +62,4 @@ class AppController implements GarageController {
     public clearList(): void {
       this.carsArray = [];
     }
-}
-
-export const garage = new AppController();
-
-
-          
+} 

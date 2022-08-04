@@ -130,6 +130,11 @@ body {
     max-width: 108em;
 }
 
+.header-nav {
+    display: flex;
+    gap: 5em;
+}
+
 .button {
     background: var(--gold);
     border-radius: 3em;
@@ -325,6 +330,10 @@ body {
     justify-content: space-between;
 }
 
+.car-items {
+    display: flex;
+}
+
 .car {
     width: 5em;
     height: 2.9em;
@@ -333,6 +342,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     filter: invert(35%) sepia(100%) saturate(368%) hue-rotate(166deg) brightness(95%) contrast(97%);
+}
+
+.car-title {
+    color:#af9a1d;
+    font-size: 16px;
 }
 
 .finish {
@@ -346,13 +360,13 @@ body {
 }
 
 
-.pets-block__buttons {
+.main-container__buttons {
     display: flex;
     justify-content: center;
     gap: 5px;
 }
 
-.pets-block__button {
+.main-container__button {
     background: var(--card-bg);
     font-family: 'Georgia';
     font-style: normal;
@@ -374,21 +388,21 @@ body {
     align-items: center;
 }
 
-.pets-block__button:hover {
+.main-container__button:hover {
     background: var(--gold);
 }
 
-.pets-block__button.inactive {
+.main-container__button.inactive {
     background: transparent;
     border: 2px solid var(--color-border);
     cursor: default;
 }
 
-.pets-block__button.inactive img {
+.main-container__button.inactive img {
     filter: invert(80%) sepia(0%) saturate(1267%) hue-rotate(229deg) brightness(98%) contrast(94%);
 }
 
-.pets-block__button.active {
+.main-container__button.active {
     border: 2px solid var(--gold);
     cursor: default;
 }
@@ -435,3 +449,4 @@ td {
     width: 6em;
     height: 3em;
 }
+

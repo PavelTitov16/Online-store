@@ -17,17 +17,17 @@
                 Async Race
             </h1>
             <nav class="header-nav">
-                <ul class="header-nav__list">
-                    <li class="header-nav__item"><a class="header-nav__link active" href="#">Garage</a></li>
-                    <li class="header-nav__item"><a class="header-nav__link" href="../pets/index.html">Winners</a></li>
-                </ul>
+                <div class="header-nav__item">
+                    <button id="garage-btn" class="header__btn button">
+                        Garage
+                    </button>
+                </div>
+                <div class="header-nav__item">
+                    <button id="garage-btn" class="header__btn button">
+                        Winners
+                    </button>
+                </div>
             </nav>
-            <button id="garage-btn" class="header__btn button">
-                Garage
-            </button>
-            <button id="garage-btn" class="header__btn button">
-                Winners
-            </button>
         </div>
     </header>
     <main class="main-container">
@@ -49,18 +49,22 @@
                 </div>
                 <div class="main-container__inputs">
                     <div class="garage-input">
-                        <input type="text" placeholder="Введите название" />
-                        <input type="color" name="color-panel" id="color-changer" value="#0000ff">
-                        <button id="garage-btn" class="header__btn button">
-                            Add car
-                        </button>
+                        <form action="" class="create-car">
+                            <input type="text" placeholder="Введите название" />
+                            <input type="color" name="color-panel" id="color-changer" value="#000000">
+                            <button id="garage-btn" class="header__btn button">
+                                Add car
+                            </button>
+                        </form>
                     </div>
                     <div class="garage-input">
-                        <input type="text" placeholder="Введите название" />
-                        <input type="color" name="color-panel" id="color-changer" value="#0000ff">
-                        <button id="garage-btn" class="header__btn button">
-                            Update car
-                        </button>
+                        <form action="" class="update-car">
+                            <input type="text" placeholder="Введите название" />
+                            <input type="color" name="color-panel" id="color-changer" value="#000000">
+                            <button id="garage-btn" class="header__btn button">
+                                Update car
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -83,86 +87,16 @@
                     <div class="track">
                         <hr class="line">
                         <div class="track-items">
-                            <div class="car"></div>
+                            <div class="car-items">
+                                <div class="car"></div>
+                                <h2 class="car-title">BMW</h2>
+                            </div>
                             <div class="finish"></div>
                         </div>
                         <hr class="line">
                     </div>
                 </div>
-                <div class="main-container__track">
-                    <div class="track-btns">
-                        <button id="garage-btn" class="track-btn">
-                            Select
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Remove
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Drive
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Back
-                        </button>
-                    </div>
-                    <div class="track">
-                        <hr class="line">
-                        <div class="track-items">
-                            <div class="car"></div>
-                            <div class="finish"></div>
-                        </div>
-                        <hr class="line">
-                    </div>
-                </div>
-                <div class="main-container__track">
-                    <div class="track-btns">
-                        <button id="garage-btn" class="track-btn">
-                            Select
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Remove
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Drive
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Back
-                        </button>
-                    </div>
-                    <div class="track">
-                        <hr class="line">
-                        <div class="track-items">
-                            <div class="car"></div>
-                            <div class="finish"></div>
-                        </div>
-                        <hr class="line">
-                    </div>
-                </div>
-                <div class="main-container__track">
-                    <div class="track-btns">
-                        <button id="garage-btn" class="track-btn">
-                            Select
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Remove
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Drive
-                        </button>
-                        <button id="garage-btn" class="track-btn">
-                            Back
-                        </button>
-                    </div>
-                    <div class="track">
-                        <hr class="line">
-                        <div class="track-items">
-                            <div class="car"></div>
-                            <div class="finish"></div>
-                        </div>
-                        <hr class="line">
-                    </div>
-                </div>
-            </div>
-        </div>
+                
         <div class="winners-page">
             <table>
                 <caption><b>Winners</b></caption>
@@ -194,21 +128,20 @@
                         <td>2</td>
                         <td>9.3</td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
-        <div class="pets-block__buttons">
-            <button class="pets-block__button" id="swipeL">
+        <div class="main-container__buttons">
+            <button class="main-container__button" id="swipeL">
                 <img src="./assets/images/swipe-left.svg" alt="swipe left">
             </button>
-            <button class="pets-block__button" id="leftB">
+            <button class="main-container__button" id="leftB">
                 <img src="./assets/images/icon-left.svg" alt="arrow left">
             </button>
-            <button class="pets-block__button" id="rightB">
+            <button class="main-container__button" id="rightB">
                 <img src="./assets/images/icon-right.svg" alt="arrow right">
             </button>
-            <button class="pets-block__button" id="swipeR">
+            <button class="main-container__button" id="swipeR">
                 <img src="./assets/images/swipe-right.svg" alt="swipe right">
             </button>
         </div>
