@@ -132,7 +132,7 @@ body {
 
 .header-nav {
     display: flex;
-    gap: 5em;
+    gap: 3em;
 }
 
 .button {
@@ -162,7 +162,7 @@ body {
 .header-container__title {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-size: 4em;
+    font-size: 3.3em;
     line-height: 1em;
     color: var(--under-gold);
 }
@@ -250,7 +250,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 80vh;
-    padding: 0 1em;
+    padding: 1em;
     gap: 2em;
     text-align: center;
 }
@@ -328,19 +328,6 @@ body {
 .car {
     width: 5em;
     height: 2.9em;
-    background-image: url("../src/assets/images/car2.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-
-.logo {
-    width: 5em;
-    height: 2.9em;
-  fill: red;
-  -webkit-mask: url("../src/assets/images/car2.svg") no-repeat center;
-  mask: url("../src/assets/images/car2.svg") no-repeat center;
 }
 
 .car-title {
@@ -495,8 +482,8 @@ input.garage-input__item {
     display: flex;
     justify-content: space-between;
     gap: 1em;
-    width: 500px;
-    height: 2.5em;
+    width: 33em;
+    height: 3em;
     background: transparent;
     align-items: center;
     border: 3px solid var(--under-gold);

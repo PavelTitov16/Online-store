@@ -8,7 +8,7 @@ export class Header implements HeaderModel {
         <header class="header-wrapper">
             <div class="header-container">
                 <h1 class="header-container__title" id="app-title">
-                    Async Race
+                    Need for Promise
                 </h1>
                 <div class="audio-payer">
                   <audio class="audio" id="audio"></audio>

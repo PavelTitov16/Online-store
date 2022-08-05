@@ -39,9 +39,6 @@ export class Pagination implements PaginationModel {
   public isNextActive(): boolean {
     const isMorePages = state.getCarsAmount() > CARS_LIMIT_PER_PAGE;
     const isNotLastPage = state.getPage() * CARS_LIMIT_PER_PAGE < state.getCarsAmount();
-    console.log(isMorePages);
-    console.log(isNotLastPage);
-    console.log(state.getCarsAmount());
     return isMorePages && isNotLastPage;
   }
 
@@ -72,9 +69,32 @@ export class Pagination implements PaginationModel {
   public subscribeOnPrev(render: () => void) {
     const prevBtn = document.getElementById('leftB');
     prevBtn?.addEventListener('click', async (event: MouseEvent) => {
-      console.log(prevBtn);
       event.preventDefault();
       const currentPage = state.getPage() - 1;
+      await this.controller.getCars(currentPage);
+      state.setPage(currentPage);
+      render();
+    });
+  }
+
+  public subscribeOnStart(render: () => void) {
+    const swipeToStartBtn = document.getElementById('swipeL');
+    swipeToStartBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const currentPage = 1;
+      await this.controller.getCars(currentPage);
+      state.setPage(currentPage);
+      render();
+    });
+  }
+
+  public subscribeOnEnd(render: () => void) {
+    const swipeToEndBtn = document.getElementById('swipeR');
+    const carsPerPage = 7;
+    const carsAmount: number = state.getCarsAmount();
+    swipeToEndBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const currentPage = Math.ceil(carsAmount / carsPerPage);
       await this.controller.getCars(currentPage);
       state.setPage(currentPage);
       render();

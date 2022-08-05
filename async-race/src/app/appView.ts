@@ -1,4 +1,3 @@
-import { AppController } from './appController';
 import { Header } from '../components/header';
 import { Main } from '../components/main';
 import { Footer } from '../components/footer';
@@ -39,6 +38,8 @@ export class AppView implements ViewModel {
   public subscribe(): void {
     this.pagination.subscribeOnNext(this.updateMain.bind(this));
     this.pagination.subscribeOnPrev(this.updateMain.bind(this));
+    this.pagination.subscribeOnStart(this.updateMain.bind(this));
+    this.pagination.subscribeOnEnd(this.updateMain.bind(this));
   }
 
   public async updateMain(): Promise<void> {

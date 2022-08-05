@@ -1,6 +1,6 @@
 import { MainModel } from '../models/main.model';
 import { state } from '../app/state';
-import '../assets/images/car2.svg';
+import '../assets/images/sprite_car.svg';
 import { AppController } from '../app/appController';
 import { ControllerModel } from '../models/controller.model';
 
@@ -68,6 +68,7 @@ export class Main implements MainModel {
   }
 
   public async trackInit(): Promise<string> {
+    console.log(state.getCars());
     return `${ state
       .getCars()
       .map(
@@ -91,7 +92,11 @@ export class Main implements MainModel {
                         <hr class="line">
                         <div class="track-items">
                             <div class="car-items">
-                                <div class="car "></div>
+                                <div class="car" style="fill: ${color}">
+                                    <svg class="car">
+                                        <use xlink:href="../assets/images/sprite_car.svg#car"></use>
+                                    </svg>
+                                </div>
                                 <h2 class="car-title">${name}</h2>
                             </div>
                             <div class="finish"></div>
