@@ -4,6 +4,7 @@ import '../assets/images/sprite_car.svg';
 import { AppController } from '../app/appController';
 import { ControllerModel } from '../models/controller.model';
 import { generateCars } from './carsGeneration';
+import { CARS_LIMIT_PER_PAGE } from '../app/consts';
 
 export class Main implements MainModel {
   public template: string;
@@ -69,23 +70,22 @@ export class Main implements MainModel {
   }
 
   public async trackInit(): Promise<string> {
-    console.log(state.getCars());
     return `${ state
       .getCars()
       .map(
         ({ name, color, id }) => `
                 <div class="main-container__track" id="${id}">
-                    <div class="track-btns id="${id}">
-                        <button id="select-btn" class="track-btn current-car">
+                    <div class="track-btns">
+                        <button id="select-btn-${id}" class="track-btn">
                             Select
                         </button>
-                        <button id="remove-btn" class="track-btn">
+                        <button id="remove-btn-${id}" class="track-btn">
                             Remove
                         </button>
-                        <button id="drive-btn" class="track-btn">
+                        <button id="drive-btn-${id}" class="track-btn">
                             Drive
                         </button>
-                        <button id="back-btn" class="track-btn">
+                        <button id="back-btn-${id}" class="track-btn">
                             Back
                         </button>
                     </div>
@@ -125,25 +125,50 @@ export class Main implements MainModel {
     });
   }
 
+  public updatePanelStatus() {
+    const selectedId = state.getSelectedCar();
+    const updateInput = document.getElementById('update-input') as HTMLInputElement;
+    const updateColor = document.getElementById('update-color') as HTMLInputElement;
+    const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
+    if (selectedId) {
+      const selectedCar = state.getCars().find((car) => car.id === selectedId);
+      if (selectedCar) {
+        updateInput.disabled = false;
+        updateColor.disabled = false;
+        updateBtn.disabled = false;
+        updateInput.value = selectedCar.name;
+        updateColor.value = selectedCar.color;
+      }
+    } else {
+      updateInput.disabled = true;
+      updateColor.disabled = true;
+      updateBtn.disabled = true;
+    }
+  }
+
   public subscribeSelectCar(): void {
-    const selectBtn = document.getElementById('select-btn');
-    selectBtn?.addEventListener('click', async (event: MouseEvent) => {
+    const carsContainer = document.getElementById('main-container__tracks');
+    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
-      const selectedCar = selectBtn.parentNode as HTMLDivElement;
-      state.setSelectedCar(Number(selectedCar.id));
+      const selectBtn = event.target as HTMLButtonElement;
+      if (selectBtn.id.includes('select-btn')) {
+        const selectedId = Number(selectBtn.id.split('-').pop());
+        state.setSelectedCar(selectedId);
+        this.updatePanelStatus();
+      }
     });
   }
 
   public subscribeUpdateCar(render: () => void): void {
-    const updateBtn = document.getElementById('update-btn');
-    const selectedCar: number | null = state.getSelectedCar();
+    const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
     updateBtn?.addEventListener('click', async (event: MouseEvent) => {
+      const selectedId = state.getSelectedCar();
       event.preventDefault();
       const updateInput = document.getElementById('update-input') as HTMLInputElement;
       const updateColor = document.getElementById('update-color') as HTMLInputElement;
-      if (typeof (selectedCar) === 'number') {
+      if (selectedId) {
         await this.controller.updateCar(
-          selectedCar,
+          selectedId,
           { name: updateInput.value, color: updateColor.value }
         );
         render();
@@ -152,12 +177,14 @@ export class Main implements MainModel {
   }
 
   public subscribeDeleteCar(render: () => void): void {
-    const deleteBtn = document.getElementById('delete-btn');
-    deleteBtn?.addEventListener('click', async (event: MouseEvent) => {
+    const carsContainer = document.getElementById('main-container__tracks');
+    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
-      const selectedCar = state.getSelectedCar();
-      if (typeof (selectedCar) === 'number') {
-        await this.controller.deleteCar(selectedCar);
+      const deleteBtn = event.target as HTMLButtonElement;
+      if (deleteBtn.id.includes('remove-btn')) {
+        const selectedId = Number(deleteBtn.id.split('-').pop());
+        await this.controller.deleteCar(selectedId);
+        await this.controller.getCars(state.getPage(), CARS_LIMIT_PER_PAGE);
         render();
       }
     });
@@ -167,9 +194,15 @@ export class Main implements MainModel {
     const addCarsBtn = document.getElementById('addCars-btn');
     addCarsBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
+      const arrayForCars = [];
+
       for (let i = 0; i < 100; i += 1) {
-        this.controller.createCar(generateCars());
+        arrayForCars.push(generateCars());
       }
+
+      await Promise.all(arrayForCars.map(async (item) => {
+        await this.controller.createCar(item);
+      }));
       render();
     });
   }

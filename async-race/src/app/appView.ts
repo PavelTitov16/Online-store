@@ -40,6 +40,9 @@ export class AppView implements ViewModel {
     this.pagination.subscribeOnPrev(this.updateMain.bind(this));
     this.pagination.subscribeOnStart(this.updateMain.bind(this));
     this.pagination.subscribeOnEnd(this.updateMain.bind(this));
+    this.main.subscribeSelectCar();
+    this.main.subscribeUpdateCar(this.updateMain.bind(this));
+    this.main.subscribeDeleteCar(this.updateMain.bind(this));
   }
 
   public async updateMain(): Promise<void> {
@@ -54,5 +57,6 @@ export class AppView implements ViewModel {
     this.subscribe();
     this.main.subscribeCreateCar(this.updateMain.bind(this));
     this.main.subscribeAddCars(this.updateMain.bind(this));
+    this.main.updatePanelStatus();
   }
 }

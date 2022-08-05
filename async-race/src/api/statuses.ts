@@ -6,3 +6,9 @@ export enum ResponseStatuses {
     TooManyRequests = 429,
     InternalServerError = 500,
 }
+
+export enum CarStatuses {
+    Started = 'started',
+    Stopped = 'stopped',
+    Drive = 'drive'
+}
