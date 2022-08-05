@@ -69,6 +69,10 @@ class State {
   public getPage(): number {
     return this.state.page;
   }
+
+  public getSelectedCar(): number | null {
+    return this.state.selectedCarId;
+  }
 }
 
 export const state = new State();

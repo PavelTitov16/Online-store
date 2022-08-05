@@ -3,6 +3,7 @@ import { state } from '../app/state';
 import '../assets/images/sprite_car.svg';
 import { AppController } from '../app/appController';
 import { ControllerModel } from '../models/controller.model';
+import { generateCars } from './carsGeneration';
 
 export class Main implements MainModel {
   public template: string;
@@ -22,13 +23,13 @@ export class Main implements MainModel {
             </h2>
             <div class="main-container__panel">
                 <div class="garage-btns">
-                    <button id="garage-btn" class="header__btn button">
+                    <button id="addCars-btn" class="header__btn button">
                         Add cars
                     </button>
-                    <button id="garage-btn" class="header__btn button">
+                    <button id="race-btn" class="header__btn button">
                         Let's race!
                     </button>
-                    <button id="garage-btn" class="header__btn button">
+                    <button id="reset-btn" class="header__btn button">
                         Reset race
                     </button>
                 </div>
@@ -74,17 +75,17 @@ export class Main implements MainModel {
       .map(
         ({ name, color, id }) => `
                 <div class="main-container__track" id="${id}">
-                    <div class="track-btns">
-                        <button id="garage-btn" class="track-btn current-car" id="${id}">
+                    <div class="track-btns id="${id}">
+                        <button id="select-btn" class="track-btn current-car">
                             Select
                         </button>
-                        <button id="garage-btn" class="track-btn">
+                        <button id="remove-btn" class="track-btn">
                             Remove
                         </button>
-                        <button id="garage-btn" class="track-btn">
+                        <button id="drive-btn" class="track-btn">
                             Drive
                         </button>
-                        <button id="garage-btn" class="track-btn">
+                        <button id="back-btn" class="track-btn">
                             Back
                         </button>
                     </div>
@@ -113,17 +114,63 @@ export class Main implements MainModel {
     return this.template;
   }
 
-  public subscribeCreateCar(render: () => void) {
-    const createButton = document.getElementById('create-btn');
-    createButton?.addEventListener('click', async (event: MouseEvent) => {
+  public subscribeCreateCar(render: () => void): void {
+    const createBtn = document.getElementById('create-btn');
+    createBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const createInput = document.getElementById('create-input') as HTMLInputElement;
       const createColor = document.getElementById('create-color') as HTMLInputElement;
-      console.log(createInput);
-      console.log(createColor);
       await this.controller.createCar({ name: createInput.value, color: createColor.value });
       render();
     });
-    console.log(createButton);
+  }
+
+  public subscribeSelectCar(): void {
+    const selectBtn = document.getElementById('select-btn');
+    selectBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const selectedCar = selectBtn.parentNode as HTMLDivElement;
+      state.setSelectedCar(Number(selectedCar.id));
+    });
+  }
+
+  public subscribeUpdateCar(render: () => void): void {
+    const updateBtn = document.getElementById('update-btn');
+    const selectedCar: number | null = state.getSelectedCar();
+    updateBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const updateInput = document.getElementById('update-input') as HTMLInputElement;
+      const updateColor = document.getElementById('update-color') as HTMLInputElement;
+      if (typeof (selectedCar) === 'number') {
+        await this.controller.updateCar(
+          selectedCar,
+          { name: updateInput.value, color: updateColor.value }
+        );
+        render();
+      }
+    });
+  }
+
+  public subscribeDeleteCar(render: () => void): void {
+    const deleteBtn = document.getElementById('delete-btn');
+    deleteBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const selectedCar = state.getSelectedCar();
+      if (typeof (selectedCar) === 'number') {
+        await this.controller.deleteCar(selectedCar);
+        render();
+      }
+    });
+  }
+
+  public subscribeAddCars(render: () => void): void {
+    const addCarsBtn = document.getElementById('addCars-btn');
+    addCarsBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      for (let i = 0; i < 100; i += 1) {
+        this.controller.createCar(generateCars());
+      }
+      render();
+    });
   }
 }

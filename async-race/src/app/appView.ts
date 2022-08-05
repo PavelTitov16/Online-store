@@ -53,5 +53,6 @@ export class AppView implements ViewModel {
     (document.querySelector('body') as HTMLBodyElement).innerHTML = this.template;
     this.subscribe();
     this.main.subscribeCreateCar(this.updateMain.bind(this));
+    this.main.subscribeAddCars(this.updateMain.bind(this));
   }
 }

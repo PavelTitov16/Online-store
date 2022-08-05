@@ -57,12 +57,18 @@ export class Pagination implements PaginationModel {
 
   public subscribeOnNext(render: () => void) {
     const nextBtn = document.getElementById('rightB');
+    let currentPage = state.getPage();
+    const carsPerPage = 7;
+    const carsAmount: number = state.getCarsAmount();
+    const pageLimit = Math.ceil(carsAmount / carsPerPage);
     nextBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
-      const currentPage = state.getPage() + 1;
-      await this.controller.getCars(currentPage);
-      state.setPage(currentPage);
-      render();
+      if (currentPage < pageLimit) {
+        currentPage += 1;
+        await this.controller.getCars(currentPage);
+        state.setPage(currentPage);
+        render();
+      }
     });
   }
 
@@ -92,9 +98,9 @@ export class Pagination implements PaginationModel {
     const swipeToEndBtn = document.getElementById('swipeR');
     const carsPerPage = 7;
     const carsAmount: number = state.getCarsAmount();
+    const currentPage = Math.ceil(carsAmount / carsPerPage);
     swipeToEndBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
-      const currentPage = Math.ceil(carsAmount / carsPerPage);
       await this.controller.getCars(currentPage);
       state.setPage(currentPage);
       render();
