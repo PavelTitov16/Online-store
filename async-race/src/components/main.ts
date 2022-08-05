@@ -5,14 +5,18 @@ import { AppController } from '../app/appController';
 import { ControllerModel } from '../models/controller.model';
 import { generateCars } from './carsGeneration';
 import { CARS_LIMIT_PER_PAGE } from '../app/consts';
+import { CarController } from '../app/carController';
 
 export class Main implements MainModel {
   public template: string;
 
   public controller: ControllerModel;
 
+  public carController: CarController;
+
   constructor() {
     this.controller = new AppController();
+    this.carController = new CarController();
   }
 
   public async init(): Promise<string> {
@@ -204,6 +208,48 @@ export class Main implements MainModel {
         await this.controller.createCar(item);
       }));
       render();
+    });
+  }
+
+  public async subscribeOnStart() {
+    const carsContainer = document.getElementById('main-container__tracks');
+    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const driveBtn = event.target as HTMLButtonElement;
+      if (driveBtn.id.includes('drive-btn')) {
+        const drivenCarId = Number(driveBtn.id.split('-').pop());
+        await this.carController.raceCar(drivenCarId);
+      }
+    });
+  }
+
+  public async subscribeOnStop() {
+    const carsContainer = document.getElementById('main-container__tracks');
+    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const stopBtn = event.target as HTMLButtonElement;
+      if (stopBtn.id.includes('back-btn')) {
+        const stoppedCarId = Number(stopBtn.id.split('-').pop());
+        await this.carController.stopCar(stoppedCarId);
+      }
+    });
+  }
+
+  public async subscribeOnAsyncRace() {
+    const raceBtn = document.getElementById('race-btn');
+    raceBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const carsIds = state.getCars().map((car) => car.id);
+      await this.carController.raceCars(carsIds);
+    });
+  }
+
+  public async subscribeOnResetRace() {
+    const resetBtn = document.getElementById('reset-btn');
+    resetBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const carsIds = state.getCars().map((car) => car.id);
+      await this.carController.resetCars(carsIds);
     });
   }
 }

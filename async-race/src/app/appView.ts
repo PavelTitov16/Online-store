@@ -43,6 +43,10 @@ export class AppView implements ViewModel {
     this.main.subscribeSelectCar();
     this.main.subscribeUpdateCar(this.updateMain.bind(this));
     this.main.subscribeDeleteCar(this.updateMain.bind(this));
+    this.main.subscribeOnStart();
+    this.main.subscribeOnStop();
+    this.main.subscribeOnAsyncRace();
+    this.main.subscribeOnResetRace();
   }
 
   public async updateMain(): Promise<void> {

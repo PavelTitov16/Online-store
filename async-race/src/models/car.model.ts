@@ -3,6 +3,6 @@ export interface EngineResponse {
     distance: number;
 }
 
-export interface SwitchEngine {
+export interface EngineStatus {
     success: boolean;
 }

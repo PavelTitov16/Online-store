@@ -1,3 +1,4 @@
+import { EngineResponse } from '../models/car.model';
 import { CarResponse } from '../models/controller.model';
 import { StateModel } from '../models/state.model';
 import { CARS_LIMIT_PER_PAGE } from './consts';
@@ -14,7 +15,8 @@ class State {
       cars: [],
       carsAmount: 0,
       selectedCarId: null,
-      page: 1
+      page: 1,
+      carsChars: {}
     };
   }
 
@@ -72,6 +74,18 @@ class State {
 
   public getSelectedCar(): number | null {
     return this.state.selectedCarId;
+  }
+
+  public setCarChars(id: number, chars: EngineResponse) {
+    this.state.carsChars[id] = chars;
+  }
+
+  public deleteCarChars(id: number) {
+    delete this.state.carsChars[id];
+  }
+
+  public getCharsByCarId(id: number) {
+    return this.state.carsChars[id];
   }
 }
 
