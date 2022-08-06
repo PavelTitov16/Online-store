@@ -102,7 +102,7 @@ export class Main implements MainModel {
                             Back
                         </button>
                     </div>
-                    <div class="track">
+                    <div class="track" id="track">
                         <hr class="line">
                         <div class="track-items">
                             <div class="car-items">
