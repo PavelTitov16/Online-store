@@ -99,7 +99,7 @@ export class Main implements MainModel {
                             <div class="car-items">
                                 <div class="car" style="fill: ${color}">
                                     <svg class="car">
-                                        <use xlink:href="../assets/images/sprite_car.svg#car"></use>
+                                        <use xlink:href="assets/images/sprite_car.svg#car"></use>
                                     </svg>
                                 </div>
                                 <h2 class="car-title">${name}</h2>
