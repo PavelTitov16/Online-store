@@ -42,7 +42,7 @@ export class Main implements MainModel {
                     <div class="garage-input">
                         <form action="" class="create-car">
                             <input type="text" id="create-input" class="garage-input__item" placeholder="Fill the name" />
-                            <input type="color" name="color-panel" id="create-color" value="#000000">
+                            <input type="color" name="color-panel" id="create-color" class="garage-input__item palette" value="#000000">
                             <button id="create-btn" class="header__btn button garage-btn">
                                 Add car
                             </button>
@@ -51,7 +51,7 @@ export class Main implements MainModel {
                     <div class="garage-input">
                         <form action="" class="update-car">
                             <input type="text" id="update-input" class="garage-input__item" placeholder="Fill the name" />
-                            <input type="color" name="color-panel" id="update-color" value="#000000">
+                            <input type="color" name="color-panel" id="update-color" class="garage-input__item palette" value="#000000">
                             <button id="update-btn" class="header__btn button garage-btn">
                                 Update car
                             </button>

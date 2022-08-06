@@ -6,7 +6,6 @@ import './app/appController';
 import './app/appView';
 
 import App from './app/app';
-import './style.css';
 import { AppModel } from './models/app.model';
 
 const app: AppModel = new App();

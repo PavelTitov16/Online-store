@@ -206,7 +206,7 @@ body {
 }
 
 .github-link:hover {
-    filter: invert(64%) sepia(90%) saturate(386%) hue-rotate(14deg) brightness(92%) contrast(90%);
+    filter: invert(54%) sepia(88%) saturate(380%) hue-rotate(14deg) brightness(93%) contrast(94%);
 }
 
 .footer-rss {
@@ -238,7 +238,7 @@ body {
 }
 
 .rss:hover {
-    filter: invert(60%) sepia(29%) saturate(2354%) hue-rotate(19deg) brightness(96%) contrast(77%);
+    filter: invert(54%) sepia(88%) saturate(380%) hue-rotate(14deg) brightness(93%) contrast(94%);
 }
 
 
@@ -453,7 +453,6 @@ td {
 }
 
 .garage-input__item {
-    background: transparent;
     border: 0.15em solid var(--under-gold);
     border-radius: 3em;
     background: rgba(0, 0, 0, 0.5);
@@ -470,16 +469,32 @@ input.garage-input__item {
     color: var(--under-gold);
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.1em;
     padding-left: 1em;;
     width: 15em;
+}
+
+input.garage-input__item:disabled {
+    color: var(--color-hover);
+}
+
+input.palette {
+    background: var(--under-gold);
+    width: 5em;
+    border-radius: 3em;
+    cursor: pointer;
+    padding: 0.1em 0.6em;
 }
 
 .garage-input__item::placeholder {
     font-family: inherit;
     color: var(--under-gold);
     font-size: 1.1em;
+}
+
+.button:disabled {
+    color: var(--color-hover);
 }
 
 .audio-payer {
