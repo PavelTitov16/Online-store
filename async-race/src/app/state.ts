@@ -16,7 +16,8 @@ class State {
       carsAmount: 0,
       selectedCarId: null,
       page: 1,
-      carsChars: {}
+      carsChars: {},
+      winners: []
     };
   }
 

@@ -7,4 +7,5 @@ export interface StateModel {
     selectedCarId: number | null;
     page: number;
     carsChars: {[id: number]: EngineResponse }
+    winners: []
 }

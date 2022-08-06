@@ -57,9 +57,13 @@ export class Player implements PlayerModel {
   }
 
   public nextMusic(): void {
+    console.log(this.playList.length, 'before');
+    console.log(this.currentSound, 'before');
     this.currentSound += 1;
     if (this.currentSound > this.playList.length - 1) {
       this.currentSound = 0;
+      console.log(this.playList.length, 'after');
+      console.log(this.currentSound, 'after');
     }
 
     this.loadMusic(this.currentSound);

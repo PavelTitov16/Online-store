@@ -4,6 +4,7 @@ import { EngineResponse, EngineStatus } from '../models/car.model';
 import { Paths } from '../api/paths';
 import { Methods } from '../api/methods';
 import { state } from './state';
+import { animateCar, stopCar } from './animation';
 
 export class CarController {
   public async startCar(id: number): Promise<EngineResponse> {
@@ -20,6 +21,7 @@ export class CarController {
     });
     const data: EngineResponse = await response.json();
     state.deleteCarChars(id);
+    stopCar(id);
     return data;
   }
 
@@ -28,7 +30,7 @@ export class CarController {
       method: Methods.Patch
     });
     const data = await response.json();
-
+    animateCar(id);
     return data;
   }
 

@@ -21,6 +21,9 @@ export class Pagination implements PaginationModel {
             <button class="main-container__button ${this.isPrevActive() ? '' : 'inactive'}" id="leftB">
                 <img src="./assets/images/icon-left.svg" alt="arrow left">
             </button>
+            <button class="main-container__button inactive" id="page-holder">
+              ${await state.getPage()}
+            </button>
             <button class="main-container__button ${this.isNextActive() ? '' : 'inactive'}" id="rightB">
                 <img src="./assets/images/icon-right.svg" alt="arrow right">
             </button>

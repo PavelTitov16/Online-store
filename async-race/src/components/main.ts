@@ -27,17 +27,22 @@ export class Main implements MainModel {
                 Garage
             </h2>
             <div class="main-container__panel">
-                <div class="garage-btns">
-                    <button id="addCars-btn" class="header__btn button">
-                        Add cars
-                    </button>
-                    <button id="race-btn" class="header__btn button">
-                        Let's race!
-                    </button>
-                    <button id="reset-btn" class="header__btn button">
-                        Reset race
-                    </button>
-                </div>
+            <div class="main-panel__items">
+              <div class="garage-btns">
+                <button id="addCars-btn" class="header__btn button">
+                  Add cars
+                </button>
+                <button id="race-btn" class="header__btn button">
+                  Let's race!
+                </button>
+                <button id="reset-btn" class="header__btn button">
+                  Reset race
+                </button>
+              </div>
+              <h2 class="main-container__title" id="cars-counter">
+                ${await state.getCarsAmount()} cars for race
+              </h2>
+            </div>
                 <div class="main-container__inputs">
                     <div class="garage-input">
                         <form action="" class="create-car">
@@ -68,9 +73,13 @@ export class Main implements MainModel {
 
   public async updateTrack(): Promise<void> {
     const mainTracks = document.getElementById('main-container__tracks') as HTMLDivElement;
+    const carsCOunter = document.getElementById('cars-counter') as HTMLTemplateElement;
     mainTracks.innerHTML = `
       ${await this.trackInit()}
     `;
+    carsCOunter.innerHTML = `
+      ${await state.getCarsAmount()} cars for race
+  `;
   }
 
   public async trackInit(): Promise<string> {
@@ -98,7 +107,7 @@ export class Main implements MainModel {
                         <div class="track-items">
                             <div class="car-items">
                                 <div class="car" style="fill: ${color}">
-                                    <svg class="car">
+                                    <svg class="car" id="car-${id}">
                                         <use xlink:href="assets/images/sprite_car.svg#car"></use>
                                     </svg>
                                 </div>
