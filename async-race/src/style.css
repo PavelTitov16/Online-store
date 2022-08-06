@@ -475,8 +475,14 @@ input.garage-input__item {
     width: 15em;
 }
 
-input.garage-input__item:disabled {
-    color: var(--color-hover);
+input:disabled {
+    color: transparent;
+    background: transparent;
+    cursor: default;
+}
+
+input:disabled::placeholder {
+    color: transparent;
 }
 
 input.palette {
@@ -487,6 +493,11 @@ input.palette {
     padding: 0.1em 0.6em;
 }
 
+input.palette:disabled {
+    background: transparent;
+    cursor: default;
+}
+
 .garage-input__item::placeholder {
     font-family: inherit;
     color: var(--under-gold);
@@ -494,7 +505,10 @@ input.palette {
 }
 
 .button:disabled {
-    color: var(--color-hover);
+    background: transparent;
+    color: transparent;
+    border: 2px solid var(--under-gold);
+    cursor: default;
 }
 
 .audio-payer {
