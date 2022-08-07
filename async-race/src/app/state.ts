@@ -17,7 +17,9 @@ class State {
       selectedCarId: null,
       page: 1,
       carsChars: {},
-      winners: []
+      winners: [],
+      animateCarIds: {},
+      isAnimationPaused: {}
     };
   }
 
@@ -87,6 +89,55 @@ class State {
 
   public getCharsByCarId(id: number) {
     return this.state.carsChars[id];
+  }
+
+  public setAnimateCarId(carId: number, animateCarId: number) {
+    this.state.animateCarIds = {
+      ...this.state.animateCarIds,
+      [this.state.page]: { ...this.state.animateCarIds[this.state.page], [carId]: animateCarId }
+    };
+  }
+
+  public deleteAnimateCarId(carId: number): void {
+    delete this.state.animateCarIds[this.state.page][carId];
+  }
+
+  public getAnimateCarIds(): {[id: number]: number} {
+    return this.state.animateCarIds[this.state.page]
+      ? this.state.animateCarIds[this.state.page]
+      : {};
+  }
+
+  public resetAnimateCarIds(): void {
+    this.state.animateCarIds[this.state.page] = {};
+  }
+
+  public pauseAnimationPage(): void {
+    this.state.isAnimationPaused[this.state.page] = true;
+  }
+
+  public startAnimationPage(): void {
+    this.state.isAnimationPaused[this.state.page] = false;
+  }
+
+  public isAnimationOnPagePaused(): boolean {
+    return this.state.isAnimationPaused[this.state.page]
+      ? this.state.isAnimationPaused[this.state.page]
+      : false;
+  }
+
+  public isDriveForCarInProgress(id: number): boolean {
+    return this.state.animateCarIds[this.state.page]
+      ? Boolean(this.state.animateCarIds[this.state.page][id])
+      : false;
+  }
+
+  public isDriveForAllCarsInProgress(): boolean {
+    return this.state.animateCarIds[this.state.page]
+      ? this.state.cars.every((car) => {
+        return this.isDriveForCarInProgress(car.id);
+      })
+      : false;
   }
 }
 

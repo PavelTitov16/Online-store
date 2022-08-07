@@ -2,14 +2,18 @@ import { PaginationModel } from '../models/pagination.model';
 import { state } from '../app/state';
 import { CARS_LIMIT_PER_PAGE } from '../app/consts';
 import { AppController } from '../app/appController';
+import { CarController } from '../app/carController';
 
 export class Pagination implements PaginationModel {
   public template: string;
 
   public controller: AppController;
 
+  public carController: CarController;
+
   constructor() {
     this.controller = new AppController();
+    this.carController = new CarController();
   }
 
   public async init(): Promise<string> {
@@ -67,10 +71,21 @@ export class Pagination implements PaginationModel {
     nextBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       if (currentPage < pageLimit) {
+        const animateCarIds = state.getAnimateCarIds();
+        if (Object.keys(animateCarIds).length !== 0) {
+          this.carController.cancelAllCarsAnimation();
+          state.pauseAnimationPage();
+          this.carController.resetCars(Object.keys(animateCarIds).map((id) => Number(id)));
+        }
         currentPage += 1;
         await this.controller.getCars(currentPage);
         state.setPage(currentPage);
         render();
+        // TODO: implement animation state
+        if (state.isAnimationOnPagePaused()) {
+          state.startAnimationPage();
+          this.carController.runAllCarsAnimation();
+        }
       }
     });
   }
@@ -78,11 +93,25 @@ export class Pagination implements PaginationModel {
   public subscribeOnPrev(render: () => void) {
     const prevBtn = document.getElementById('leftB');
     prevBtn?.addEventListener('click', async (event: MouseEvent) => {
+      let currentPage = state.getPage();
       event.preventDefault();
-      const currentPage = state.getPage() - 1;
-      await this.controller.getCars(currentPage);
-      state.setPage(currentPage);
-      render();
+      if (currentPage > 1) {
+        const animateCarIds = state.getAnimateCarIds();
+        if (Object.keys(animateCarIds).length !== 0) {
+          this.carController.cancelAllCarsAnimation();
+          state.pauseAnimationPage();
+          this.carController.resetCars(Object.keys(animateCarIds).map((id) => Number(id)));
+        }
+        currentPage = state.getPage() - 1;
+        await this.controller.getCars(currentPage);
+        state.setPage(currentPage);
+        render();
+        // TODO: implement animation state
+        if (state.isAnimationOnPagePaused()) {
+          state.startAnimationPage();
+          this.carController.runAllCarsAnimation();
+        }
+      }
     });
   }
 

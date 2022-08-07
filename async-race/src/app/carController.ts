@@ -4,17 +4,20 @@ import { EngineResponse, EngineStatus } from '../models/car.model';
 import { Paths } from '../api/paths';
 import { Methods } from '../api/methods';
 import { state } from './state';
-// import { animateCar, stopAnimateCar, resetCar } from './animation';
 
 export class CarController {
   public carId: number;
 
+  public animateCarIds: {[id: number]: number};
+
+  constructor() {
+    this.animateCarIds = state.getAnimateCarIds();
+  }
+
   public animateCar(id: number) {
-    console.log(this.carId);
     const track = document.getElementById('track') as HTMLDivElement;
     const car = document.getElementById(`car-${id}`) as unknown as SVGSVGElement;
     const chars = state.getCharsByCarId(id);
-    console.log(chars);
     const duration = chars.distance / chars.velocity;
     const flagWidth = 28;
     const distance = track.clientWidth - car.clientWidth - flagWidth;
@@ -29,16 +32,31 @@ export class CarController {
       const progress = timing(timeFraction);
       draw(progress);
       if (timeFraction < 1) {
-        this.carId = requestAnimationFrame(animate);
+        this.animateCarIds[id] = requestAnimationFrame(animate.bind(this));
+        state.setAnimateCarId(id, this.animateCarIds[id]);
       }
     };
-    this.carId = requestAnimationFrame(animate);
-    console.log(this.carId);
+    this.animateCarIds[id] = requestAnimationFrame(animate.bind(this));
+    state.deleteAnimateCarId(id);
   }
 
-  public stopAnimateCar() {
-    console.log(this.carId);
-    cancelAnimationFrame(this.carId);
+  public stopAnimateCar(id: number) {
+    cancelAnimationFrame(this.animateCarIds[id]);
+    state.deleteAnimateCarId(id);
+  }
+
+  public cancelAllCarsAnimation() {
+    Object.values(this.animateCarIds).forEach(value => {
+      cancelAnimationFrame(value);
+    });
+    this.animateCarIds = {};
+    state.resetAnimateCarIds();
+  }
+
+  public runAllCarsAnimation() {
+    Object.values(this.animateCarIds).forEach(value => {
+      this.animateCar(value);
+    });
   }
 
   public resetCar(id: number) {
@@ -58,7 +76,7 @@ export class CarController {
     const response = await fetch(`${apiProvider}${Paths.Engine}?id=${id}&status=${CarStatuses.Stopped}`, {
       method: Methods.Patch
     });
-    this.stopAnimateCar();
+    this.stopAnimateCar(id);
     const data: EngineResponse = await response.json();
     state.deleteCarChars(id);
     this.resetCar(id);
@@ -68,18 +86,23 @@ export class CarController {
   public async driveCar(id: number): Promise<EngineStatus> {
     const response = await fetch(`${apiProvider}${Paths.Engine}?id=${id}&status=${CarStatuses.Drive}`, {
       method: Methods.Patch
+    }).then((response) => {
+      console.log('do 500');
+      if (response.status === ResponseStatuses.InternalServerError) {
+        console.log('500');
+        this.stopAnimateCar(id);
+      }
+      return response;
     });
     const data = await response.json();
-    if (data !== ResponseStatuses.Ok) {
-      this.stopAnimateCar();
-      throw new Error('Oops');
-    }
     return data;
   }
 
   public async raceCar(id: number): Promise<EngineStatus> {
     return this.startCar(id).then(async (response: EngineResponse) => {
       state.setCarChars(id, response);
+      this.animateCarIds = state.getAnimateCarIds();
+      console.log(this.animateCarIds);
       this.animateCar(id);
       return this.driveCar(id);
     }).then((response: EngineStatus) => {
@@ -88,6 +111,7 @@ export class CarController {
   }
 
   public async raceCars(ids: number[]): Promise<EngineStatus> {
+    console.log(ids);
     return Promise.any(ids.map((id) => this.raceCar(id))).then((response: EngineStatus) => {
       console.log(response, 'race');
       return response;

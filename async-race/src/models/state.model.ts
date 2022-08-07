@@ -7,5 +7,7 @@ export interface StateModel {
     selectedCarId: number | null;
     page: number;
     carsChars: {[id: number]: EngineResponse }
-    winners: []
+    winners: [],
+    animateCarIds: {[page: number]: {[id: number]: number}};
+    isAnimationPaused: {[page: number]: boolean};
 }

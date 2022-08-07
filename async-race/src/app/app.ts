@@ -17,7 +17,9 @@ class App implements AppModel {
 
   async start(): Promise<void> {
     await this.controller.getCars();
+    await this.view.renderHeader();
     await this.view.render();
+    await this.view.routing();
     this.player = new Player();
     this.player.init();
   }

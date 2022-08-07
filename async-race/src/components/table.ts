@@ -21,7 +21,9 @@ export class WinnersTable implements TableModel {
                     <tr>
                         <td>1</td>
                         <td>
-                            <div class="car"></div>
+                            <svg class="car" id="car">
+                                <use xlink:href="assets/images/sprite_car.svg#car"></use>
+                            </svg>
                         </td>
                         <td>Nissan</td>
                         <td>1</td>
@@ -30,7 +32,9 @@ export class WinnersTable implements TableModel {
                     <tr>
                         <td>2</td>
                         <td>
-                            <div class="car"></div>
+                            <svg class="car" id="car">
+                                <use xlink:href="assets/images/sprite_car.svg#car"></use>
+                            </svg>
                         </td>
                         <td>Dodge</td>
                         <td>2</td>

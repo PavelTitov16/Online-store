@@ -27,7 +27,7 @@ export class Header implements HeaderModel {
                         </button>
                     </div>
                     <div class="header-nav__item">
-                        <button id="garage-btn" class="header__btn button">
+                        <button id="winners-btn" class="header__btn button">
                             Winners
                         </button>
                     </div>
@@ -35,6 +35,32 @@ export class Header implements HeaderModel {
             </div>
         </header>`;
     return this.template;
+  }
+
+  public subscribeOnGarage(changePath: () => void, render: () => void): void {
+    const garageBtn = document.getElementById('garage-btn');
+    garageBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const router = document.getElementById('router');
+      if (router) {
+        router.remove();
+        changePath();
+        await render();
+      }
+    });
+  }
+
+  public subscribeOnWinners(changePath: () => void, render: () => void): void {
+    const winnersBtn = document.getElementById('winners-btn');
+    winnersBtn?.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+      const router = document.getElementById('router');
+      if (router) {
+        router.remove();
+        changePath();
+        await render();
+      }
+    });
   }
 
   public async render(): Promise<string> {

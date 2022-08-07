@@ -98,7 +98,7 @@ export class Main implements MainModel {
                         <button id="drive-btn-${id}" class="track-btn drive-btn">
                             Drive
                         </button>
-                        <button id="back-btn-${id}" class="track-btn back-btn">
+                        <button id="back-btn-${id}" class="track-btn back-btn" disabled>
                             Back
                         </button>
                     </div>
@@ -224,8 +224,13 @@ export class Main implements MainModel {
     const carsContainer = document.getElementById('main-container__tracks');
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
+      console.log('clicked');
       const driveBtn = event.target as HTMLButtonElement;
+      const stopBtn = driveBtn.nextElementSibling as HTMLButtonElement;
       if (driveBtn.id.includes('drive-btn')) {
+        console.log('clicked v if');
+        driveBtn.disabled = true;
+        stopBtn.disabled = false;
         const drivenCarId = Number(driveBtn.id.split('-').pop());
         await this.carController.raceCar(drivenCarId);
       }
@@ -237,7 +242,10 @@ export class Main implements MainModel {
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const stopBtn = event.target as HTMLButtonElement;
+      const driveBtn = stopBtn.previousElementSibling as HTMLButtonElement;
       if (stopBtn.id.includes('back-btn')) {
+        stopBtn.disabled = true;
+        driveBtn.disabled = false;
         const stoppedCarId = Number(stopBtn.id.split('-').pop());
         await this.carController.stopCar(stoppedCarId);
       }
@@ -248,7 +256,14 @@ export class Main implements MainModel {
     const raceBtn = document.getElementById('race-btn');
     raceBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
+      const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
+      const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
+      for (let i = 0; i < driveBtns.length; i += 1) {
+        driveBtns[i].disabled = true;
+        stopBtns[i].disabled = false;
+      }
       const carsIds = state.getCars().map((car) => car.id);
+      console.log('async race');
       await this.carController.raceCars(carsIds);
     });
   }
@@ -257,6 +272,12 @@ export class Main implements MainModel {
     const resetBtn = document.getElementById('reset-btn');
     resetBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
+      const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
+      const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
+      for (let i = 0; i < driveBtns.length; i += 1) {
+        driveBtns[i].disabled = false;
+        stopBtns[i].disabled = true;
+      }
       const carsIds = state.getCars().map((car) => car.id);
       await this.carController.resetCars(carsIds);
     });
@@ -274,5 +295,17 @@ export class Main implements MainModel {
       raceBtn.disabled = false;
       resetBtn.disabled = true;
     });
+  }
+
+  public resetBtnsStatus() {
+    const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
+    const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
+    if (state.isDriveForAllCarsInProgress()) {
+      raceBtn.disabled = true;
+      resetBtn.disabled = false;
+    } else {
+      raceBtn.disabled = false;
+      resetBtn.disabled = true;
+    }
   }
 }
