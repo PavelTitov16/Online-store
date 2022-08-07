@@ -62,5 +62,6 @@ export class AppView implements ViewModel {
     this.main.subscribeCreateCar(this.updateMain.bind(this));
     this.main.subscribeAddCars(this.updateMain.bind(this));
     this.main.updatePanelStatus();
+    this.main.updateBtnsStatus();
   }
 }

@@ -7,19 +7,21 @@ import { state } from './state';
 // import { animateCar, stopAnimateCar, resetCar } from './animation';
 
 export class CarController {
+  public carId: number;
+
   public animateCar(id: number) {
-    let animateId: number = id;
+    console.log(this.carId);
     const track = document.getElementById('track') as HTMLDivElement;
     const car = document.getElementById(`car-${id}`) as unknown as SVGSVGElement;
     const chars = state.getCharsByCarId(id);
+    console.log(chars);
     const duration = chars.distance / chars.velocity;
-    const distance = track.clientWidth - car.clientWidth - 28;
-    console.log(track.clientWidth);
-    console.log(car.clientWidth);
+    const flagWidth = 28;
+    const distance = track.clientWidth - car.clientWidth - flagWidth;
     const start = performance.now();
-    function draw(progress: number): void {
+    const draw = (progress: number): void => {
       car.style.transform = `translateX(${progress * distance}px)`;
-    }
+    };
     const timing = (timeFraction: number) => timeFraction;
     const animate = (time: number): void => {
       let timeFraction = (time - start) / duration;
@@ -27,16 +29,16 @@ export class CarController {
       const progress = timing(timeFraction);
       draw(progress);
       if (timeFraction < 1) {
-        animateId = requestAnimationFrame(animate);
+        this.carId = requestAnimationFrame(animate);
       }
     };
-    animateId = requestAnimationFrame(animate);
-    console.log(animateId);
+    this.carId = requestAnimationFrame(animate);
+    console.log(this.carId);
   }
 
-  public stopAnimateCar(carId: number) {
-    console.log(carId);
-    cancelAnimationFrame(carId);
+  public stopAnimateCar() {
+    console.log(this.carId);
+    cancelAnimationFrame(this.carId);
   }
 
   public resetCar(id: number) {
@@ -56,7 +58,7 @@ export class CarController {
     const response = await fetch(`${apiProvider}${Paths.Engine}?id=${id}&status=${CarStatuses.Stopped}`, {
       method: Methods.Patch
     });
-    this.stopAnimateCar(id);
+    this.stopAnimateCar();
     const data: EngineResponse = await response.json();
     state.deleteCarChars(id);
     this.resetCar(id);
@@ -68,13 +70,16 @@ export class CarController {
       method: Methods.Patch
     });
     const data = await response.json();
+    if (data !== ResponseStatuses.Ok) {
+      this.stopAnimateCar();
+      throw new Error('Oops');
+    }
     return data;
   }
 
   public async raceCar(id: number): Promise<EngineStatus> {
     return this.startCar(id).then(async (response: EngineResponse) => {
       state.setCarChars(id, response);
-      console.log(id);
       this.animateCar(id);
       return this.driveCar(id);
     }).then((response: EngineStatus) => {

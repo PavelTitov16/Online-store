@@ -423,6 +423,13 @@ body {
     border: 2px solid var(--under-gold);
 }
 
+.track-btn:disabled {
+    background: transparent;
+    color: transparent;
+    border: 2px solid var(--under-gold);
+    cursor: default;
+}
+
 .winners-page {
     display: flex;
     justify-content: center;

@@ -35,7 +35,7 @@ export class Main implements MainModel {
                 <button id="race-btn" class="header__btn button">
                   Let's race!
                 </button>
-                <button id="reset-btn" class="header__btn button">
+                <button id="reset-btn" class="header__btn button" disabled>
                   Reset race
                 </button>
               </div>
@@ -95,10 +95,10 @@ export class Main implements MainModel {
                         <button id="remove-btn-${id}" class="track-btn">
                             Remove
                         </button>
-                        <button id="drive-btn-${id}" class="track-btn">
+                        <button id="drive-btn-${id}" class="track-btn drive-btn">
                             Drive
                         </button>
-                        <button id="back-btn-${id}" class="track-btn">
+                        <button id="back-btn-${id}" class="track-btn back-btn">
                             Back
                         </button>
                     </div>
@@ -259,6 +259,20 @@ export class Main implements MainModel {
       event.preventDefault();
       const carsIds = state.getCars().map((car) => car.id);
       await this.carController.resetCars(carsIds);
+    });
+  }
+
+  public updateBtnsStatus() {
+    const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
+    const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
+
+    raceBtn.addEventListener('click', () => {
+      raceBtn.disabled = true;
+      resetBtn.disabled = false;
+    });
+    resetBtn.addEventListener('click', () => {
+      raceBtn.disabled = false;
+      resetBtn.disabled = true;
     });
   }
 }

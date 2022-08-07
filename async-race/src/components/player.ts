@@ -101,8 +101,8 @@ export class Player implements PlayerModel {
   public timeUpdate(): void {
     this.audio.ontimeupdate = () => {
       if (!Number.isNaN(this.audio.duration)) {
-        // eslint-disable-next-line max-len
-        (this.progressbar as HTMLProgressElement).value = this.audio.currentTime / this.audio.duration;
+        (this.progressbar as HTMLProgressElement)
+          .value = this.audio.currentTime / this.audio.duration;
       }
     };
   }
