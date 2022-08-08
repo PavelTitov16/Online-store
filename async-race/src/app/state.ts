@@ -2,6 +2,7 @@ import { EngineResponse } from '../models/car.model';
 import { CarResponse } from '../models/controller.model';
 import { StateModel } from '../models/state.model';
 import { CARS_LIMIT_PER_PAGE } from './consts';
+import { GetWinners } from '../models/winners.model';
 
 class State {
   public state: StateModel;
@@ -18,6 +19,7 @@ class State {
       page: 1,
       carsChars: {},
       winners: [],
+      winnersAmount: 0,
       animateCarIds: {},
       isAnimationPaused: {}
     };
@@ -138,6 +140,22 @@ class State {
         return this.isDriveForCarInProgress(car.id);
       })
       : false;
+  }
+
+  // public setWinners(winners: GetWinners[]): void {
+  //   this.state = { ...this.state, winners };
+  // }
+
+  public getWinners(): GetWinners[] {
+    return this.state.winners;
+  }
+
+  public setWinnersAmount(amount: number): void {
+    this.state = { ...this.state, winnersAmount: amount };
+  }
+
+  public getWinnersAmount(): number {
+    return this.state.winnersAmount;
   }
 }
 

@@ -224,11 +224,9 @@ export class Main implements MainModel {
     const carsContainer = document.getElementById('main-container__tracks');
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
-      console.log('clicked');
       const driveBtn = event.target as HTMLButtonElement;
       const stopBtn = driveBtn.nextElementSibling as HTMLButtonElement;
       if (driveBtn.id.includes('drive-btn')) {
-        console.log('clicked v if');
         driveBtn.disabled = true;
         stopBtn.disabled = false;
         const drivenCarId = Number(driveBtn.id.split('-').pop());
@@ -258,12 +256,15 @@ export class Main implements MainModel {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
       const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
+      const pagBtns = Array.from(document.getElementsByClassName('pag-btn')) as HTMLButtonElement[];
       for (let i = 0; i < driveBtns.length; i += 1) {
         driveBtns[i].disabled = true;
         stopBtns[i].disabled = false;
       }
+      for (let i = 0; i < pagBtns.length; i += 1) {
+        pagBtns[i].disabled = true;
+      }
       const carsIds = state.getCars().map((car) => car.id);
-      console.log('async race');
       await this.carController.raceCars(carsIds);
     });
   }
@@ -274,9 +275,13 @@ export class Main implements MainModel {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
       const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
+      const pagBtns = Array.from(document.getElementsByClassName('pag-btn')) as HTMLButtonElement[];
       for (let i = 0; i < driveBtns.length; i += 1) {
         driveBtns[i].disabled = false;
         stopBtns[i].disabled = true;
+      }
+      for (let i = 0; i < pagBtns.length; i += 1) {
+        pagBtns[i].disabled = false;
       }
       const carsIds = state.getCars().map((car) => car.id);
       await this.carController.resetCars(carsIds);

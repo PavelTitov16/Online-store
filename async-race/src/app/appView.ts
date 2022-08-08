@@ -48,7 +48,6 @@ export class AppView implements ViewModel {
     this.headerTemplate = `
     ${await this.header.render()}
     `;
-    console.log(this.headerTemplate);
   }
 
   public async renderHeader(): Promise<void> {
@@ -105,7 +104,6 @@ export class AppView implements ViewModel {
   public async render(): Promise<void> {
     await this.init();
     (document.querySelector('body') as HTMLBodyElement).insertAdjacentHTML('beforeend', this.template);
-    console.log(this.template);
     if (this.pagePaths === PagePaths.Garage) {
       this.subscribe();
       this.main.subscribeCreateCar(this.updateMain.bind(this));

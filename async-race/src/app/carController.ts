@@ -87,9 +87,7 @@ export class CarController {
     const response = await fetch(`${apiProvider}${Paths.Engine}?id=${id}&status=${CarStatuses.Drive}`, {
       method: Methods.Patch
     }).then((response) => {
-      console.log('do 500');
       if (response.status === ResponseStatuses.InternalServerError) {
-        console.log('500');
         this.stopAnimateCar(id);
       }
       return response;
@@ -102,7 +100,6 @@ export class CarController {
     return this.startCar(id).then(async (response: EngineResponse) => {
       state.setCarChars(id, response);
       this.animateCarIds = state.getAnimateCarIds();
-      console.log(this.animateCarIds);
       this.animateCar(id);
       return this.driveCar(id);
     }).then((response: EngineStatus) => {
@@ -111,9 +108,8 @@ export class CarController {
   }
 
   public async raceCars(ids: number[]): Promise<EngineStatus> {
-    console.log(ids);
     return Promise.any(ids.map((id) => this.raceCar(id))).then((response: EngineStatus) => {
-      console.log(response, 'race');
+      console.log(response, 'win');
       return response;
     });
   }

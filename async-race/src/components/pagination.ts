@@ -19,19 +19,19 @@ export class Pagination implements PaginationModel {
   public async init(): Promise<string> {
     this.template = `
         <div class="main-container__buttons" id="main-container__buttons">
-            <button class="main-container__button ${this.isPrevActive() ? '' : 'inactive'}" id="swipeL">
+            <button class="pag-btn main-container__button ${this.isPrevActive() ? '' : 'inactive'}" id="swipeL">
                 <img src="./assets/images/swipe-left.svg" alt="swipe left">
             </button>
-            <button class="main-container__button ${this.isPrevActive() ? '' : 'inactive'}" id="leftB">
+            <button class="pag-btn main-container__button ${this.isPrevActive() ? '' : 'inactive'}" id="leftB">
                 <img src="./assets/images/icon-left.svg" alt="arrow left">
             </button>
             <button class="main-container__button inactive" id="page-holder">
               ${await state.getPage()}
             </button>
-            <button class="main-container__button ${this.isNextActive() ? '' : 'inactive'}" id="rightB">
+            <button class="pag-btn main-container__button ${this.isNextActive() ? '' : 'inactive'}" id="rightB">
                 <img src="./assets/images/icon-right.svg" alt="arrow right">
             </button>
-            <button class="main-container__button ${this.isNextActive() ? '' : 'inactive'}" id="swipeR">
+            <button class="pag-btn main-container__button ${this.isNextActive() ? '' : 'inactive'}" id="swipeR">
                 <img src="./assets/images/swipe-right.svg" alt="swipe right">
             </button>
         </div> `;

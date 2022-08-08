@@ -1,6 +1,5 @@
 export interface PlayerModel {
-    loadMusic(currentSound: number): void;
-    playMusic(): void;
+    playMusic(sound: number): void;
     pauseMusic(): void;
     nextMusic(): void;
     prevMusic(): void;

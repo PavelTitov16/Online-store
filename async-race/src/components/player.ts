@@ -39,6 +39,8 @@ export class Player implements PlayerModel {
     '11.Most Wanted Mash Up'
   ];
 
+  public limit: number = this.playList.length;
+
   public currentSound = 0;
 
   public loadMusic(currentSound: number): void {
@@ -57,13 +59,9 @@ export class Player implements PlayerModel {
   }
 
   public nextMusic(): void {
-    console.log(this.playList.length, 'before');
-    console.log(this.currentSound, 'before');
     this.currentSound += 1;
-    if (this.currentSound > this.playList.length - 1) {
+    if (this.currentSound > this.limit) {
       this.currentSound = 0;
-      console.log(this.playList.length, 'after');
-      console.log(this.currentSound, 'after');
     }
 
     this.loadMusic(this.currentSound);
@@ -73,7 +71,7 @@ export class Player implements PlayerModel {
   public prevMusic(): void {
     this.currentSound -= 1;
     if (this.currentSound < 0) {
-      this.currentSound = this.playList.length - 1;
+      this.currentSound = this.limit - 1;
     }
 
     this.loadMusic(this.currentSound);
@@ -141,12 +139,12 @@ export class Player implements PlayerModel {
   }
 
   public init(): void {
-    this.subscribeAutoPlay();
     this.timeUpdate();
     this.pressPlayMusic();
     this.pressNextMusic();
     this.pressPrevMusic();
     this.pressMuteMusic();
+    this.subscribeAutoPlay();
     this.continuePlay();
   }
 }

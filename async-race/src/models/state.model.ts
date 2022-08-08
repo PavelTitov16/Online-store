@@ -2,6 +2,7 @@ import { CarResponse } from './controller.model';
 import { EngineResponse } from './car.model';
 
 export interface StateModel {
+    winnersAmount: number;
     cars: Array<CarResponse>;
     carsAmount: number;
     selectedCarId: number | null;

@@ -608,6 +608,8 @@ progress::-webkit-progress-value {
     margin-right: 1em;
 }
 
+
+
 @media (min-width: 490px) and (max-width: 1100px) {
     .header-container {
         flex-direction: column;
