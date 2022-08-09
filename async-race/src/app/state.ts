@@ -101,7 +101,9 @@ class State {
   }
 
   public deleteAnimateCarId(carId: number): void {
-    delete this.state.animateCarIds[this.state.page][carId];
+    if (typeof this.state.animateCarIds[this.state.page] === 'object') {
+      delete this.state.animateCarIds[this.state.page][carId];
+    }
   }
 
   public getAnimateCarIds(): {[id: number]: number} {

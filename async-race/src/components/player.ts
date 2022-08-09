@@ -43,8 +43,8 @@ export class Player implements PlayerModel {
 
   public currentSound = 0;
 
-  public loadMusic(currentSound: number): void {
-    this.audio.src = `assets/audio/${this.playList[currentSound]}.mp3` as string;
+  public loadMusic(): void {
+    this.audio.src = `assets/audio/${this.playList[this.currentSound]}.mp3` as string;
     this.audio.load();
   }
 
@@ -64,7 +64,7 @@ export class Player implements PlayerModel {
       this.currentSound = 0;
     }
 
-    this.loadMusic(this.currentSound);
+    this.loadMusic();
     this.playMusic();
   }
 
@@ -74,7 +74,7 @@ export class Player implements PlayerModel {
       this.currentSound = this.limit - 1;
     }
 
-    this.loadMusic(this.currentSound);
+    this.loadMusic();
     this.playMusic();
   }
 
@@ -88,7 +88,7 @@ export class Player implements PlayerModel {
 
   public startAutoPlay(): void {
     this.audio.muted = false;
-    this.loadMusic(this.currentSound);
+    this.loadMusic();
     this.playMusic();
   }
 
@@ -107,7 +107,7 @@ export class Player implements PlayerModel {
 
   public pressPlayMusic(): void {
     this.playBtn.addEventListener('click', ()=> {
-      this.loadMusic(this.currentSound);
+      this.loadMusic();
       if (this.playBtn.classList.contains('paused')) {
         this.pauseMusic();
       } else {
@@ -134,10 +134,6 @@ export class Player implements PlayerModel {
     });
   }
 
-  public continuePlay(): void {
-    this.audio.onended = this.nextMusic;
-  }
-
   public init(): void {
     this.timeUpdate();
     this.pressPlayMusic();
@@ -145,6 +141,5 @@ export class Player implements PlayerModel {
     this.pressPrevMusic();
     this.pressMuteMusic();
     this.subscribeAutoPlay();
-    this.continuePlay();
   }
 }

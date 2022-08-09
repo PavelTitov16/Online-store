@@ -8,7 +8,6 @@ export interface PlayerModel {
     pressNextMusic(): void;
     pressPrevMusic(): void;
     pressMuteMusic(): void;
-    continuePlay(): void;
     timeUpdate(): void
     init(): void;
 }

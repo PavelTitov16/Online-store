@@ -226,9 +226,18 @@ export class Main implements MainModel {
       event.preventDefault();
       const driveBtn = event.target as HTMLButtonElement;
       const stopBtn = driveBtn.nextElementSibling as HTMLButtonElement;
+      const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
+      const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
+      const winnersBtn = document.getElementById('winners-btn') as HTMLButtonElement;
+      const garageBtn = document.getElementById('garage-btn') as HTMLButtonElement;
+
       if (driveBtn.id.includes('drive-btn')) {
         driveBtn.disabled = true;
         stopBtn.disabled = false;
+        raceBtn.disabled = true;
+        resetBtn.disabled = false;
+        winnersBtn.disabled = true;
+        garageBtn.disabled = true;
         const drivenCarId = Number(driveBtn.id.split('-').pop());
         await this.carController.raceCar(drivenCarId);
       }
@@ -241,9 +250,18 @@ export class Main implements MainModel {
       event.preventDefault();
       const stopBtn = event.target as HTMLButtonElement;
       const driveBtn = stopBtn.previousElementSibling as HTMLButtonElement;
+      const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
+      const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
+      const winnersBtn = document.getElementById('winners-btn') as HTMLButtonElement;
+      const garageBtn = document.getElementById('garage-btn') as HTMLButtonElement;
+
       if (stopBtn.id.includes('back-btn')) {
         stopBtn.disabled = true;
         driveBtn.disabled = false;
+        raceBtn.disabled = false;
+        resetBtn.disabled = true;
+        winnersBtn.disabled = false;
+        garageBtn.disabled = false;
         const stoppedCarId = Number(stopBtn.id.split('-').pop());
         await this.carController.stopCar(stoppedCarId);
       }
@@ -290,15 +308,21 @@ export class Main implements MainModel {
 
   public updateBtnsStatus() {
     const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
-    const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
+    const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
+    const winnersBtn = document.getElementById('winners-btn') as HTMLButtonElement;
+    const garageBtn = document.getElementById('garage-btn') as HTMLButtonElement;
 
     raceBtn.addEventListener('click', () => {
       raceBtn.disabled = true;
       resetBtn.disabled = false;
+      winnersBtn.disabled = true;
+      garageBtn.disabled = true;
     });
     resetBtn.addEventListener('click', () => {
       raceBtn.disabled = false;
       resetBtn.disabled = true;
+      winnersBtn.disabled = false;
+      garageBtn.disabled = false;
     });
   }
 

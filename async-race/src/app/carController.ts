@@ -86,14 +86,13 @@ export class CarController {
   public async driveCar(id: number): Promise<EngineStatus> {
     const response = await fetch(`${apiProvider}${Paths.Engine}?id=${id}&status=${CarStatuses.Drive}`, {
       method: Methods.Patch
-    }).then((response) => {
-      if (response.status === ResponseStatuses.InternalServerError) {
-        this.stopAnimateCar(id);
-      }
-      return response;
     });
-    const data = await response.json();
-    return data;
+    const status = response.status === ResponseStatuses.Ok;
+    if (!status) {
+      this.stopAnimateCar(id);
+    }
+
+    return status ? { success: true } : { success: false };
   }
 
   public async raceCar(id: number): Promise<EngineStatus> {
