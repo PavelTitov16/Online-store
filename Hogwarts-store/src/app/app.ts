@@ -12,6 +12,7 @@ import { UpdatePageStatus } from './updatePageStatus';
 import { Sorting } from './sorting';
 import { SearchForm } from './search-form';
 import { Player } from './player';
+import { FiltersState, SortState } from '../models/state.model';
 
 
 export const slider = document.querySelector('.goods-slider') as HTMLDivElement;
@@ -48,21 +49,21 @@ export class App implements AppModel {
         this.parseGoodsList();
         this.cart.updatePaymentInfo();
         this.cart.subscribeOnUserActions();
-        this.filters.subscribeHouseFilters(this.parseGoodsList.bind(this));
-        this.filters.subscribeCategories(this.parseGoodsList.bind(this));
+        this.filters.subscribeHouseFilters(this.animateFilters.bind(this));
+        this.filters.subscribeCategories(this.animateFilters.bind(this));
         this.updatePageStatus.init();
-        this.sorting.subscribeOnSort(this.parseGoodsList.bind(this));
-        this.filters.resetFilters(this.parseGoodsList.bind(this));
+        this.sorting.subscribeOnSort(this.animateFilters.bind(this));
+        this.filters.resetFilters(this.animateFilters.bind(this));
         this.filters.resetLocalStorage();
         this.player.init();
         this.searchForm.init(this.parseGoodsList.bind(this));
     }
 
     public parseGoodsList(): void {
-        const filters = this.state.getFilters();
-        const sortValue = this.state.getSorters();
-        const filtersKeys = Object.keys(filters);
-        let updatedGoods = [...this.goodsGenerator.mapJsonToProducts(<GoodJSONModel[]>goods, this.state.getCart())];
+        const filters: FiltersState = this.state.getFilters();
+        const sortValue: SortState = this.state.getSorters();
+        const filtersKeys: string[] = Object.keys(filters);
+        let updatedGoods: GoodModel[] = [...this.goodsGenerator.mapJsonToProducts(<GoodJSONModel[]>goods, this.state.getCart())];
         
         if (this.searchForm.isSearchDataExist()) {
             updatedGoods = this.searchForm.searchData(updatedGoods);
@@ -99,7 +100,7 @@ export class App implements AppModel {
 
     public animateFilters(): void {
         slider.classList.add('filter');
-        setTimeout(this.parseGoodsList, this.generateNumber);
+        setTimeout(this.parseGoodsList.bind(this), this.generateNumber);
         slider.addEventListener('animationend', () => {
             slider.classList.remove('filter');
         });

@@ -32,7 +32,6 @@ export class Filters implements FiltersModel {
             const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
             this.state.setFilters({key: Good.House, values: selectedHouse} );
             this.selectHouse(selectedHouse);
-            // this.app.animateFilters();
             callback();
         });
 
@@ -41,7 +40,6 @@ export class Filters implements FiltersModel {
             if (selectedHouseElement.tagName === 'INPUT') {
                 const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
                 this.state.setFilters({key: Good.House, values: selectedHouse} );
-                // this.app.animateFilters();
                 callback();
             }
         });
@@ -73,7 +71,6 @@ export class Filters implements FiltersModel {
                     this.addCategory(selectedItem.value);
                 } else this.deleteCategory(selectedItem.value);
             }
-            //this.animateFilters();
             callback();
         });
     }
@@ -91,7 +88,6 @@ export class Filters implements FiltersModel {
             });
             this.selectHouse(this.filterAllHouses);
             this.state.setFilters({key: Good.House, values: this.filterAllHouses} );
-            //this.animateFilters();
             callback();
         });
     }
