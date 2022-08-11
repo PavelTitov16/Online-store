@@ -6,7 +6,6 @@ export class Render implements RenderModel {
     
     public renderItems(items: GoodModel[]): void {
         const slider: HTMLDivElement = document.querySelector('.goods-slider') as HTMLDivElement;
-        //const goodsBlock: DocumentFragment = document.createDocumentFragment();
         
         items.forEach((item: GoodModel) => {
             const itemElement = `
@@ -35,15 +34,5 @@ export class Render implements RenderModel {
             slider.insertAdjacentHTML('beforeend', itemElement);
         });
     }
-    /*public updateCartStatus() {
-        (<HTMLDivElement>good).classList.add('active');
-        (<HTMLElement>good.firstElementChild).classList.add('active');
-        (<HTMLElement>good.lastElementChild).classList.add('active');
-    }*/
-}
-
-
-
-
-    
+} 
     

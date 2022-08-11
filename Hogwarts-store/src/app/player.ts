@@ -28,7 +28,6 @@ export class Player implements PlayerModel {
     public currentSound = 0;
     
     public loadMusic(currentSound: number): void {
-        console.log(currentSound);
         this.audio.src = `assets/audio/${this.playList[currentSound]}.mp3` as string;
         this.audio.load();
     }

@@ -23,8 +23,8 @@ export class UpdatePageStatus implements UpdatePageStatusModel {
 
     public updateFiltersStatus(): void {
         if (this.filtersActive[Good.House]) {
-            const activeHouse = this.filtersActive[Good.House];
-            const houseInputs = Array.from(this.houseFilters.querySelectorAll('input'));
+            const activeHouse: string | string[] = this.filtersActive[Good.House];
+            const houseInputs = Array.from(this.houseFilters.querySelectorAll('input')) as HTMLInputElement[];
             houseInputs.forEach(input => {
                 if (input.dataset[keys.House] === activeHouse) {
                     input.checked = true;
@@ -34,7 +34,7 @@ export class UpdatePageStatus implements UpdatePageStatusModel {
     }
 
     public updateSorterStatus(): void {
-        const sortInputs = Array.from(this.sortFilters.querySelectorAll('input'));
+        const sortInputs = Array.from(this.sortFilters.querySelectorAll('input')) as HTMLInputElement[];
         sortInputs.forEach(input => {
             if (input.dataset[keys.Sort] === this.sortersActive.sort) {
                 input.checked = true;
@@ -44,8 +44,8 @@ export class UpdatePageStatus implements UpdatePageStatusModel {
 
     public updateCategoriesStatus(): void {
         if (this.filtersActive[Good.Categories]) {
-            const activeCategory = this.filtersActive[Good.Categories];
-            const categoryInputs = Array.from(this.filtersContainer.querySelectorAll('input'));
+            const activeCategory: string | string[] = this.filtersActive[Good.Categories];
+            const categoryInputs = Array.from(this.filtersContainer.querySelectorAll('input')) as HTMLInputElement[];
     
             categoryInputs.forEach(input => {
                 if (activeCategory.includes(input.id)) {
@@ -56,7 +56,7 @@ export class UpdatePageStatus implements UpdatePageStatusModel {
     }
 
     public updateCartStatus(): void {
-        const goodsToCheck = Array.from(document.querySelectorAll('.goods-slider__card'));
+        const goodsToCheck = Array.from(document.querySelectorAll('.goods-slider__card')) as HTMLDivElement[];
         goodsToCheck.forEach(good => {
     
             for (let i = 0; i < this.goodsInCart.length; i++) {
