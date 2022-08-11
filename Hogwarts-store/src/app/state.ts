@@ -7,7 +7,7 @@ export class State implements StateModel {
     private filtersKey = 'filtersKey';
     private cartKey = 'cartKey';
 
-    public setFilters(filters: {key: string; values: string | Array<string>}): void {
+    public setFilters<T>(filters: {key: string; values: T}): void {
         const currentFilters = localStorage.getItem(this.filtersKey);
 
         if (currentFilters) {

@@ -30,7 +30,7 @@ export class Filters implements FiltersModel {
         this.housesContainer.addEventListener('click', (event: MouseEvent) => {
             const selectedHouseElement = event.target as HTMLDivElement;
             const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
-            this.state.setFilters({key: Good.House, values: selectedHouse} );
+            this.state.setFilters<string>({key: Good.House, values: selectedHouse} );
             this.selectHouse(selectedHouse);
             callback();
         });
@@ -39,7 +39,7 @@ export class Filters implements FiltersModel {
             const selectedHouseElement = event.target as HTMLInputElement;
             if (selectedHouseElement.tagName === 'INPUT') {
                 const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
-                this.state.setFilters({key: Good.House, values: selectedHouse} );
+                this.state.setFilters<string>({key: Good.House, values: selectedHouse} );
                 callback();
             }
         });
@@ -49,9 +49,9 @@ export class Filters implements FiltersModel {
         const activeCategories = this.state.getFilters()[Good.Categories] as string[];
 
         if (!activeCategories) {
-            this.state.setFilters( {key: Good.Categories, values: [value] } );
+            this.state.setFilters<string[]>( {key: Good.Categories, values: [value] } );
         } else {
-            this.state.setFilters( {key: Good.Categories, values: [...activeCategories, value] } );
+            this.state.setFilters<string[]>( {key: Good.Categories, values: [...activeCategories, value] } );
         }
     }
 
@@ -59,7 +59,7 @@ export class Filters implements FiltersModel {
         const activeCategories = this.state.getFilters()[Good.Categories] as string[];
         const newCategories = activeCategories.filter((category: string) => category !== value);
     
-        this.state.setFilters( {key: Good.Categories, values: newCategories } );
+        this.state.setFilters<string[]>( {key: Good.Categories, values: newCategories } );
     }
 
     public subscribeCategories(callback: () => void): void {
@@ -87,7 +87,7 @@ export class Filters implements FiltersModel {
                 }
             });
             this.selectHouse(this.filterAllHouses);
-            this.state.setFilters({key: Good.House, values: this.filterAllHouses} );
+            this.state.setFilters<string>({key: Good.House, values: this.filterAllHouses} );
             callback();
         });
     }

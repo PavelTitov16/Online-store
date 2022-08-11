@@ -9,7 +9,7 @@ export interface FiltersState {
 }
 
 export interface StateModel {
-    setFilters(filters: {key: string; values: string | Array<string>}): void;
+    setFilters<T>(filters: {key: string; values: T}): void;
     setSort(sorters: {key: string; values: string}): void;
     getFilters(): FiltersState;
     getSorters(): SortState;
