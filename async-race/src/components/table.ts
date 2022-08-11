@@ -6,7 +6,7 @@ export class WinnersTable implements TableModel {
   public async init(): Promise<string> {
     this.template = `
         <h2 class="main-container__title" id="win-title">
-            Winners
+            Winners (2)
         </h2>
         <div class="winners-page">
             <table>

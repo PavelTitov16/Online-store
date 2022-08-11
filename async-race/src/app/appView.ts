@@ -65,6 +65,7 @@ export class AppView implements ViewModel {
   public async initWinnersPage(): Promise<string> {
     return `
     ${await this.winnersTable.render()}
+    ${await this.pagination.render()}
     `;
   }
 

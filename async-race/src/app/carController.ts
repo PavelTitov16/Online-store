@@ -92,7 +92,7 @@ export class CarController {
       this.stopAnimateCar(id);
     }
 
-    return status ? { success: true } : { success: false };
+    return status ? { success: id } : { success: false };
   }
 
   public async raceCar(id: number): Promise<EngineStatus> {
@@ -102,6 +102,7 @@ export class CarController {
       this.animateCar(id);
       return this.driveCar(id);
     }).then((response: EngineStatus) => {
+      if (!response.success) throw new Error('you lose!');
       return response;
     });
   }
@@ -109,6 +110,12 @@ export class CarController {
   public async raceCars(ids: number[]): Promise<EngineStatus> {
     return Promise.any(ids.map((id) => this.raceCar(id))).then((response: EngineStatus) => {
       console.log(response, 'win');
+      const cars = state.getCars();
+      cars.forEach((car) => {
+        if (car.id === response.success) {
+          alert(`${car.name} wins this race!`);
+        }
+      });
       return response;
     });
   }

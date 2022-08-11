@@ -4,5 +4,5 @@ export interface EngineResponse {
 }
 
 export interface EngineStatus {
-    success: boolean;
+    success: number | boolean;
 }
