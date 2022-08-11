@@ -34,5 +34,7 @@ export class Render implements RenderModel {
             slider.insertAdjacentHTML('beforeend', itemElement);
         });
     }
+
+    
 } 
     

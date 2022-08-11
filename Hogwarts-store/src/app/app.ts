@@ -28,6 +28,7 @@ export class App implements AppModel {
     public sorting: Sorting;
     public searchForm: SearchForm;
     public player: Player;
+    public generateNumber = 300;
 
     constructor() {
         this.goodsGenerator = new GoodsGenerator();
@@ -94,6 +95,14 @@ export class App implements AppModel {
         }
         deleteGoods();
         this.render.renderItems(updatedGoods);
+    }
+
+    public animateFilters(): void {
+        slider.classList.add('filter');
+        setTimeout(this.parseGoodsList, this.generateNumber);
+        slider.addEventListener('animationend', () => {
+            slider.classList.remove('filter');
+        });
     }
 }
 

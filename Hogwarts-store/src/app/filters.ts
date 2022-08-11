@@ -10,7 +10,6 @@ export class Filters implements FiltersModel {
     public houseFilters = document.querySelector('.filters-btns') as HTMLDivElement;
     public resetFiltersBtn = document.querySelector('.reset-category__btn') as HTMLButtonElement;
     public resetLocalBtn = document.querySelector('.reset-btn') as HTMLButtonElement;
-    public generateNumber = 300;
     public filterAllHouses = 'all';
     public state: State;
 
@@ -33,7 +32,7 @@ export class Filters implements FiltersModel {
             const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
             this.state.setFilters({key: Good.House, values: selectedHouse} );
             this.selectHouse(selectedHouse);
-            //this.animateFilters();
+            // this.app.animateFilters();
             callback();
         });
 
@@ -42,7 +41,7 @@ export class Filters implements FiltersModel {
             if (selectedHouseElement.tagName === 'INPUT') {
                 const selectedHouse = selectedHouseElement.dataset[keys.House] as string;
                 this.state.setFilters({key: Good.House, values: selectedHouse} );
-                //this.animateFilters();
+                // this.app.animateFilters();
                 callback();
             }
         });
@@ -103,12 +102,4 @@ export class Filters implements FiltersModel {
             location.reload();
         });
     }
-
-    /*public animateFilters(): void {
-        slider.classList.add('filter');
-        setTimeout(updateGoods, this.generateNumber);
-        slider.addEventListener('animationend', () => {
-            slider.classList.remove('filter');
-        });
-    }*/
 }
