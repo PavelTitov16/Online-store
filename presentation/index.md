@@ -1,0 +1,2 @@
+[Presentation recorded](https://www.youtube.com/watch?v=8AmZOQEFauY&ab_channel=PavluzontPictures)
+[Presentation deploy](https://rolling-scopes-school.github.io/paveltitov16-JSFE2022Q1/presentation-scrum/)
