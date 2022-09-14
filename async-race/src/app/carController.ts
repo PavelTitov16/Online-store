@@ -18,18 +18,18 @@ export class CarController {
     const track = document.getElementById('track') as HTMLDivElement;
     const car = document.getElementById(`car-${id}`) as unknown as SVGSVGElement;
     const chars = state.getCharsByCarId(id);
-    const duration = chars.distance / chars.velocity;
+    const duration: number = chars.distance / chars.velocity;
     const flagWidth = 28;
-    const distance = track.clientWidth - car.clientWidth - flagWidth;
+    const distance: number = track.clientWidth - car.clientWidth - flagWidth;
     const start = performance.now();
     const draw = (progress: number): void => {
       car.style.transform = `translateX(${progress * distance}px)`;
     };
-    const timing = (timeFraction: number) => timeFraction;
+    const timing = (timeFraction: number): number => timeFraction;
     const animate = (time: number): void => {
-      let timeFraction = (time - start) / duration;
+      let timeFraction: number = (time - start) / duration;
       if (timeFraction > 1) timeFraction = 1;
-      const progress = timing(timeFraction);
+      const progress: number = timing(timeFraction);
       draw(progress);
       if (timeFraction < 1) {
         this.animateCarIds[id] = requestAnimationFrame(animate.bind(this));

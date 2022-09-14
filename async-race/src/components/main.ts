@@ -2,7 +2,7 @@ import { MainModel } from '../models/main.model';
 import { state } from '../app/state';
 import '../assets/images/sprite_car.svg';
 import { AppController } from '../app/appController';
-import { ControllerModel } from '../models/controller.model';
+import { CarResponse, ControllerModel } from '../models/controller.model';
 import { generateCars } from './carsGeneration';
 import { CARS_LIMIT_PER_PAGE } from '../app/consts';
 import { CarController } from '../app/carController';
@@ -138,13 +138,14 @@ export class Main implements MainModel {
     });
   }
 
-  public updatePanelStatus() {
-    const selectedId = state.getSelectedCar();
+  public updatePanelStatus(): void {
+    const selectedId: number | null = state.getSelectedCar();
     const updateInput = document.getElementById('update-input') as HTMLInputElement;
     const updateColor = document.getElementById('update-color') as HTMLInputElement;
     const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
     if (selectedId) {
-      const selectedCar = state.getCars().find((car) => car.id === selectedId);
+      const selectedCar: CarResponse | undefined = state.getCars()
+        .find((car) => car.id === selectedId);
       if (selectedCar) {
         updateInput.disabled = false;
         updateColor.disabled = false;
@@ -160,7 +161,7 @@ export class Main implements MainModel {
   }
 
   public subscribeSelectCar(): void {
-    const carsContainer = document.getElementById('main-container__tracks');
+    const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const selectBtn = event.target as HTMLButtonElement;
@@ -175,7 +176,7 @@ export class Main implements MainModel {
   public subscribeUpdateCar(render: () => void): void {
     const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
     updateBtn?.addEventListener('click', async (event: MouseEvent) => {
-      const selectedId = state.getSelectedCar();
+      const selectedId: number | null = state.getSelectedCar();
       event.preventDefault();
       const updateInput = document.getElementById('update-input') as HTMLInputElement;
       const updateColor = document.getElementById('update-color') as HTMLInputElement;
@@ -190,7 +191,7 @@ export class Main implements MainModel {
   }
 
   public subscribeDeleteCar(render: () => void): void {
-    const carsContainer = document.getElementById('main-container__tracks');
+    const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const deleteBtn = event.target as HTMLButtonElement;
@@ -204,7 +205,7 @@ export class Main implements MainModel {
   }
 
   public subscribeAddCars(render: () => void): void {
-    const addCarsBtn = document.getElementById('addCars-btn');
+    const addCarsBtn = document.getElementById('addCars-btn') as HTMLButtonElement;
     addCarsBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const arrayForCars = [];
@@ -220,8 +221,8 @@ export class Main implements MainModel {
     });
   }
 
-  public async subscribeOnStart() {
-    const carsContainer = document.getElementById('main-container__tracks');
+  public async subscribeOnStart(): Promise<void> {
+    const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const driveBtn = event.target as HTMLButtonElement;
@@ -244,8 +245,8 @@ export class Main implements MainModel {
     });
   }
 
-  public async subscribeOnStop() {
-    const carsContainer = document.getElementById('main-container__tracks');
+  public async subscribeOnStop(): Promise<void> {
+    const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
     carsContainer?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const stopBtn = event.target as HTMLButtonElement;
@@ -268,8 +269,8 @@ export class Main implements MainModel {
     });
   }
 
-  public async subscribeOnAsyncRace() {
-    const raceBtn = document.getElementById('race-btn');
+  public async subscribeOnAsyncRace(): Promise<void> {
+    const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
     raceBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
@@ -287,8 +288,8 @@ export class Main implements MainModel {
     });
   }
 
-  public async subscribeOnResetRace() {
-    const resetBtn = document.getElementById('reset-btn');
+  public async subscribeOnResetRace(): Promise<void> {
+    const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
     resetBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
@@ -306,7 +307,7 @@ export class Main implements MainModel {
     });
   }
 
-  public updateBtnsStatus() {
+  public updateBtnsStatus(): void {
     const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
     const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
     const winnersBtn = document.getElementById('winners-btn') as HTMLButtonElement;
@@ -326,7 +327,7 @@ export class Main implements MainModel {
     });
   }
 
-  public resetBtnsStatus() {
+  public resetBtnsStatus(): void {
     const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
     const resetBtn = document.getElementById('reset-btn') as HTMLInputElement;
     if (state.isDriveForAllCarsInProgress()) {

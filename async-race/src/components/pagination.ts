@@ -62,9 +62,9 @@ export class Pagination implements PaginationModel {
     `;
   }
 
-  public subscribeOnNext(render: () => void) {
-    const nextBtn = document.getElementById('rightB');
-    let currentPage = state.getPage();
+  public subscribeOnNext(render: () => void): void {
+    const nextBtn = document.getElementById('rightB') as HTMLButtonElement;
+    let currentPage: number = state.getPage();
     const carsPerPage = 7;
     const carsAmount: number = state.getCarsAmount();
     const pageLimit = Math.ceil(carsAmount / carsPerPage);
@@ -89,13 +89,13 @@ export class Pagination implements PaginationModel {
     });
   }
 
-  public subscribeOnPrev(render: () => void) {
-    const prevBtn = document.getElementById('leftB');
+  public subscribeOnPrev(render: () => void): void {
+    const prevBtn = document.getElementById('leftB') as HTMLButtonElement;
     prevBtn?.addEventListener('click', async (event: MouseEvent) => {
-      let currentPage = state.getPage();
+      let currentPage: number = state.getPage();
       event.preventDefault();
       if (currentPage > 1) {
-        const animateCarIds = state.getAnimateCarIds();
+        const animateCarIds: {[id: number]: number} = state.getAnimateCarIds();
         if (Object.keys(animateCarIds).length !== 0) {
           this.carController.cancelAllCarsAnimation();
           state.pauseAnimationPage();
@@ -113,8 +113,8 @@ export class Pagination implements PaginationModel {
     });
   }
 
-  public subscribeOnStart(render: () => void) {
-    const swipeToStartBtn = document.getElementById('swipeL');
+  public subscribeOnStart(render: () => void): void {
+    const swipeToStartBtn = document.getElementById('swipeL') as HTMLButtonElement;
     swipeToStartBtn?.addEventListener('click', async (event: MouseEvent) => {
       event.preventDefault();
       const currentPage = 1;
@@ -124,7 +124,7 @@ export class Pagination implements PaginationModel {
     });
   }
 
-  public subscribeOnEnd(render: () => void) {
+  public subscribeOnEnd(render: () => void): void {
     const swipeToEndBtn = document.getElementById('swipeR');
     const carsPerPage = 7;
     const carsAmount: number = state.getCarsAmount();
