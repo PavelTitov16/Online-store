@@ -1,11 +1,11 @@
 import '../assets/audio/1.Riders on the Storm.mp3';
 import '../assets/audio/2.Get Low.mp3';
 import '../assets/audio/3.In A Hood Near You.mp3';
-import '../assets/audio/4.24.mp3';
-import '../assets/audio/5.I Need Speed.mp3';
+import '../assets/audio/4.I Need Speed.mp3';
+import '../assets/audio/5.LAX.mp3';
 import '../assets/audio/6.Nine Thou.mp3';
 import '../assets/audio/7.Black Betty.mp3';
-import '../assets/audio/8.LAX.mp3';
+import '../assets/audio/8.24.mp3';
 import '../assets/audio/9.Fired up.mp3';
 import '../assets/audio/10.Born Too Slow.mp3';
 import '../assets/audio/11.Most Wanted Mash Up.mp3';
@@ -29,22 +29,20 @@ export class Player implements PlayerModel {
     '1.Riders on the Storm',
     '2.Get Low',
     '3.In A Hood Near You',
-    '4.24',
-    '5.I Need Speed',
+    '4.I Need Speed',
+    '5.LAX',
     '6.Nine Thou',
     '7.Black Betty',
-    '8.LAX',
+    '8.24',
     '9.Fired up',
     '10.Born Too Slow',
     '11.Most Wanted Mash Up'
   ];
 
-  public limit: number = this.playList.length;
-
   public currentSound = 0;
 
-  public loadMusic(): void {
-    this.audio.src = `assets/audio/${this.playList[this.currentSound]}.mp3` as string;
+  public loadMusic(currentSound: number): void {
+    this.audio.src = `assets/audio/${this.playList[currentSound]}.mp3` as string;
     this.audio.load();
   }
 
@@ -60,21 +58,21 @@ export class Player implements PlayerModel {
 
   public nextMusic(): void {
     this.currentSound += 1;
-    if (this.currentSound > this.limit) {
+    if (this.currentSound > this.playList.length - 1) {
       this.currentSound = 0;
     }
 
-    this.loadMusic();
+    this.loadMusic(this.currentSound);
     this.playMusic();
   }
 
   public prevMusic(): void {
     this.currentSound -= 1;
     if (this.currentSound < 0) {
-      this.currentSound = this.limit - 1;
+      this.currentSound = this.playList.length - 1;
     }
 
-    this.loadMusic();
+    this.loadMusic(this.currentSound);
     this.playMusic();
   }
 
@@ -88,7 +86,7 @@ export class Player implements PlayerModel {
 
   public startAutoPlay(): void {
     this.audio.muted = false;
-    this.loadMusic();
+    this.loadMusic(this.currentSound);
     this.playMusic();
   }
 
@@ -107,7 +105,7 @@ export class Player implements PlayerModel {
 
   public pressPlayMusic(): void {
     this.playBtn.addEventListener('click', ()=> {
-      this.loadMusic();
+      this.loadMusic(this.currentSound);
       if (this.playBtn.classList.contains('paused')) {
         this.pauseMusic();
       } else {
@@ -134,12 +132,19 @@ export class Player implements PlayerModel {
     });
   }
 
+  public continuePlay() {
+    this.audio.onended = () => {
+      this.nextMusic();
+    };
+  }
+
   public init(): void {
+    this.subscribeAutoPlay();
     this.timeUpdate();
     this.pressPlayMusic();
     this.pressNextMusic();
     this.pressPrevMusic();
     this.pressMuteMusic();
-    this.subscribeAutoPlay();
+    this.continuePlay();
   }
 }
