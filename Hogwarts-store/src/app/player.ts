@@ -7,7 +7,6 @@ import '../audio/leavinghogwarts.mp3';
 import '../audio/harrywondrousworld.mp3';
 import { PlayerModel } from '../models/player.model';
 
-
 export class Player implements PlayerModel {
     public audio = document.querySelector('.audio') as HTMLAudioElement;
     public playBtn = document.querySelector('.play') as HTMLDivElement;
@@ -118,8 +117,10 @@ export class Player implements PlayerModel {
         });
     }
 
-    public continuePlay(): void {
-        this.audio.onended = this.nextMusic;
+    public continuePlay() {
+        this.audio.onended = () => {
+            this.nextMusic();
+        };
     }
 
     public init(): void {
