@@ -144,10 +144,6 @@ class State {
       : false;
   }
 
-  // public setWinners(winners: GetWinners[]): void {
-  //   this.state = { ...this.state, winners };
-  // }
-
   public getWinners(): GetWinners[] {
     return this.state.winners;
   }

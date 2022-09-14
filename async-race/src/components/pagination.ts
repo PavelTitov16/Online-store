@@ -81,7 +81,6 @@ export class Pagination implements PaginationModel {
         await this.controller.getCars(currentPage);
         state.setPage(currentPage);
         render();
-        // TODO: implement animation state
         if (state.isAnimationOnPagePaused()) {
           state.startAnimationPage();
           this.carController.runAllCarsAnimation();
@@ -106,7 +105,6 @@ export class Pagination implements PaginationModel {
         await this.controller.getCars(currentPage);
         state.setPage(currentPage);
         render();
-        // TODO: implement animation state
         if (state.isAnimationOnPagePaused()) {
           state.startAnimationPage();
           this.carController.runAllCarsAnimation();

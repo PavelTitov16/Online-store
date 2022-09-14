@@ -44,7 +44,6 @@ export class AppController implements ControllerModel {
 
     const data: CarResponse = await response.json();
     state.addCar(data);
-    // this.view.render();
   }
 
   public async updateCar(id: number, body: CarRequest): Promise<void> {

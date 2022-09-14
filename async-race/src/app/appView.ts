@@ -113,8 +113,5 @@ export class AppView implements ViewModel {
       this.main.subscribeOnAsyncRace();
       this.main.subscribeOnResetRace();
     }
-    if (this.pagePaths === PagePaths.Winners) {
-      ///
-    }
   }
 }
