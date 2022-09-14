@@ -128,8 +128,8 @@ export class Main implements MainModel {
   }
 
   public subscribeCreateCar(render: () => void): void {
-    const createBtn = document.getElementById('create-btn');
-    createBtn?.addEventListener('click', async (event: MouseEvent) => {
+    const createBtn = document.getElementById('create-btn') as HTMLButtonElement;
+    createBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const createInput = document.getElementById('create-input') as HTMLInputElement;
       const createColor = document.getElementById('create-color') as HTMLInputElement;
@@ -162,7 +162,7 @@ export class Main implements MainModel {
 
   public subscribeSelectCar(): void {
     const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
-    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+    carsContainer?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const selectBtn = event.target as HTMLButtonElement;
       if (selectBtn.id.includes('select-btn')) {
@@ -175,7 +175,7 @@ export class Main implements MainModel {
 
   public subscribeUpdateCar(render: () => void): void {
     const updateBtn = document.getElementById('update-btn') as HTMLButtonElement;
-    updateBtn?.addEventListener('click', async (event: MouseEvent) => {
+    updateBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       const selectedId: number | null = state.getSelectedCar();
       event.preventDefault();
       const updateInput = document.getElementById('update-input') as HTMLInputElement;
@@ -192,7 +192,7 @@ export class Main implements MainModel {
 
   public subscribeDeleteCar(render: () => void): void {
     const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
-    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+    carsContainer?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const deleteBtn = event.target as HTMLButtonElement;
       if (deleteBtn.id.includes('remove-btn')) {
@@ -206,7 +206,7 @@ export class Main implements MainModel {
 
   public subscribeAddCars(render: () => void): void {
     const addCarsBtn = document.getElementById('addCars-btn') as HTMLButtonElement;
-    addCarsBtn?.addEventListener('click', async (event: MouseEvent) => {
+    addCarsBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const arrayForCars = [];
 
@@ -223,7 +223,7 @@ export class Main implements MainModel {
 
   public async subscribeOnStart(): Promise<void> {
     const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
-    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+    carsContainer?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const driveBtn = event.target as HTMLButtonElement;
       const stopBtn = driveBtn.nextElementSibling as HTMLButtonElement;
@@ -247,7 +247,7 @@ export class Main implements MainModel {
 
   public async subscribeOnStop(): Promise<void> {
     const carsContainer = document.getElementById('main-container__tracks') as HTMLDivElement;
-    carsContainer?.addEventListener('click', async (event: MouseEvent) => {
+    carsContainer?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const stopBtn = event.target as HTMLButtonElement;
       const driveBtn = stopBtn.previousElementSibling as HTMLButtonElement;
@@ -271,7 +271,7 @@ export class Main implements MainModel {
 
   public async subscribeOnAsyncRace(): Promise<void> {
     const raceBtn = document.getElementById('race-btn') as HTMLButtonElement;
-    raceBtn?.addEventListener('click', async (event: MouseEvent) => {
+    raceBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
       const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
@@ -283,14 +283,14 @@ export class Main implements MainModel {
       for (let i = 0; i < pagBtns.length; i += 1) {
         pagBtns[i].disabled = true;
       }
-      const carsIds = state.getCars().map((car) => car.id);
+      const carsIds: number[] = state.getCars().map((car) => car.id);
       await this.carController.raceCars(carsIds);
     });
   }
 
   public async subscribeOnResetRace(): Promise<void> {
     const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
-    resetBtn?.addEventListener('click', async (event: MouseEvent) => {
+    resetBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
       const driveBtns = Array.from(document.getElementsByClassName('drive-btn')) as HTMLButtonElement[];
       const stopBtns = Array.from(document.getElementsByClassName('back-btn')) as HTMLButtonElement[];
@@ -302,7 +302,7 @@ export class Main implements MainModel {
       for (let i = 0; i < pagBtns.length; i += 1) {
         pagBtns[i].disabled = false;
       }
-      const carsIds = state.getCars().map((car) => car.id);
+      const carsIds: number[] = state.getCars().map((car) => car.id);
       await this.carController.resetCars(carsIds);
     });
   }

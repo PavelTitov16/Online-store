@@ -14,10 +14,10 @@ export class CarController {
     this.animateCarIds = state.getAnimateCarIds();
   }
 
-  public animateCar(id: number) {
+  public animateCar(id: number): void {
     const track = document.getElementById('track') as HTMLDivElement;
     const car = document.getElementById(`car-${id}`) as unknown as SVGSVGElement;
-    const chars = state.getCharsByCarId(id);
+    const chars: EngineResponse = state.getCharsByCarId(id);
     const duration: number = chars.distance / chars.velocity;
     const flagWidth = 28;
     const distance: number = track.clientWidth - car.clientWidth - flagWidth;
@@ -40,12 +40,12 @@ export class CarController {
     state.deleteAnimateCarId(id);
   }
 
-  public stopAnimateCar(id: number) {
+  public stopAnimateCar(id: number): void {
     cancelAnimationFrame(this.animateCarIds[id]);
     state.deleteAnimateCarId(id);
   }
 
-  public cancelAllCarsAnimation() {
+  public cancelAllCarsAnimation(): void {
     Object.values(this.animateCarIds).forEach(value => {
       cancelAnimationFrame(value);
     });
@@ -53,13 +53,13 @@ export class CarController {
     state.resetAnimateCarIds();
   }
 
-  public runAllCarsAnimation() {
+  public runAllCarsAnimation(): void {
     Object.values(this.animateCarIds).forEach(value => {
       this.animateCar(value);
     });
   }
 
-  public resetCar(id: number) {
+  public resetCar(id: number): void {
     const car = document.getElementById(`car-${id}`) as unknown as SVGSVGElement;
     car.style.transform = 'translateX(0px)';
   }

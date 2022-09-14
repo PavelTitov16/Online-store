@@ -85,15 +85,15 @@ class State {
     this.state.carsChars[id] = chars;
   }
 
-  public deleteCarChars(id: number) {
+  public deleteCarChars(id: number): void {
     delete this.state.carsChars[id];
   }
 
-  public getCharsByCarId(id: number) {
+  public getCharsByCarId(id: number): EngineResponse {
     return this.state.carsChars[id];
   }
 
-  public setAnimateCarId(carId: number, animateCarId: number) {
+  public setAnimateCarId(carId: number, animateCarId: number): void {
     this.state.animateCarIds = {
       ...this.state.animateCarIds,
       [this.state.page]: { ...this.state.animateCarIds[this.state.page], [carId]: animateCarId }

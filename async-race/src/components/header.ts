@@ -38,10 +38,10 @@ export class Header implements HeaderModel {
   }
 
   public subscribeOnGarage(changePath: () => void, render: () => void): void {
-    const garageBtn = document.getElementById('garage-btn');
-    garageBtn?.addEventListener('click', async (event: MouseEvent) => {
+    const garageBtn = document.getElementById('garage-btn') as HTMLButtonElement;
+    garageBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
-      const router = document.getElementById('router');
+      const router = document.getElementById('router') as HTMLDivElement;
       if (router) {
         router.remove();
         changePath();
@@ -51,10 +51,10 @@ export class Header implements HeaderModel {
   }
 
   public subscribeOnWinners(changePath: () => void, render: () => void): void {
-    const winnersBtn = document.getElementById('winners-btn');
-    winnersBtn?.addEventListener('click', async (event: MouseEvent) => {
+    const winnersBtn = document.getElementById('winners-btn') as HTMLButtonElement;
+    winnersBtn?.addEventListener('click', async (event: MouseEvent): Promise<void> => {
       event.preventDefault();
-      const router = document.getElementById('router');
+      const router = document.getElementById('router') as HTMLDivElement;
       if (router) {
         router.remove();
         changePath();
