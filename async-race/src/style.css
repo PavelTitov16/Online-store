@@ -617,6 +617,8 @@ progress::-webkit-progress-value {
     .header-container__items {
         flex-direction: column;
         gap: 0.5rem;
+        width: 294px;
+        align-items: center;
     }
 
     .audio-payer {
@@ -625,34 +627,96 @@ progress::-webkit-progress-value {
 }
 
 @media (min-width: 490px) and (max-width: 1100px) {
-    .header-container {
-        justify-content: center;
-    }
-
-    /* .main-container__panel {
+    .main-container__panel {
         flex-direction: column;
         gap: 2em;
         margin-top: 1em;
     }
+
     .main-container__inputs {
         order: -1;
-    } */
+    }
+}
+
+@media (max-width:770px) {
+    .header-container {
+        padding: 0 2em;
+    }
+
+    .header-container__title {
+        font-size: 2.3em;
+    }
+
+    .main-container__title {
+        font-size: 2.3em;
+    }
+
+    .main-container__panel {
+        padding: 0 2em;
+    }
+
+    .track-btn {
+        transform: scale(0.7);
+    }
+
+    .footer-container {
+        padding: 0 1em;
+    }
+
+    .footer-git {
+        padding: 0 1em;
+    }
+    .main-container__buttons {
+        transform: scale(0.7);
+    }
+
+    .main-container__inputs {
+        transform: scale(0.7);
+    }
 
     .garage-btns {
         transform: scale(0.7);
     }
 
-    .garage-input {
+    .button {
         transform: scale(0.7);
     }
 }
 
-@media (min-width: 490px) and (max-width:770px) {
-    .header-container__title {
-        font-size: 2.3em;
+@media (max-width: 490px) {
+    .header-container__items {
+        width: 170px;
     }
 
-    .footer-container {
-        padding: 0;
+    .header-nav {
+        gap: 0.5em;
+    }
+
+    .audio-payer {
+        transform: scale(0.4);
+    }
+
+    .button {
+        transform: scale(0.4);
+    }
+    
+    .main-container__buttons {
+        transform: scale(0.6);
+    }
+    
+    .header-container {
+        padding: 0 1em;
+    }
+
+    .header-container__title {
+        font-size: 1.3em;
+    }
+
+    .main-container__title {
+        font-size: 1.3em;
+    }
+
+    .main-container__panel {
+        padding: 0 1em;
     }
 }
