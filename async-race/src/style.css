@@ -132,7 +132,8 @@ body {
 
 .header-nav {
     display: flex;
-    gap: 3em;
+    gap: 2.5em;
+    justify-content: center;
 }
 
 .button {
@@ -165,6 +166,11 @@ body {
     font-size: 3.3em;
     line-height: 1em;
     color: var(--under-gold);
+}
+
+.header-container__items {
+    display: flex;
+    gap: 2rem;
 }
 
 .footer-wrapper {
@@ -520,9 +526,8 @@ input.palette:disabled {
 
 .audio-payer {
     display: flex;
-    justify-content: space-between;
     gap: 1em;
-    width: 33em;
+    width: 30em;
     height: 3em;
     background: transparent;
     align-items: center;
@@ -608,22 +613,37 @@ progress::-webkit-progress-value {
     margin-right: 1em;
 }
 
+@media (max-width: 1170px) {
+    .header-container__items {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
+    .audio-payer {
+        transform: scale(0.7);
+    }
+}
 
 @media (min-width: 490px) and (max-width: 1100px) {
     .header-container {
-        flex-direction: column;
-        height: 13em;
         justify-content: center;
-        gap: 1em;
     }
-    .main-container__panel {
+
+    /* .main-container__panel {
         flex-direction: column;
         gap: 2em;
         margin-top: 1em;
     }
     .main-container__inputs {
         order: -1;
+    } */
+
+    .garage-btns {
+        transform: scale(0.7);
+    }
+
+    .garage-input {
+        transform: scale(0.7);
     }
 }
 
