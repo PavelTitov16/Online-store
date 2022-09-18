@@ -485,7 +485,6 @@ input.garage-input__item {
     font-weight: normal;
     font-size: 1.1em;
     padding-left: 1em;;
-    width: 15em;
 }
 
 input:disabled {
@@ -500,7 +499,7 @@ input:disabled::placeholder {
 
 input.palette {
     background: var(--under-gold);
-    width: 5em;
+    width: 4em;
     border-radius: 3em;
     cursor: pointer;
     padding: 0.1em 0.6em;
@@ -629,7 +628,7 @@ progress::-webkit-progress-value {
 @media (min-width: 490px) and (max-width: 1100px) {
     .main-container__panel {
         flex-direction: column;
-        gap: 2em;
+        gap: 5em;
         margin-top: 1em;
     }
 
@@ -656,7 +655,8 @@ progress::-webkit-progress-value {
     }
 
     .track-btn {
-        transform: scale(0.7);
+        max-width: 5em;
+        width: 100%;
     }
 
     .footer-container {
@@ -665,21 +665,6 @@ progress::-webkit-progress-value {
 
     .footer-git {
         padding: 0 1em;
-    }
-    .main-container__buttons {
-        transform: scale(0.7);
-    }
-
-    .main-container__inputs {
-        transform: scale(0.7);
-    }
-
-    .garage-btns {
-        transform: scale(0.7);
-    }
-
-    .button {
-        transform: scale(0.7);
     }
 }
 
@@ -694,14 +679,6 @@ progress::-webkit-progress-value {
 
     .audio-payer {
         transform: scale(0.4);
-    }
-
-    .button {
-        transform: scale(0.4);
-    }
-    
-    .main-container__buttons {
-        transform: scale(0.6);
     }
     
     .header-container {
