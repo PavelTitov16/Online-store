@@ -544,7 +544,6 @@ input.palette:disabled {
 .audio-payer__btn {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
     width: 2em;
     height: 2em;
     cursor: pointer;
@@ -621,7 +620,8 @@ progress::-webkit-progress-value {
     }
 
     .audio-payer {
-        transform: scale(0.7);
+        max-width: 19em;
+        padding: 0 0.6em;
     }
 }
 
@@ -650,10 +650,6 @@ progress::-webkit-progress-value {
         font-size: 2.3em;
     }
 
-    .main-container__panel {
-        padding: 0 2em;
-    }
-
     .track-btn {
         max-width: 5em;
         width: 100%;
@@ -666,34 +662,81 @@ progress::-webkit-progress-value {
     .footer-git {
         padding: 0 1em;
     }
-}
 
-@media (max-width: 490px) {
-    .header-container__items {
-        width: 170px;
+    .controls {
+        margin-left: 0;
+    }
+
+    .audio-payer__btn {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    .mute {
+        background-size: 1.5em;
+        margin-right: 0;
+    }
+
+    .button {
+        height: 2em;
+        width: 100%;
     }
 
     .header-nav {
-        gap: 0.5em;
+        gap: 0;
+        max-width: 14em;
+        width: 100%;
+        justify-content: space-between;
     }
 
-    .audio-payer {
-        transform: scale(0.4);
-    }
-    
-    .header-container {
-        padding: 0 1em;
-    }
-
-    .header-container__title {
-        font-size: 1.3em;
-    }
-
-    .main-container__title {
-        font-size: 1.3em;
+    .header-nav__item {
+        max-width: 6em;
+        width: 100%;
     }
 
     .main-container__panel {
-        padding: 0 1em;
+        padding: 0;
+        gap: 3em;
+    }
+
+    .garage-btn {
+        max-width: 7em;
+        width: 100%;
+    }
+
+    .main-panel__items {
+        max-width: 26em;
+        width: 100%;
+    }
+
+    .main-panel__items {
+        max-width: 26em;
+        width: 100%;
+    }
+
+    .garage-btns {
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .garage-btns__item {
+        max-width: 7em;
+        width: 100%;
+    }
+
+    .main-container__track {
+        align-items: center;
+    }
+
+    .track-btns {
+        width: auto;
+        max-width: 12em;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .track-btn {
+        max-width: 5em;
+        width: 100%;
     }
 }

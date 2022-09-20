@@ -29,13 +29,13 @@ export class Main implements MainModel {
             <div class="main-container__panel">
             <div class="main-panel__items">
               <div class="garage-btns">
-                <button id="addCars-btn" class="header__btn button">
+                <button id="addCars-btn" class="garage-btns__item button">
                   Add cars
                 </button>
-                <button id="race-btn" class="header__btn button">
+                <button id="race-btn" class="garage-btns__item button">
                   Let's race!
                 </button>
-                <button id="reset-btn" class="header__btn button" disabled>
+                <button id="reset-btn" class="garage-btns__item button" disabled>
                   Reset race
                 </button>
               </div>
