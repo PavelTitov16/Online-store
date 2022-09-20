@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Poppins:wght@400;500&display=swap);
 :root {
     --background: #091232;
     --left-line: linear-gradient(to right, #2D0DAE, #8453D4);
@@ -12,12 +13,10 @@
     --gold: #f1edd1;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Poppins:wght@400;500&display=swap');
-
 @font-face {
 	font-family: 'Potter';
-	src: url(../src/font/Harry\ Potter.eot);
-	src: local('☺'), url(../src/font/Harry\ Potter.woff) format('woff'), url(../src/font/Harry\ Potter.ttf) format('truetype'), url(../src/font/Harry\ Potter.svg) format('svg');
+	src: url("assets/fonts/Harry%20Potter.eot");
+	src: local('☺'), url("assets/fonts/Harry%20Potter.woff") format('woff'), url("assets/fonts/Harry%20Potter.ttf") format('truetype'), url("assets/icons/Harry%20Potter.svg") format('svg');
 	font-weight: 500;
 	font-style: normal;
 }   
@@ -191,7 +190,7 @@ body {
 }
 
 .header-logo {
-    background-image: url(../src/icons/Hogwarts.svg);
+    background-image: url(assets/icons/Hogwarts.svg);
 }
 
 .header-logo__title {
@@ -218,7 +217,7 @@ body {
 }
 
 .favourite {
-    background-image: url(../src/icons/like.svg);
+    background-image: url(assets/icons/like.svg);
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -250,7 +249,7 @@ body {
 .header-chest__image {
     width: 2.7em;
     height: 2.7em;
-    background-image: url(../src/images/chest.png);
+    background-image: url(assets/images/chest.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -425,7 +424,7 @@ body {
 }
 
 .prev {
-    background-image: url('../src/player/prev.svg');
+    background-image: url(assets/icons/prev.svg);
 }
 
 .controls .prev:active {
@@ -433,16 +432,16 @@ body {
 }
 
 .play {
-    background-image: url('../src/player/play.svg');
+    background-image: url(assets/icons/play.svg);
     filter: invert(0%) sepia(6%) saturate(48%) hue-rotate(195deg) brightness(113%) contrast(91%);
 }
 
 .paused {
-    background-image: url('../src/player/pause.svg');
+    background-image: url(assets/icons/pause.svg);
 }
 
 .next {
-    background-image: url('../src/player/skip.svg');
+    background-image: url(assets/icons/skip.svg);
 }
 
 .controls .next:active {
@@ -480,7 +479,7 @@ progress::-webkit-progress-value {
 }
 
 .mute {
-    background-image: url('../src/player/mute.svg');
+    background-image: url(assets/icons/mute.svg);
     margin-right: 1em;
 }
 /* Player */
@@ -523,7 +522,7 @@ progress::-webkit-progress-value {
 .shop-items {
     width: 45em;
     height: 35em;
-    background: url(../src/images/items.png);
+    background: url(assets/images/items.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -532,7 +531,7 @@ progress::-webkit-progress-value {
 
 .hero-wrapper {
     margin: 0 auto;
-    background: url(../src/images/catalogue_bg.jpg);
+    background: url(assets/images/catalogue_bg.jpg);
     height: 42em;
     max-width: 108.5em;
     background-size: 100%;
@@ -803,7 +802,7 @@ progress::-webkit-progress-value {
     margin: 0 auto;
     max-width: 108.5em;
     background-size: 100%;
-    background-image: url(../src/images/shop_bg.jpg);
+    background-image: url(assets/images/shop_bg.jpg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0 100px;
@@ -844,22 +843,22 @@ progress::-webkit-progress-value {
 }
 
 .huffle {
-    background-image: url(../src/images/Faculty/hufflepuff-crest.png);
+    background-image: url(assets/images/hufflepuff-crest.png);
     filter: invert(49%) sepia(99%) saturate(1004%) hue-rotate(16deg) brightness(96%) contrast(102%);
 }
 
 .snake {
-    background-image: url(../src/images/Faculty/snake.png);
+    background-image: url(assets/images/snake.png);
     filter: invert(80%) sepia(11%) saturate(4492%) hue-rotate(120deg) brightness(96%) contrast(98%);
 }
 
 .leo {
-    background-image: url(../src/images/Faculty/leo.png);
+    background-image: url(assets/images/leo.png);
     filter: invert(57%) sepia(54%) saturate(6969%) hue-rotate(348deg) brightness(45%) contrast(110%);
 }
 
 .raven {
-    background-image: url(../src/images/Faculty/raven.png);
+    background-image: url(assets/images/raven.png);
     filter: invert(73%) sepia(18%) saturate(1438%) hue-rotate(186deg) brightness(94%) contrast(95%);
 }
 
@@ -900,7 +899,7 @@ progress::-webkit-progress-value {
 .github-link {
     width: 7em;
     height: 2em;
-    background-image: url("../src/icons/GihHub.svg");
+    background-image: url(assets/icons/GihHub.svg);
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(80%) sepia(87%) saturate(679%) hue-rotate(193deg) brightness(125%) contrast(91%);
@@ -922,7 +921,7 @@ progress::-webkit-progress-value {
 }
 
 .footer-logo {
-    background-image: url(../src/icons/Potter.svg);
+    background-image: url(assets/icons/Potter.svg);
 }
 
 .footer-rss {
@@ -946,7 +945,7 @@ progress::-webkit-progress-value {
 .rss {
     width: 7em;
     height: 3em;
-    background-image: url("../src/icons/rs_school.svg");
+    background-image: url(assets/icons/rs_school.svg);
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(80%) sepia(87%) saturate(679%) hue-rotate(193deg) brightness(125%) contrast(91%);
@@ -1164,3 +1163,4 @@ progress::-webkit-progress-value {
         display: none;
     }
 }
+
